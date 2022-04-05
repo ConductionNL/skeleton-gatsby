@@ -15,7 +15,7 @@ To set up your own project, you will need a GitHub account and be logged in. Sim
 
 To develop locally, clone your new repository to your local machine. Open the terminal, navigate to the folder containing your repository, and make a choice to run the app in Node.js/npm or docker.
 
-# Node.js / NPM
+### Node.js / NPM
 You will need a Git client(optional), and have Node.js and NPM installed. This will use port :8000 so make sure nothing runs on that.
 
 ```cli
@@ -25,7 +25,7 @@ $ npm run develop
 ```
 
 
-# Docker @TODO IN PROGRESS
+### Docker @TODO IN PROGRESS
 You will need to have docker installed. This will also run Conductions gateway on port :80 and the app itself on :8000 so make sure nothing runs on those.
 ```cli
 $ docker-compose pull
