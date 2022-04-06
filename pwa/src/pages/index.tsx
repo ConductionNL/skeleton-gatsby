@@ -24,38 +24,30 @@ import {
 const IndexPage = () => {
   return (
     <>
-      <Page>
-        <PageContent>
-          <Heading1>Welcome to the skeleton</Heading1>
-
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableCell>First name</TableCell>
-                <TableCell>Last name</TableCell>
-                <TableCell>Age</TableCell>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell>Barry</TableCell>
-                <TableCell>Brands</TableCell>
-                <TableCell>19</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-
-          <br />
-          <br />
-
-          <FormField>
-            <FormLabel htmlFor="testInput">Dit label zou ik liever boven de input zien</FormLabel>
-            <Textbox id="testInput" name="test" />
-          </FormField>
-
-          <Button>Submit</Button>
-        </PageContent>
-      </Page>
+      <Heading1>Welcome to the skeleton</Heading1>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableCell>First name</TableCell>
+            <TableCell>Last name</TableCell>
+            <TableCell>Age</TableCell>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell>Barry</TableCell>
+            <TableCell>Brands</TableCell>
+            <TableCell>19</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      <br />
+      <br />
+      <FormField>
+        <FormLabel htmlFor="testInput">Label</FormLabel>
+        <Textbox id="testInput" name="test" />
+      </FormField>
+      <Button>Submit</Button>
     </>
   );
 };

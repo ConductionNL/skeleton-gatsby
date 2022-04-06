@@ -7,7 +7,7 @@ export { Article } from './Article';
 // export { Backdrop } from './Backdrop';
 export { Button } from './Button';
 // export { Checkbox } from './Checkbox';
-// export { Document } from './Document';
+export { Document } from './Document';
 // export { Fieldset } from './Fieldset';
 // export { FieldsetLegend } from './FieldsetLegend';
 export { FormField } from './FormField';
