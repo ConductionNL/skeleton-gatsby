@@ -3,11 +3,10 @@ import "./login.css";
 import APIService from "../../apiService/apiService";
 import { setUser } from "../../services/auth";
 import { navigate } from "gatsby-link";
-// import Footer from "../../components/footer/footer";
-// import Particles from "react-tsparticles";
 import { isLoggedIn } from "../../services/auth";
 // import { useForm } from "react-hook-form";
 // import { InputPassword, InputText } from "../../components/formFields";
+import { FormField, Textbox, Button } from "../../components/utrecht-components";
 
 const Login: React.FC = () => {
   // const [error, setError] = React.useState<string>(null);
@@ -21,9 +20,14 @@ const Login: React.FC = () => {
   //   formState: { errors },
   // } = useForm();
 
-  const onSubmit = (event): void => {
+  const login = (e) => {
+    e.preventDefault();
+
     setLoading(true);
-    let body = {};
+    let body = {
+      username: e.target.username?.value,
+      password: e.target.password?.value,
+    };
 
     API.Login.login(body)
       .then((res) => {
@@ -36,6 +40,8 @@ const Login: React.FC = () => {
         navigate("/");
       })
       .catch((err) => {
+        console.log(`Login went wrong: ${err}`);
+        throw new Error(`Login went wrong: ${err}`);
         // setValue("username", "");
         // setValue("password", "");
         // setError(err.response.data.message);
@@ -55,15 +61,22 @@ const Login: React.FC = () => {
     <>
       <h1>Welcome to the Skeleton!</h1>
 
-      <form className="login-form" onSubmit={onSubmit}>
+      <form onSubmit={login}>
         <h2>Login</h2>
+
+        <FormField>
+          <Textbox name="username" type="text" required />
+        </FormField>
+        <FormField>
+          <Textbox name="password" type="password" required />
+        </FormField>
 
         {/* <InputText label="Username" name="username" {...{ register, errors }} validation={{ required: true }} /> */}
         {/* <InputPassword label="Password" name="password" {...{ register, errors }} validation={{ required: true }} /> */}
 
         {/* {error && <span className="login-form-error">{error}</span>} */}
 
-        <button>{!loading ? "Login" : "Loading..."}</button>
+        <Button type="submit">{!loading ? "Login" : "Loading..."}</Button>
       </form>
     </>
   );
