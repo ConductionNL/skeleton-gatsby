@@ -11,7 +11,8 @@ export default function Layout({ children }) {
   return (
     <>
       <Helmet>
-        <link href="https://unpkg.com/@utrecht/component-library-css/dist/bem.css" rel="stylesheet" />
+        {/* <link href="https://unpkg.com/@utrecht/component-library-css/dist/bem.css" rel="stylesheet" /> */}
+        <link href="https://unpkg.com/@utrecht/design-tokens/dist/theme/index.css" rel="stylesheet" />
       </Helmet>
       <div>
         <title>Skeleton Gatsby App</title>
