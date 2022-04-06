@@ -24,7 +24,7 @@ export default class APIService {
 
   public get loginClient(): AxiosInstance {
     return axios.create({
-      baseURL: window.GATSBY_API_URL,
+      baseURL: window.GATSBY_API_URL ?? 'http://localhost/api',
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
