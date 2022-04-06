@@ -21,7 +21,8 @@
     "gatsby-plugin-layout": "^3.6.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "@nl-design-system-unstable/example-next.js": "github:Robbert/nl-design-system-with-next.js"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
