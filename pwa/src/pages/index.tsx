@@ -16,6 +16,9 @@ import {
   TableHeaderCell,
   TableBody,
   Button,
+  FormField,
+  Textbox,
+  FormLabel,
 } from "../components/utrecht-components";
 
 const IndexPage = () => {
@@ -44,6 +47,12 @@ const IndexPage = () => {
 
           <br />
           <br />
+
+          <FormField>
+            <FormLabel htmlFor="testInput">Dit label zou ik liever boven de input zien</FormLabel>
+            <Textbox id="testInput" name="test" />
+          </FormField>
+
           <Button>Submit</Button>
         </PageContent>
       </Page>
