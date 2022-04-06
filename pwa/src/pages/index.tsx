@@ -1,4 +1,5 @@
 import * as React from "react";
+import { isLoggedIn, logout } from "../services/auth";
 
 // Disabled till fixed
 // import { Article, Heading1 } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
@@ -11,6 +12,10 @@ const IndexPage = () => {
   return (
     <>
       <Heading1>Welcome to the skeleton</Heading1>
+
+      <p>U are logged in</p>
+
+      <button onClick={logout}>Logout</button>
     </>
   );
 };
