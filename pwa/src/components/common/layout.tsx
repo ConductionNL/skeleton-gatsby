@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
+import { Page, PageContent } from "../utrecht-components";
 
 import "@utrecht/design-tokens/dist/theme/index.css";
 import "@utrecht/component-library-css/dist/bem.css";
@@ -18,7 +19,9 @@ export default function Layout({ children }) {
         {/* <link href="https://unpkg.com/@utrecht/design-tokens/dist/theme/index.css" rel="stylesheet" /> */}
       </Helmet>
       <title>Skeleton Gatsby App</title>
-      <div className="utrecht-theme">{children}</div>
+      <Page className="utrecht-theme">
+        <PageContent>{children}</PageContent>
+      </Page>
     </>
   );
 }
