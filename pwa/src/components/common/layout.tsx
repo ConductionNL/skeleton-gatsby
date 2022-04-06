@@ -1,6 +1,9 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
 
+import "@utrecht/design-tokens/dist/theme/index.css";
+import "@utrecht/component-library-css/dist/bem.css";
+
 /**
  * This components renders a layout for code that applies to all pages.
  *
@@ -12,12 +15,10 @@ export default function Layout({ children }) {
     <>
       <Helmet>
         {/* <link href="https://unpkg.com/@utrecht/component-library-css/dist/bem.css" rel="stylesheet" /> */}
-        <link href="https://unpkg.com/@utrecht/design-tokens/dist/theme/index.css" rel="stylesheet" />
+        {/* <link href="https://unpkg.com/@utrecht/design-tokens/dist/theme/index.css" rel="stylesheet" /> */}
       </Helmet>
-      <div>
-        <title>Skeleton Gatsby App</title>
-        <div>{children}</div>
-      </div>
+      <title>Skeleton Gatsby App</title>
+      <div className="utrecht-theme">{children}</div>
     </>
   );
 }

@@ -28,9 +28,9 @@ const IndexPage = () => {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHeaderCell>First name</TableHeaderCell>
-                <TableHeaderCell>Last name</TableHeaderCell>
-                <TableHeaderCell>Age</TableHeaderCell>
+                <TableCell>First name</TableCell>
+                <TableCell>Last name</TableCell>
+                <TableCell>Age</TableCell>
               </TableRow>
             </TableHeader>
             <TableBody>
