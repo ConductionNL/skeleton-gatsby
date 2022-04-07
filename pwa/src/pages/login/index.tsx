@@ -4,22 +4,16 @@ import APIService from "../../apiService/apiService";
 import { setUser } from "../../services/auth";
 import { navigate } from "gatsby-link";
 import { isLoggedIn } from "../../services/auth";
-// import { useForm } from "react-hook-form";
-// import { InputPassword, InputText } from "../../components/formFields";
-import { FormField, Textbox, Button } from "../../components/utrecht-components";
+import {
+  Heading1,
+  FormField,
+  Textbox,
+  Button,
+} from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 
 const Login: React.FC = () => {
-  // const [error, setError] = React.useState<string>(null);
   const [loading, setLoading] = React.useState<boolean>(false);
   const API: APIService = new APIService("");
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   setValue,
-  //   formState: { errors },
-  // } = useForm();
-
   const login = (e) => {
     e.preventDefault();
 
@@ -42,9 +36,6 @@ const Login: React.FC = () => {
       .catch((err) => {
         console.log(`Login went wrong: ${err}`);
         throw new Error(`Login went wrong: ${err}`);
-        // setValue("username", "");
-        // setValue("password", "");
-        // setError(err.response.data.message);
       })
       .finally(() => {
         setLoading(false);
@@ -59,22 +50,15 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <h1>Welcome to the Skeleton!</h1>
+      <Heading1>Welcome to the Skeleton!</Heading1>
 
       <form onSubmit={login}>
-        <h2>Login</h2>
-
         <FormField>
           <Textbox name="username" type="text" required />
         </FormField>
         <FormField>
           <Textbox name="password" type="password" required />
         </FormField>
-
-        {/* <InputText label="Username" name="username" {...{ register, errors }} validation={{ required: true }} /> */}
-        {/* <InputPassword label="Password" name="password" {...{ register, errors }} validation={{ required: true }} /> */}
-
-        {/* {error && <span className="login-form-error">{error}</span>} */}
 
         <Button type="submit">{!loading ? "Login" : "Loading..."}</Button>
       </form>
