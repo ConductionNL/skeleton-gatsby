@@ -3,12 +3,11 @@ require("dotenv").config({
 });
 
 module.exports = {
-  pathPrefix: "/commonground-gateway-frontend",
   plugins: [
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/common/layout.tsx`),
+        component: require.resolve(`./src/layout/Layout.tsx`),
       },
     },
   ],
