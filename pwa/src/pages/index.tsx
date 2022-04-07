@@ -1,11 +1,9 @@
 import * as React from "react";
+import "@utrecht/component-library-css/dist/bem.css";
+import "@utrecht/design-tokens/dist/index.css";
 
-const IndexPage = () => {
-  return (
-    <>
-      <h1>Welcome to the skeleton app</h1>
-    </>
-  );
+const IndexPage: React.FC = () => {
+  return <>Skeleton Application</>;
 };
 
 export default IndexPage;
