@@ -16,11 +16,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@nl-design-system-unstable/example-next.js": "github:Robbert/nl-design-system-with-next.js",
     "@utrecht/component-library-css": "^1.0.0-alpha.189",
     "@utrecht/design-tokens": "^1.0.0-alpha.182",
-    "@nl-design-system-unstable/example-next.js": "github:Robbert/nl-design-system-with-next.js",
     "clsx": "^1.1.1",
     "gatsby": "^4.11.1",
+    "gatsby-plugin-layout": "^3.11.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
