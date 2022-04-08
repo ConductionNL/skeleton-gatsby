@@ -4,15 +4,10 @@ import { isLoggedIn } from "../services/auth";
 import { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
 import Login from "../pages/login";
+import "../styling/index.css";
 
-/**
- * This components renders a layout for code that applies to all pages.
- *
- * @param {object} children Content that is rendered as body.
- * @returns JSX of the generated Layout.
- */
 const Layout: React.FC = ({ children }) => {
-  const [API, setAPI] = React.useState<APIService>(null);
+  const [API, setAPI] = React.useState<APIService | null>(null);
 
   React.useEffect(() => {
     if (!isLoggedIn()) {
@@ -25,22 +20,20 @@ const Layout: React.FC = ({ children }) => {
   }, [API, isLoggedIn()]);
 
   return (
-    <>
-      <Document>
-        <Page>
-          <PageContent>
-            {API ? (
-              <APIProvider value={API}>
-                <title>Skeleton Application</title>
-                {children}
-              </APIProvider>
-            ) : (
-              <Login />
-            )}
-          </PageContent>
-        </Page>
-      </Document>
-    </>
+    <Document>
+      <Page>
+        <PageContent>
+          {API ? (
+            <APIProvider value={API}>
+              <title>Skeleton Application</title>
+              {children}
+            </APIProvider>
+          ) : (
+            <Login />
+          )}
+        </PageContent>
+      </Page>
+    </Document>
   );
 };
 
