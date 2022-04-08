@@ -1,4 +1,5 @@
 import * as React from "react";
+import "./../styling/index.css";
 import { isLoggedIn } from "../services/auth";
 import { Heading1, Article } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 
