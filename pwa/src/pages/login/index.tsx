@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./login.css";
 import APIService from "../../apiService/apiService";
 import { setUser } from "../../services/auth";
 import { navigate } from "gatsby-link";
