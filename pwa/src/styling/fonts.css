@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "Lucida Grande";
+  src: url("../fonts/Lucida\ Grande.ttf") format("ttf"),
+    url("../fonts/Lucida\ Grande.woff") format("woff"),
+    url("../fonts/Lucida\ Grande.woff2") format("woff2");
+}
