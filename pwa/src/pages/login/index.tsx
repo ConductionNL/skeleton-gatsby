@@ -1,8 +1,7 @@
 import * as React from "react";
 import APIService from "../../apiService/apiService";
-import { setUser } from "../../services/auth";
+import { setUser, isLoggedIn } from "../../services/auth";
 import { navigate } from "gatsby-link";
-import { isLoggedIn } from "../../services/auth";
 import {
   Heading1,
   FormField,

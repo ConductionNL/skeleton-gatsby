@@ -6,8 +6,6 @@ import { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
 import { isLoggedIn } from "../services/auth";
 import Login from "../pages/login";
-// import { Helmet } from "react-helmet";
-import "../fonts/lucida-grande/lucida-grande.css";
 
 /**
  * This components renders a layout for code that applies to all pages.
@@ -30,9 +28,6 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <>
-      {/* <Helmet>
-        <link href="/fonts/lucida-grande/lucida-grande.css" rel="stylesheet" type="css" />
-      </Helmet> */}
       <Document>
         <Page>
           <PageContent>

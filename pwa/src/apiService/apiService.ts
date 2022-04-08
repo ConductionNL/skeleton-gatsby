@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import Login from "./services/login";
-import { isLoggedIn, logout, validateSession } from "../services/auth";
+import { logout, validateSession } from "../services/auth";
 
 export default class APIService {
   private _jwtToken: string;
