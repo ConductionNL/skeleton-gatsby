@@ -1,0 +1,8 @@
+.FormField-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.FormField-group .FormField-group-errorMessage {
+  color: var(--utrecht-color-red-30);
+}
