@@ -1,5 +1,5 @@
-import { Textbox } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import * as React from "react";
+import { Textbox } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import { FormFieldGroup } from "./formFieldGroup/FormFieldGroup";
 import { IFormFieldProps, IReactHookFormProps } from "./types";
 

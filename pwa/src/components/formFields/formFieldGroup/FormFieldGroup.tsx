@@ -27,17 +27,17 @@ const getErrorMessage = (errors: FieldErrors): string => {
 
   switch (errors.type) {
     case "required":
-      return "This field is required";
+      return "Dit veld is verplicht";
     case "maxLength":
-      return "Field contains too many characters";
+      return "Dit veld bevat teveel karakters";
     case "minLength":
-      return "This field does not contain enough characters";
+      return "Dit veld bevat te weinig karakters";
     case "max":
-      return "This input is too small";
+      return "Dit getal is te groot";
     case "min":
-      return "This input is too large";
+      return "Dit getal is te klein";
     case "pattern":
-      return "This pattern is incorrect";
+      return "Deze structuur is niet correct";
     default:
       return "";
   }
