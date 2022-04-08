@@ -1,0 +1,18 @@
+.utrecht-page-footer {
+    display: flex;
+}
+
+.utrecht-page-footer > .utrecht-unordered-list {
+    flex: 1;
+}
+
+.utrecht-page-footer .utrecht-heading-4 {
+    color: white;
+}
+
+.utrecht-page-footer .utrecht-unordered-list__item {
+    --utrecht-icon-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
