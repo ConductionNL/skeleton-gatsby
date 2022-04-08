@@ -20,22 +20,20 @@ const Layout: React.FC = ({ children }) => {
   }, [API, isLoggedIn()]);
 
   return (
-    <>
-      <Document>
-        <Page>
-          <PageContent>
-            {API ? (
-              <APIProvider value={API}>
-                <title>Skeleton Application</title>
-                {children}
-              </APIProvider>
-            ) : (
-              <Login />
-            )}
-          </PageContent>
-        </Page>
-      </Document>
-    </>
+    <Document>
+      <Page>
+        <PageContent>
+          {API ? (
+            <APIProvider value={API}>
+              <title>Skeleton Application</title>
+              {children}
+            </APIProvider>
+          ) : (
+            <Login />
+          )}
+        </PageContent>
+      </Page>
+    </Document>
   );
 };
 
