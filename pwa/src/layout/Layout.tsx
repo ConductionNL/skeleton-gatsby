@@ -1,4 +1,6 @@
 import { Document, Page, PageContent } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import "@utrecht/web-component-library-stencil/dist/utrecht/utrecht.esm"
+import Footer from "../components/footer/footer";
 
 const Layout: React.FC = ({ children }) => {
   return (
@@ -6,8 +8,9 @@ const Layout: React.FC = ({ children }) => {
       <title>Skeleton Application</title>
 
       <Document>
-        <Page>
-          <PageContent>{children}</PageContent>
+        <Page className="page">
+          <PageContent className="page-content">{children}</PageContent>
+            <Footer/>
         </Page>
       </Document>
     </>

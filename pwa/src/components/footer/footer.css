@@ -1,0 +1,18 @@
+.footer {
+    display: flex;
+}
+
+.footer > .footer-list {
+    flex: 1;
+}
+
+.footer .footer-heading {
+    color: white;
+}
+
+.footer .footer-icon {
+    --utrecht-icon-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

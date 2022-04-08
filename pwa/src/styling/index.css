@@ -1,5 +1,6 @@
 /* Global internal styling */
 @import "./fonts.css";
+@import "./main.css";
 
 /* External styling */
 @import "@utrecht/design-tokens/dist/index.css";
