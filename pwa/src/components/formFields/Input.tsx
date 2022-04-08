@@ -23,3 +23,7 @@ export const Input: React.FC<IInputProps & IFormFieldProps & IReactHookFormProps
 export const InputText: React.FC<IFormFieldProps & IReactHookFormProps> = ({ ...rest }) => (
   <Input type="text" {...rest} />
 );
+
+export const InputPassword: React.FC<IFormFieldProps & IReactHookFormProps> = ({ ...rest }) => (
+  <Input type="password" {...rest} />
+);
