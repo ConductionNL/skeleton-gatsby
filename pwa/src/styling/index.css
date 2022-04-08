@@ -5,3 +5,6 @@
 /* External styling */
 @import "@utrecht/design-tokens/dist/index.css";
 @import "@utrecht/component-library-css/dist/bem.css";
+
+/* Design Tokens */
+@import "./design-tokens/utrecht-design-tokens.css";
