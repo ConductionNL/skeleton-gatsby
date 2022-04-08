@@ -1,0 +1,21 @@
+.TopNav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: var(--utrecht-space-inline-3xs) var(--utrecht-color-red-30)
+    solid;
+  padding-inline-start: calc(
+    var(--utrecht-page-margin-inline-start) +
+      var(--utrecht-page-padding-inline-start)
+  );
+  padding-inline-end: calc(
+    var(--utrecht-page-margin-inline-end) +
+      var(--utrecht-page-padding-inline-end)
+  );
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  max-inline-size: calc(
+    var(--utrecht-page-max-inline-size) -
+      var(--utrecht-page-margin-inline-start, 0px) -
+      var(--utrecht-page-margin-inline-end, 0px)
+  );
+}
