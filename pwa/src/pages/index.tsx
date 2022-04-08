@@ -6,7 +6,7 @@ const IndexPage: React.FC = () => {
   return (
     <>
       <Heading1>Skeleton Application</Heading1>
-      {isLoggedIn() && <Article>U are logged in</Article>}
+      {isLoggedIn() && <Article>You are logged in</Article>}
     </>
   );
 };
