@@ -1,10 +1,11 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
-import { handleLogin } from "./../../services/auth";
+import { Button, Separator } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { handleDigiDLogin, handleDefaultLogin } from "./../../services/auth";
 import { InputText, InputPassword } from "../../components/formFields";
 import { FormFieldError } from "../../components/formFields/formFieldError/FormFieldError";
 import "./LoginForm.css";
+import DigiDLogo from "../../resources/images/digid_logo.svg";
 
 export const LoginForm: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -19,13 +20,19 @@ export const LoginForm: React.FC = () => {
   const onSubmit = async (data: any) => {
     setLoading(true);
     setError("");
-    await handleLogin(data)
+    await handleDefaultLogin(data)
       .catch((err) => {
         setError(err.message);
       })
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const loginDigiD = async () => {
+    setLoading(true);
+    setError("");
+    handleDigiDLogin();
   };
 
   return (
@@ -37,6 +44,13 @@ export const LoginForm: React.FC = () => {
 
       <Button type="submit" disabled={loading}>
         Verzenden
+      </Button>
+
+      <Separator />
+
+      <Button onClick={loginDigiD} className="LoginForm-DigiD" type="button" disabled={loading}>
+        <img src={DigiDLogo} width="36px" height="36px" />
+        <span>DigiD</span>
       </Button>
     </form>
   );

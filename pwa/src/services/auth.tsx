@@ -9,7 +9,7 @@ export interface IUnvalidatedUser {
 
 const API: APIService = new APIService("");
 
-export const handleLogin = async (data: IUnvalidatedUser) => {
+export const handleDefaultLogin = async (data: IUnvalidatedUser) => {
   return await API.Login.login(data)
     .then((res) => {
       sessionStorage.setItem("username", res.data.username);
@@ -19,6 +19,10 @@ export const handleLogin = async (data: IUnvalidatedUser) => {
     .catch((err) => {
       throw new Error(err);
     });
+};
+export const handleDigiDLogin = () => {
+  location.href =
+    process.env.GATSBY_BASE_URL + "/digid/login?returnUrl=" + process.env.GATSBY_FRONTEND_URL + "/redirect";
 };
 
 export const isLoggedIn = (): boolean => !!sessionStorage.getItem("username");

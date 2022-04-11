@@ -2,3 +2,15 @@
   display: flex;
   flex-direction: column;
 }
+
+.LoginForm-DigiD {
+  margin-block-start: var(--utrecht-space-block-lg);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.LoginForm-DigiD > span {
+  margin-inline-start: var(--utrecht-space-block-sm);
+}
