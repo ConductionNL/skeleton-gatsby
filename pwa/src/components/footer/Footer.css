@@ -1,0 +1,21 @@
+.Footer {
+  display: flex;
+}
+
+.Footer > .UnorderedList {
+  flex: 1;
+}
+
+.Footer .utrecht-heading-4 {
+  color: var(--utrecht-color-white);
+}
+
+.Footer > .UnorderedList > li {
+  display: flex;
+  align-items: center;
+  padding-inline-start: 0;
+}
+
+.Footer > .UnorderedList > li > svg {
+  padding-inline-end: var(--utrecht-space-inline-2xs);
+}
