@@ -2,7 +2,7 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { navigate } from "gatsby-link";
 import { Button } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
-import { setUser } from "./../services/auth";
+import { setJwtUser } from "./../services/auth";
 
 import APIService from "../apiService/apiService";
 import { InputText, InputPassword } from "../components/formFields";
@@ -22,12 +22,7 @@ export const LoginForm: React.FC = () => {
 
     API.Login.login(data)
       .then((res) => {
-        const user = { username: res.data.username };
-
-        setUser(user);
-        sessionStorage.setItem("jwt", res.data.jwtToken);
-        sessionStorage.setItem("user", JSON.stringify(user));
-
+        setJwtUser(res.data);
         navigate("/");
       })
       .catch((err) => {
