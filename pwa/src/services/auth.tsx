@@ -1,24 +1,35 @@
 import { navigate } from "gatsby-link";
 import jwtDecode, { JwtPayload } from "jwt-decode";
 
+type IUser = {
+  username: string;
+  jwtToken?: string;
+};
+
 export const isBrowser = () => typeof window !== "undefined";
 
-export const getUser = () =>
-  isBrowser() && window.sessionStorage.getItem("user") ? JSON.parse(window.sessionStorage.getItem("user")) : {};
+export const getUser = (): IUser | null => {
+  const user = window.sessionStorage.getItem("user");
 
-export const setUser = (user) => window.sessionStorage.setItem("user", JSON.stringify(user));
+  if (user) {
+    return JSON.parse(user);
+  }
 
-export const handleLogin = (data) => {
+  return null;
+};
+export const setUser = (user: IUser | null) => window.sessionStorage.setItem("user", JSON.stringify(user));
+
+export const handleLogin = (data: IUser) => {
   return setUser(data);
 };
 
-export const isLoggedIn = () => {
+export const isLoggedIn = (): boolean => {
   const user = getUser();
-  return !!user.username;
+  return !!user?.username;
 };
 
 export const logout = () => {
-  setUser({});
+  setUser(null);
   window.sessionStorage.removeItem("jwt");
   window.sessionStorage.removeItem("user");
   navigate("/login");
@@ -30,7 +41,15 @@ export const validateSession = () => {
   if (!token) return false;
 
   const decoded = jwtDecode<JwtPayload>(token);
-  const expired = Date.now() >= decoded.exp * 1000;
+  const expired = decoded?.exp && Date.now() >= decoded.exp * 1000;
 
   return !expired;
+};
+
+export const setJwtUser = (userData: IUser) => {
+  const user: IUser = { username: userData.username };
+
+  setUser(user);
+  userData.jwtToken && sessionStorage.setItem("jwt", userData.jwtToken);
+  sessionStorage.setItem("user", JSON.stringify(user));
 };
