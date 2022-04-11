@@ -1,15 +1,14 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { navigate } from "gatsby-link";
 import { Button } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
-import { setJwtUser } from "./../services/auth";
-
-import APIService from "../apiService/apiService";
-import { InputText, InputPassword } from "../components/formFields";
+import { handleLogin } from "./../../services/auth";
+import { InputText, InputPassword } from "../../components/formFields";
+import { FormFieldError } from "../../components/formFields/formFieldError/FormFieldError";
+import "./LoginForm.css";
 
 export const LoginForm: React.FC = () => {
-  const API: APIService = new APIService("");
   const [loading, setLoading] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<string>("");
 
   const {
     register,
@@ -17,17 +16,12 @@ export const LoginForm: React.FC = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     setLoading(true);
-
-    API.Login.login(data)
-      .then((res) => {
-        setJwtUser(res.data);
-        navigate("/");
-      })
+    setError("");
+    await handleLogin(data)
       .catch((err) => {
-        console.log(`Login went wrong: ${err}`);
-        throw new Error(`Login went wrong: ${err}`);
+        setError(err.message);
       })
       .finally(() => {
         setLoading(false);
@@ -35,9 +29,11 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="LoginForm" onSubmit={handleSubmit(onSubmit)}>
       <InputText name="username" label="Gebruikersnaam" {...{ errors, register }} validation={{ required: true }} />
       <InputPassword name="password" label="Wachtwoord" {...{ errors, register }} validation={{ required: true }} />
+
+      {error && <FormFieldError error={error} />}
 
       <Button type="submit" disabled={loading}>
         Verzenden
