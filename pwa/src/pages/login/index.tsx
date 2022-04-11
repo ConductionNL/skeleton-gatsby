@@ -13,7 +13,7 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <Heading1>Welcome to the Skeleton!</Heading1>
+      <Heading1>Welcome to the Skeleton Application</Heading1>
 
       <LoginForm />
     </>
