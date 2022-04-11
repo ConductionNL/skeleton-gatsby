@@ -1,9 +1,9 @@
-.utrecht-page {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+.Page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.utrecht-page-content {
-    flex-grow: 1;
+.PageContent {
+  flex-grow: 1;
 }

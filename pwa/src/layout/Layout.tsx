@@ -7,8 +7,8 @@ const Layout: React.FC = ({ children }) => {
       <title>Skeleton Application</title>
 
       <Document>
-        <Page>
-          <PageContent>{children}</PageContent>
+        <Page className="Page">
+          <PageContent className="PageContent">{children}</PageContent>
           <Footer />
         </Page>
       </Document>

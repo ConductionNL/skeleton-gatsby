@@ -1,18 +1,21 @@
-.utrecht-page-footer {
-    display: flex;
+.Footer {
+  display: flex;
 }
 
-.utrecht-page-footer > .utrecht-unordered-list {
-    flex: 1;
+.Footer > .UnorderedList {
+  flex: 1;
 }
 
-.utrecht-page-footer .utrecht-heading-4 {
-    color: white;
+.Footer .utrecht-heading-4 {
+  color: var(--utrecht-color-white);
 }
 
-.utrecht-page-footer .utrecht-unordered-list__item {
-    --utrecht-icon-size: 20px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.Footer > .UnorderedList > li {
+  display: flex;
+  align-items: center;
+  padding-inline-start: 0;
+}
+
+.Footer > .UnorderedList > li > svg {
+  padding-inline-end: var(--utrecht-space-inline-2xs);
 }
