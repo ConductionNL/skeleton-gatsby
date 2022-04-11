@@ -5,6 +5,7 @@ import { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
 import Login from "../pages/login";
 import "../styling/index.css";
+import Footer from "./../components/footer/Footer";
 
 const Layout: React.FC = ({ children }) => {
   const [API, setAPI] = React.useState<APIService | null>(null);
