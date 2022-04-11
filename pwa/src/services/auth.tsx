@@ -1,38 +1,32 @@
 import { navigate } from "gatsby-link";
 import jwtDecode, { JwtPayload } from "jwt-decode";
+import APIService from "../apiService/apiService";
 
-type IUser = {
+export interface IUnvalidatedUser {
   username: string;
-  jwtToken?: string;
+  password: string;
+}
+
+const API: APIService = new APIService("");
+
+export const handleLogin = async (data: IUnvalidatedUser) => {
+  return await API.Login.login(data)
+    .then((res) => {
+      sessionStorage.setItem("username", res.data.username);
+      sessionStorage.setItem("jwt", res.data.jwtToken);
+      navigate("/");
+    })
+    .catch((err) => {
+      throw new Error(err);
+    });
 };
 
-export const isBrowser = () => typeof window !== "undefined";
-
-export const getUser = (): IUser | null => {
-  const user = window.sessionStorage.getItem("user");
-
-  if (user) {
-    return JSON.parse(user);
-  }
-
-  return null;
-};
-export const setUser = (user: IUser | null) => window.sessionStorage.setItem("user", JSON.stringify(user));
-
-export const handleLogin = (data: IUser) => {
-  return setUser(data);
-};
-
-export const isLoggedIn = (): boolean => {
-  const user = getUser();
-  return !!user?.username;
-};
+export const isLoggedIn = (): boolean => !!sessionStorage.getItem("username");
 
 export const logout = () => {
-  setUser(null);
-  window.sessionStorage.removeItem("jwt");
-  window.sessionStorage.removeItem("user");
-  navigate("/login");
+  sessionStorage.removeItem("username");
+  sessionStorage.removeItem("jwt");
+  navigate("/");
 };
 
 export const validateSession = () => {
@@ -44,12 +38,4 @@ export const validateSession = () => {
   const expired = decoded?.exp && Date.now() >= decoded.exp * 1000;
 
   return !expired;
-};
-
-export const setJwtUser = (userData: IUser) => {
-  const user: IUser = { username: userData.username };
-
-  setUser(user);
-  userData.jwtToken && sessionStorage.setItem("jwt", userData.jwtToken);
-  sessionStorage.setItem("user", JSON.stringify(user));
 };
