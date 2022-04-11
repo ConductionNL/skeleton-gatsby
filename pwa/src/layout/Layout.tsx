@@ -22,8 +22,8 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <Document>
-      <Page>
-        <PageContent>
+      <Page className="Page">
+        <PageContent className="PageContent">
           {API ? (
             <APIProvider value={API}>
               <title>Skeleton Application</title>
@@ -33,6 +33,7 @@ const Layout: React.FC = ({ children }) => {
             <Login />
           )}
         </PageContent>
+        <Footer />
       </Page>
     </Document>
   );
