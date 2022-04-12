@@ -23,8 +23,8 @@ export const TopNav: React.FC<TopNavProps> = ({ items }) => {
     <div className="utrecht-navhtml">
       <nav className="topnav">
         <ul className="utrecht-topnav__list">
-          {mappedItems.map((item) => (
-            <li className="utrecht-topnav__item">
+          {mappedItems.map((item, idx) => (
+            <li key={idx} className="utrecht-topnav__item">
               <Link
                 className={clsx(
                   "utrecht-topnav__link",
