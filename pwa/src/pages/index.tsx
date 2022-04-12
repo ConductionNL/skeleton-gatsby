@@ -1,17 +1,10 @@
 import * as React from "react";
-import { isLoggedIn, logout } from "../services/auth";
-import { Heading1, Button } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { isLoggedIn } from "../services/auth";
+import { AuthenticatedTemplate } from "../templates/AuthenticatedTemplate";
+import { UnauthenticatedTemplate } from "../templates/UnauthenticatedTemplate";
 
 const IndexPage: React.FC = () => {
-  return (
-    <>
-      <Heading1>Skeleton Application</Heading1>
-      {isLoggedIn() && <div>You are logged in</div>}
-      <Button type="button" onClick={logout}>
-        Logout
-      </Button>
-    </>
-  );
+  return isLoggedIn() ? <AuthenticatedTemplate /> : <UnauthenticatedTemplate />;
 };
 
 export default IndexPage;
