@@ -18,7 +18,6 @@ interface TopNavProps {
 
 export const TopNav: React.FC<TopNavProps> = ({ items }) => {
   const [mappedItems, setMappedItems] = React.useState<TopNavItem[]>(items);
-
   const LocationLogin: string = window.location.pathname === "/login" ? "True" : "False";
 
   React.useEffect(() => {

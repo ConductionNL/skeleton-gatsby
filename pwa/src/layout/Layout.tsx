@@ -34,12 +34,12 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext }) => {
   return (
     <Document>
       <Page className="Page">
-          <TopNav
-            items={[
-              { href: "/", title: "Home" },
-              { href: "/meldingen/", title: "Meldingen" },
-            ]}
-          />
+        <TopNav
+          items={[
+            { href: "/", title: "Home" },
+            { href: "/meldingen/", title: "Meldingen" },
+          ]}
+        />
         <PageContent className="PageContent">
           <APIProvider value={API}>
             <title>Skeleton Application</title>
