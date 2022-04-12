@@ -1,9 +1,0 @@
-.Page {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.PageContent {
-  flex-grow: 1;
-}

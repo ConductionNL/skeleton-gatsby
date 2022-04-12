@@ -12,7 +12,7 @@
 }
 
 .TopNav .TopNav-inner > svg {
-  max-block-size: 100px;
+  max-block-size: var(--conduction-nav-logo-height-lg);
 }
 
 .TopNav .TopNav-inner .TopNav-userNav {
@@ -26,4 +26,14 @@
 
 .TopNav .TopNav-inner .TopNav-userNav > *:not(:last-child) {
   margin-inline-end: var(--utrecht-space-inline-xs);
+  list-style-type: none;
+}
+
+.TopNav .TopNav-inner .TopNav-userNav > li {
+  display: flex;
+}
+
+.TopNav .TopNav-inner .TopNav-userNav > li > svg {
+  padding-inline-end: var(--utrecht-space-inline-2xs);
+  margin: auto;
 }
