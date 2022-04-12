@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import Login from "./services/login";
+import APICalls from "./services/apiCalls";
 import { logout, validateSession } from "../services/auth";
 
 export default class APIService {
@@ -9,21 +10,39 @@ export default class APIService {
     this._jwtToken = _jwtToken;
   }
 
-  public get loginClient(): AxiosInstance {
+  public get APIClient(): AxiosInstance {
     return axios.create({
       baseURL: process.env.GATSBY_API_URL,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: "Bearer " + this._jwtToken,
+      },
+    });
+  }
+
+  public get UAuthAPIClient(): AxiosInstance {
+    return axios.create({
+      baseURL: process.env.GATSBY_API_URL,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
       },
     });
   }
 
   // Services
   public get Login(): Login {
-    return new Login(this.loginClient);
+    return new Login(this.UAuthAPIClient);
   }
 
+  public get APICalls(): APICalls {
+    return new APICalls(this.APIClient);
+  }
+
+  public get UAuthAPICalls(): APICalls {
+    return new APICalls(this.UAuthAPIClient);
+  }
 }
 
 export const Send = (
