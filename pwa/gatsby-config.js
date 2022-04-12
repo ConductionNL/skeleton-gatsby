@@ -10,5 +10,11 @@ module.exports = {
         component: require.resolve(`./src/layout/Layout.tsx`),
       },
     },
+    {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        useAutoGen: true,
+      },
+    },
   ],
 };
