@@ -2,7 +2,16 @@ import { Document, Page, PageContent } from "@nl-design-system-unstable/example-
 import { Breadcrumbs } from "../components/utrecht/breadcrumbs/Breadcrumbs";
 import Footer from "./../components/footer/Footer";
 
-const Layout: React.FC = ({ children }) => {
+interface LayoutProps {
+  children: React.ReactNode;
+  pageContext: any;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children, pageContext }) => {
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext;
+
   return (
     <>
       <title>Skeleton Application</title>
@@ -10,13 +19,7 @@ const Layout: React.FC = ({ children }) => {
       <Document>
         <Page className="Page">
           <PageContent className="PageContent">
-            <Breadcrumbs
-              crumbs={[
-                { label: "Home", href: "https://google.nl", active: true },
-                { label: "Foo", href: "/" },
-                { label: "Bar", href: "/" },
-              ]}
-            />
+            <Breadcrumbs {...{ crumbs }} />
             {children}
           </PageContent>
           <Footer />
