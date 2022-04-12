@@ -38,7 +38,6 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext }) => {
             items={[
               { href: "/", title: "Home" },
               { href: "/meldingen/", title: "Meldingen" },
-              { href: "/login/", title: "Inloggen" },
             ]}
           />
         <PageContent className="PageContent">
