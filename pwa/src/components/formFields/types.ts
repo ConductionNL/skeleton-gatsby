@@ -3,6 +3,7 @@ import { FieldErrors, FieldValues, RegisterOptions, UseFormRegister } from "reac
 export interface IFormFieldProps {
   label: string;
   name: string;
+  disabled?: boolean;
 }
 
 export interface IReactHookFormProps {

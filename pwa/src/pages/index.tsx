@@ -1,8 +1,10 @@
 import * as React from "react";
-import "./../styling/index.css";
+import { isLoggedIn } from "../services/auth";
+import { AuthenticatedTemplate } from "../templates/AuthenticatedTemplate";
+import { UnauthenticatedTemplate } from "../templates/UnauthenticatedTemplate";
 
 const IndexPage: React.FC = () => {
-  return <>Skeleton Application</>;
+  return isLoggedIn() ? <AuthenticatedTemplate /> : <UnauthenticatedTemplate />;
 };
 
 export default IndexPage;
