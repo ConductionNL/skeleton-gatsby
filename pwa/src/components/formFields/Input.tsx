@@ -13,10 +13,11 @@ export const Input: React.FC<IInputProps & IFormFieldProps & IReactHookFormProps
   label,
   errors,
   validation,
+  disabled,
   register,
 }) => (
   <FormFieldGroup {...{ name, label, errors }}>
-    <Textbox type={type} id={name} {...register(name, { ...validation })} invalid={errors[name]} />
+    <Textbox id={name} {...register(name, { ...validation })} invalid={errors[name]} {...{ disabled, type }} />
   </FormFieldGroup>
 );
 
