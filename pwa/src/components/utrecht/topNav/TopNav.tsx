@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import clsx from "clsx";
+import Logo from "./../../../assets/logo.svg";
+import "./TopNav.css";
 
 interface TopNavItem {
   href: string;
@@ -21,6 +23,7 @@ export const TopNav: React.FC<TopNavProps> = ({ items }) => {
 
   return (
     <div className="utrecht-navhtml">
+      <Logo />
       <nav className="topnav">
         <ul className="utrecht-topnav__list">
           {mappedItems.map((item, idx) => (

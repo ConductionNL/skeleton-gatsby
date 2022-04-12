@@ -12,6 +12,7 @@ const Layout: React.FC = ({ children }) => {
             items={[
               { href: "/", title: "Home" },
               { href: "/meldingen/", title: "Meldingen" },
+              { href: "/login/", title: "Inloggen" },
             ]}
           />
           <PageContent className="PageContent">{children}</PageContent>
