@@ -9,7 +9,11 @@ export interface IUnvalidatedUser {
 
 const API: APIService = new APIService("");
 
+export const isBrowser = (): boolean => typeof window !== "undefined";
+
 export const handleLogin = async (data: IUnvalidatedUser) => {
+  if (!isBrowser()) return;
+
   return await API.Login.login(data)
     .then((res) => {
       sessionStorage.setItem("username", res.data.username);
@@ -21,15 +25,23 @@ export const handleLogin = async (data: IUnvalidatedUser) => {
     });
 };
 
-export const isLoggedIn = (): boolean => !!sessionStorage.getItem("username");
+export const isLoggedIn = (): boolean | void => {
+  if (!isBrowser()) return;
 
-export const logout = () => {
+  return !!sessionStorage.getItem("username");
+};
+
+export const logout = (): void => {
+  if (!isBrowser()) return;
+
   sessionStorage.removeItem("username");
   sessionStorage.removeItem("jwt");
   navigate("/");
 };
 
-export const validateSession = () => {
+export const validateSession = (): boolean | void => {
+  if (!isBrowser()) return;
+
   const token = sessionStorage.getItem("jwt");
 
   if (!token) return false;

@@ -3,7 +3,6 @@ import { Document, Page, PageContent } from "@nl-design-system-unstable/example-
 import { isLoggedIn } from "../services/auth";
 import { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
-import { LoginTemplate } from "../templates/login/LoginTemplate";
 import "../styling/index.css";
 import Footer from "./../components/footer/Footer";
 
@@ -19,10 +18,6 @@ const Layout: React.FC = ({ children }) => {
     const jwt = sessionStorage.getItem("jwt");
     !API && jwt && setAPI(new APIService(jwt));
   }, [API, isLoggedIn()]);
-
-  if (!isLoggedIn()) {
-    return <LoginTemplate />;
-  }
 
   return (
     <Document>
