@@ -30,8 +30,20 @@ export const LoginForm: React.FC = () => {
 
   return (
     <form className="LoginForm" onSubmit={handleSubmit(onSubmit)}>
-      <InputText name="username" label="Gebruikersnaam" {...{ errors, register }} validation={{ required: true }} />
-      <InputPassword name="password" label="Wachtwoord" {...{ errors, register }} validation={{ required: true }} />
+      <InputText
+        name="username"
+        label="Gebruikersnaam"
+        {...{ errors, register }}
+        validation={{ required: true }}
+        disabled={loading}
+      />
+      <InputPassword
+        name="password"
+        label="Wachtwoord"
+        {...{ errors, register }}
+        validation={{ required: true }}
+        disabled={loading}
+      />
 
       {error && <FormFieldError error={error} />}
 
