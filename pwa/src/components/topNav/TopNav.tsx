@@ -7,7 +7,7 @@ import {
 import { Container } from "../container/Container";
 import "./TopNav.css";
 import Logo from "./../../assets/logo.svg";
-import { faArrowRightFromBracket, faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TopNav: React.FC = () => {
@@ -18,7 +18,7 @@ const TopNav: React.FC = () => {
           <Logo />
           <UnorderedList className="TopNav-userNav">
             <UnorderedListItem>
-              <FontAwesomeIcon icon={faCircleUser} />
+              <FontAwesomeIcon icon={faUser} />
               John Doe
             </UnorderedListItem>
             <UnorderedListItem>
