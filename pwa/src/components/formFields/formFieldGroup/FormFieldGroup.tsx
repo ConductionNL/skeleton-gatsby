@@ -3,6 +3,7 @@ import "./FormFieldGroup.css";
 import { FieldErrors } from "react-hook-form";
 import { IFormFieldProps } from "../types";
 import { FormLabel } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { FormFieldError } from "../formFieldError/FormFieldError";
 
 interface IFormFieldGroupProps {
   errors: FieldErrors;
@@ -17,7 +18,7 @@ export const FormFieldGroup: React.FC<IFormFieldGroupProps & IFormFieldProps> = 
 
       {props.children}
 
-      <span className="FormField-group-errorMessage">{hasError && getErrorMessage(props.errors[props.name])}</span>
+      {hasError && <FormFieldError error={getErrorMessage(props.errors[props.name])} />}
     </div>
   );
 };
