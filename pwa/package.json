@@ -4,9 +4,7 @@
   "private": true,
   "description": "skeleton-gatsby",
   "author": "Conduction",
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
@@ -24,10 +22,14 @@
     "@nl-design-system-unstable/example-next.js": "github:Robbert/nl-design-system-with-next.js",
     "@utrecht/component-library-css": "^1.0.0-alpha.189",
     "@utrecht/design-tokens": "^1.0.0-alpha.182",
+    "axios": "^0.25.0",
     "clsx": "^1.1.1",
     "gatsby": "^4.11.1",
+    "gatsby-plugin-breadcrumb": "^12.3.1",
     "gatsby-plugin-layout": "^3.11.0",
     "gatsby-plugin-react-svg": "^3.1.0",
+    "lodash": "^4.17.21",
+    "jwt-decode": "^3.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hook-form": "^7.29.0"

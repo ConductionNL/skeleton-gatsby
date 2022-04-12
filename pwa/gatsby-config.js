@@ -18,5 +18,11 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        useAutoGen: true,
+      },
+    },
   ],
 };
