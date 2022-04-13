@@ -1,12 +1,25 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import Login from "./services/login";
 import { logout, validateSession } from "../services/auth";
+import Notification from "./resources/notification";
 
 export default class APIService {
   private _jwtToken: string;
 
   constructor(_jwtToken: string) {
     this._jwtToken = _jwtToken;
+  }
+
+  // Clients
+  public get adminClient(): AxiosInstance {
+    return axios.create({
+      baseURL: window.GATSBY_ADMIN_URL,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this._jwtToken,
+      },
+    });
   }
 
   public get loginClient(): AxiosInstance {
@@ -24,6 +37,10 @@ export default class APIService {
     return new Login(this.loginClient);
   }
 
+  // Resources
+  public get Notification(): Notification {
+    return new Notification(this.adminClient)
+  }
 }
 
 export const Send = (
