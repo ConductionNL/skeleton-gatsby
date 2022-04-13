@@ -3,20 +3,15 @@ App\Entity\Endpoint:
     name: Notifications endpoint get collection
     description: endpoint voor notifications
     path: ['notifications']
+    pathRegex: "#^(notifications)$#"
     method: GET
     operationType: collection
-
-  notificationsGetItem:
-    name: Notifications endpoint get item
-    description: endpoint voor notifications
-    path: ['notifications', '{id}']
-    method: GET
-    operationType: item
 
   notificationsPost:
     name: Weer endpoint post
     description: endpoint voor notifications
     path: ['notifications']
+    pathRegex: "#^(notifications)$#"
     method: POST
     operationType: collection
 
@@ -32,13 +27,13 @@ App\Entity\Handler:
     methods: ["*"]
     sequence: 0
     conditions: "{}"
-    endpoints: ["@notificationsGet", "@notificationsGetItem", "@notificationsPost"]
+    endpoints: ["@notificationsGet", "@notificationsPost"]
     entity: "@notifications"
 
 App\Entity\Attribute:
-  notificationsName:
-    name: name
-    description: Name of the notification
+  notificationsTitle:
+    name: title
+    description: Title of the notification
     type: string
     maxLength: 255
     required: true

@@ -22,6 +22,17 @@ export default class APIService {
     });
   }
 
+  public get apiClient(): AxiosInstance {
+    return axios.create({
+      baseURL: process.env.GATSBY_API_URL,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this._jwtToken,
+      },
+    });
+  }
+
   public get loginClient(): AxiosInstance {
     return axios.create({
       baseURL: process.env.GATSBY_API_URL,
@@ -39,7 +50,7 @@ export default class APIService {
 
   // Resources
   public get Notification(): Notification {
-    return new Notification(this.adminClient)
+    return new Notification(this.apiClient)
   }
 }
 
