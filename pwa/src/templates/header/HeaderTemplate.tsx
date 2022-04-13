@@ -8,6 +8,7 @@ import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
 import { GatsbyContext } from "./../../context/gatsby";
+import { SearchBar } from "../../components/utrecht/searchBar/SearchBar";
 
 interface ITopNavItem {
   href: string;
@@ -17,26 +18,36 @@ interface ITopNavItem {
 
 export const HeaderTemplate: React.FC = () => {
   const gatsbyContext = React.useContext(GatsbyContext);
-  const [navItems, setNavItems] = React.useState<ITopNavItem[]>([]);
+  const [staticNavItems, setStaticNavItems] = React.useState<ITopNavItem[]>([]);
+  const [userNavItem, setUserNavItem] = React.useState<ITopNavItem[]>([]);
 
   const {
     breadcrumb: { crumbs },
   } = gatsbyContext.pageContext;
 
   React.useEffect(() => {
-    setNavItems(getNavigationItems(gatsbyContext.location));
+    setStaticNavItems([
+      { title: "Home", href: "/", current: location.pathname === "/" },
+      { title: "Producten", href: "/producten", current: location.pathname === "/producten" },
+      { title: "Nieuws", href: "/nieuws", current: location.pathname === "/nieuws" },
+    ]);
+    setUserNavItem(getUserNavItem(gatsbyContext.location));
   }, [gatsbyContext.location]);
 
   return (
     <PageHeader className="HeaderTemplate">
       <Logo className="HeaderTemplate-logo" />
-      <TopNav items={navItems} />
+      <div className="HeaderTemplate-topNav">
+        <TopNav items={staticNavItems} />
+        <SearchBar buttonLabel="Zoek" />
+        <TopNav items={userNavItem} />
+      </div>
       <Breadcrumbs {...{ crumbs }} />
     </PageHeader>
   );
 };
 
-const getNavigationItems = (location: any): ITopNavItem[] => {
+const getUserNavItem = (location: any): ITopNavItem[] => {
   const loggedInTitle = (
     <>
       {getUsername()} <FontAwesomeIcon icon={faLock} />
@@ -49,12 +60,6 @@ const getNavigationItems = (location: any): ITopNavItem[] => {
     </>
   );
 
-  const staticNavItems: ITopNavItem[] = [
-    { title: "Home", href: "/", current: location.pathname === "/" },
-    { title: "Producten", href: "/producten", current: location.pathname === "/producten" },
-    { title: "Nieuws", href: "/nieuws", current: location.pathname === "/nieuws" },
-  ];
-
   const userNavItem: ITopNavItem = isLoggedIn()
     ? {
         title: loggedInTitle,
@@ -66,5 +71,5 @@ const getNavigationItems = (location: any): ITopNavItem[] => {
         current: location.pathname === "/login",
       };
 
-  return [...staticNavItems, userNavItem];
+  return [userNavItem];
 };

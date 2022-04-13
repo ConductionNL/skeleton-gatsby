@@ -13,3 +13,19 @@
   align-self: center;
   height: var(--conduction-nav-logo-height-lg);
 }
+
+.HeaderTemplate > .HeaderTemplate-topNav {
+  display: flex;
+}
+
+.HeaderTemplate > .HeaderTemplate-topNav > *:not(:last-child) {
+  margin-inline-end: var(--utrecht-space-inline-md);
+}
+
+.HeaderTemplate > .HeaderTemplate-topNav > :first-child {
+  flex: 2;
+}
+
+.HeaderTemplate > .HeaderTemplate-topNav > *:not(:first-child) {
+  flex: 1;
+}
