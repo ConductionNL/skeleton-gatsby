@@ -24,6 +24,11 @@ const getSideNavItems = (location: any): ISideNavItem[] => {
       href: "/meldingen",
       title: "Meldingen",
       current: location.pathname === "/meldingen",
+      children: [{
+        href: "/meldingen/overview",
+        title: "Meldingen overview",
+        current: location.pathname === "/meldingen/overview",
+      }]
     },
   ];
 };

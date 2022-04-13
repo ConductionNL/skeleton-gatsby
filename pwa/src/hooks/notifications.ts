@@ -18,6 +18,7 @@ export const useNotification = (queryClient: QueryClient) => {
     useMutation<any, Error, any>(API.Notification.create, {
       onSuccess: async (newNotification) => {
           addItem(queryClient, "notifications", newNotification);
+          navigate("/meldingen/overview")
       },
       onError: (error) => {
       },

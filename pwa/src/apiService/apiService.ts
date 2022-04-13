@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
-import Login from "./services/login";
 import { handleLogout, validateSession } from "../services/auth";
+import Login from "./services/login";
 import Notification from "./resources/notification";
 
 export default class APIService {
