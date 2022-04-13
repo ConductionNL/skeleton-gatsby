@@ -11,6 +11,7 @@ export const useNotification = (queryClient: QueryClient) => {
   const getAll = () =>
     useQuery<any[], Error>("notifications", API.Notification.getAll, {
       onError: (error) => {
+        throw new Error(error.message)
       },
     });
 
@@ -18,9 +19,10 @@ export const useNotification = (queryClient: QueryClient) => {
     useMutation<any, Error, any>(API.Notification.create, {
       onSuccess: async (newNotification) => {
           addItem(queryClient, "notifications", newNotification);
-          navigate("/meldingen/overview")
+          navigate("/meldingen/overzicht")
       },
       onError: (error) => {
+        throw new Error(error.message)
       },
     });
 
