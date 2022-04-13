@@ -1,52 +1,38 @@
+import * as React from "react";
 import {
-  Table,
+  Table as UTable,
   TableBody,
   TableHeaderCell,
   TableRow,
-  TableCaption,
-  TableFooter,
   TableCell,
-  TableHeader
+  TableHeader,
 } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 
-interface TableComponentProps {
-  columns: Array<Partial<Record<"field" | "headerName" | "renderCell" | "hidden" | "valueFormatter", any>>>;
-  rows: Array<Record<any, any>>;
+interface TableProps {
+  headers: string[];
+  rows: Array<string | JSX.Element>[];
 }
 
-const TableComponent: React.FC<TableComponentProps> = ({ columns, rows }) => {
+export const Table: React.FC<TableProps> = ({ headers, rows }) => {
   return (
-    <Table>
+    <UTable>
       <TableHeader>
         <TableRow>
-          {columns.map((item, index) => (
-            <TableHeaderCell key={index}>{item.headerName ?? item.field}</TableHeaderCell>
+          {headers.map((header, idx) => (
+            <TableHeaderCell key={idx}>{header}</TableHeaderCell>
           ))}
         </TableRow>
       </TableHeader>
-      <TableBody className="Table-body">
-        {rows.map((row, index) => (
-          <TableRow key={index}>
-            {columns.map((column, idx) =>
-              Object.keys(row).includes(column.field) && !column.hidden ? (
-                column.renderCell ? (
-                  <TableCell className="Table-body-cell" key={idx}>
-                    {column.renderCell(row)}
-                  </TableCell>
-                ) : (
-                  <TableCell className="Table-body-cell" key={idx}>
-                    {column.valueFormatter ? column.valueFormatter(row[column.field]) : row[column.field]}
-                  </TableCell>
-                )
-              ) : (
-                <TableCell key={idx}></TableCell>
-              )
-            )}
+
+      <TableBody>
+        {rows.map((row, idx) => (
+          <TableRow key={idx}>
+            {row.map((cell, idx) => (
+              <TableCell key={idx}>{cell}</TableCell>
+            ))}
           </TableRow>
         ))}
       </TableBody>
-    </Table>
+    </UTable>
   );
 };
-
-export default TableComponent;
