@@ -31,7 +31,7 @@ export const isLoggedIn = (): boolean | void => {
   return !!sessionStorage.getItem("username");
 };
 
-export const logout = (): void => {
+export const handleLogout = (): void => {
   if (!isBrowser()) return;
 
   sessionStorage.removeItem("username");
@@ -50,4 +50,8 @@ export const validateSession = (): boolean | void => {
   const expired = decoded?.exp && Date.now() >= decoded.exp * 1000;
 
   return !expired;
+};
+
+export const getUsername = (): string => {
+  return sessionStorage.getItem("username") ?? "";
 };

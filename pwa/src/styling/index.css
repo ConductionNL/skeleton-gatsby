@@ -1,8 +1,12 @@
 /* Global internal styling */
 @import "./fonts.css";
+@import "./global.css";
 @import "./forms.css";
-@import "./main.css";
 
 /* External styling */
 @import "@utrecht/design-tokens/dist/index.css";
 @import "@utrecht/component-library-css/dist/bem.css";
+
+/* Design Tokens */
+@import "./design-tokens/utrecht-design-tokens.css";
+@import "./design-tokens/conduction-design-tokens.css";
