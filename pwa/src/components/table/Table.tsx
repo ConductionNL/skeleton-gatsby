@@ -8,7 +8,6 @@ import {
   TableCell,
   TableHeader
 } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
-import "./Table.css";
 
 interface TableComponentProps {
   columns: Array<Partial<Record<"field" | "headerName" | "renderCell" | "hidden" | "valueFormatter", any>>>;
@@ -17,11 +16,11 @@ interface TableComponentProps {
 
 const TableComponent: React.FC<TableComponentProps> = ({ columns, rows }) => {
   return (
-    <Table className="Table">
-      <TableHeader className="Table-header">
+    <Table>
+      <TableHeader>
         <TableRow>
           {columns.map((item, index) => (
-            <TableHeaderCell className="Table-header-cell" key={index}>{item.headerName ?? item.field}</TableHeaderCell>
+            <TableHeaderCell key={index}>{item.headerName ?? item.field}</TableHeaderCell>
           ))}
         </TableRow>
       </TableHeader>
