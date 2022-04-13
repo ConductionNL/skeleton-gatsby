@@ -7,7 +7,7 @@ export default class APICalls {
   constructor(_instance: AxiosInstance) {
     this._instance = _instance;
   }
-  public getAll = (endpoint: string): Promise<AxiosResponse> => {
+  public getAPI = (endpoint: string): Promise<AxiosResponse> => {
     return Send(this._instance, "GET", `/${endpoint}`);
   };
 
