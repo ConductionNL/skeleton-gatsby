@@ -51,7 +51,7 @@ const getNavigationItems = (location: any): ITopNavItem[] => {
 
   const staticNavItems: ITopNavItem[] = [
     { title: "Home", href: "/", current: location.pathname === "/" },
-    { title: "Producten", href: "/producten", current: location.pathname === "/producten" },
+    { title: "Producten", href: "/products", current: location.pathname === "/products" },
     { title: "Nieuws", href: "/nieuws", current: location.pathname === "/nieuws" },
   ];
 
