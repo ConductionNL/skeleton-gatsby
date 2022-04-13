@@ -1,0 +1,52 @@
+App\Entity\Endpoint:
+  notificationsGet:
+    name: Notifications endpoint get collection
+    description: endpoint voor notifications
+    path: ['notifications']
+    method: GET
+    operationType: collection
+
+  notificationsGetItem:
+    name: Notifications endpoint get item
+    description: endpoint voor notifications
+    path: ['notifications', '{id}']
+    method: GET
+    operationType: item
+
+  notificationsPost:
+    name: Weer endpoint post
+    description: endpoint voor notifications
+    path: ['notifications']
+    method: POST
+    operationType: collection
+
+App\Entity\Entity:
+  notifications:
+    route: "/api/notifications"
+    name: notifications
+    description: notifications entity
+
+App\Entity\Handler:
+  notificationsHandler:
+    name: Notifications handler
+    methods: ["*"]
+    sequence: 0
+    conditions: "{}"
+    endpoints: ["@notificationsGet", "@notificationsGetItem", "@notificationsPost"]
+    entity: "@notifications"
+
+App\Entity\Attribute:
+  notificationsName:
+    name: name
+    description: Name of the notification
+    type: string
+    maxLength: 255
+    required: true
+    entity: "@notifications"
+  notificationsDescription:
+    name: description
+    description: Description of this notification
+    type: string
+    maxLength: 255
+    required: true
+    entity: "@notifications"
