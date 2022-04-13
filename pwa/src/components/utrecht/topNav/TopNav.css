@@ -1,6 +1,0 @@
-.utrecht-navhtml > svg {
-  max-block-size: var(--conduction-nav-logo-height-lg);
-  display: block;
-  margin: auto;
-  padding: var(--conduction-nav-logo-padding);
-}

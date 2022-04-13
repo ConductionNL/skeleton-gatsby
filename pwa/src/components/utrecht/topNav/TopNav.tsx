@@ -1,35 +1,31 @@
+/**
+ * This is a TEMPORARY wrapper over the Utrecht Breadcrumb component.
+ *
+ * Do NOT update this file, because all changes WILL BE LOST upon the package integration.
+ *
+ * Source: https://nl-design-system.github.io/utrecht/storybook/?path=/docs/css-component-navigatie-topnav--top-nav
+ */
+
 import * as React from "react";
 import { Link } from "gatsby";
 import clsx from "clsx";
-import Logo from "./../../../assets/logo.svg";
-import "./TopNav.css";
-import { isLoggedIn } from "../../../services/auth";
-import { logout } from "../../../services/auth";
 
-interface TopNavItem {
+interface ITopNavItem {
   href: string;
-  title: string;
+  title: string | JSX.Element;
   current?: boolean;
 }
 
 interface TopNavProps {
-  items: TopNavItem[];
+  items: ITopNavItem[];
 }
 
 export const TopNav: React.FC<TopNavProps> = ({ items }) => {
-  const [mappedItems, setMappedItems] = React.useState<TopNavItem[]>(items);
-  const LocationLogin: string = window.location.pathname === "/login" ? "True" : "False";
-
-  React.useEffect(() => {
-    setMappedItems(items.map((item) => ({ current: window.location.pathname === item.href, ...item })));
-  }, [items]);
-
   return (
     <div className="utrecht-navhtml">
-      <Logo />
       <nav className="topnav">
         <ul className="utrecht-topnav__list">
-          {mappedItems.map((item, idx) => (
+          {items.map((item, idx) => (
             <li key={idx} className="utrecht-topnav__item">
               <Link
                 className={clsx(
@@ -42,26 +38,6 @@ export const TopNav: React.FC<TopNavProps> = ({ items }) => {
               </Link>
             </li>
           ))}
-          {isLoggedIn() ? (
-            <li className="utrecht-topnav__item">
-              <Link className="utrecht-topnav__link" to={"/"} onClick={logout}>
-                Uitloggen
-              </Link>
-            </li>
-          ) : (
-            <li className="utrecht-topnav__item">
-              <Link
-                className={clsx(
-                  "utrecht-topnav__link",
-                  LocationLogin === "True" && "utrecht-topnav__link--focus utrecht-topnav__link--current",
-                )}
-                to={"/login"}
-              >
-                {console.log(LocationLogin)}
-                Inloggen
-              </Link>
-            </li>
-          )}
         </ul>
       </nav>
     </div>

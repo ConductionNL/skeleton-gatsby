@@ -4,17 +4,16 @@ import "../styling/index.css";
 import { isLoggedIn } from "../services/auth";
 import { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
-
-import { Breadcrumbs } from "../components/utrecht/breadcrumbs/Breadcrumbs";
-import { TopNav } from "../components/utrecht/topNav/TopNav";
 import Footer from "./../components/footer/Footer";
+import { HeaderTemplate } from "../templates/header/HeaderTemplate";
 
 interface LayoutProps {
   children: React.ReactNode;
-  pageContext: any;
+  pageContext: any; // Gatsby pageContext
+  location: any; // Gatsby location
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, pageContext }) => {
+const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
   const {
     breadcrumb: { crumbs },
   } = pageContext;
@@ -34,16 +33,10 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext }) => {
   return (
     <Document>
       <Page className="Page">
-        <TopNav
-          items={[
-            { href: "/", title: "Home" },
-            { href: "/meldingen/", title: "Meldingen" },
-          ]}
-        />
+        <HeaderTemplate {...{ location, crumbs }} />
         <PageContent className="PageContent">
           <APIProvider value={API}>
             <title>Skeleton Application</title>
-            <Breadcrumbs {...{ crumbs }} />
             {children}
           </APIProvider>
         </PageContent>
