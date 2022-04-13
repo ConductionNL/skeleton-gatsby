@@ -7,7 +7,7 @@ export interface IUnvalidatedUser {
   password: string;
 }
 
-const API: APIService = new APIService("");
+const API: APIService = new APIService();
 
 export const isBrowser = (): boolean => typeof window !== "undefined";
 

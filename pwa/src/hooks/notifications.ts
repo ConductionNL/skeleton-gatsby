@@ -6,7 +6,7 @@ import { navigate } from "gatsby-link";
 import { addItem } from "../services/mutateQueries";
 
 export const useNotification = (queryClient: QueryClient) => {
-  const API = React.useContext(APIContext);
+  const API: APIService = React.useContext(APIContext);
   
   const getAll = () =>
     useQuery<any[], Error>("notifications", API.Notification.getAll, {
