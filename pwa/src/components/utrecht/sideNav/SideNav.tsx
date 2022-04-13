@@ -8,8 +8,9 @@
 
 import * as React from "react";
 import clsx from "clsx";
+import { Link } from "gatsby";
 
-interface ISideNavItem {
+export interface ISideNavItem {
   href: string;
   title: string;
   current?: boolean;
@@ -22,30 +23,31 @@ interface ISideNavItem {
 
 interface SideNavProps {
   items: ISideNavItem[];
+  className?: string;
 }
 
-export const SideNav: React.FC<SideNavProps> = ({ items }) => {
+export const SideNav: React.FC<SideNavProps> = ({ items, className }) => {
   return (
-    <nav className="utrecht-sidenav">
+    <nav className={clsx("utrecht-sidenav", className && className)}>
       <ul className="utrecht-sidenav__list">
-        {items.map((item) => (
-          <li className="utrecht-sidenav__item utrecht-sidenav__item--last utrecht-sidenav__item--parent">
-            <a
+        {items.map((item, idx) => (
+          <li key={idx} className="utrecht-sidenav__item utrecht-sidenav__item--last utrecht-sidenav__item--parent">
+            <Link
               className="utrecht-sidenav__link utrecht-sidenav__link--current utrecht-sidenav__link--parent"
-              href={item.href}
+              to={item.href}
             >
               <div
                 className={clsx("utrecht-sidenav__marker", item.current && "utrecht-sidenav__marker--current")}
               ></div>
               <div className="utrecht-sidenav__connection utrecht-sidenav__connection--parent utrecht-sidenav__connection--last"></div>
               {item.title}
-            </a>
+            </Link>
 
             {item.children && (
               <ul className="utrecht-sidenav__list utrecht-sidenav__list--child">
-                {item.children.map((child) => (
-                  <li className="utrecht-sidenav__item utrecht-sidenav__item--child">
-                    <a className="utrecht-sidenav__link utrecht-sidenav__link--child" href={child.href}>
+                {item.children.map((child, idx) => (
+                  <li key={idx} className="utrecht-sidenav__item utrecht-sidenav__item--child">
+                    <Link className="utrecht-sidenav__link utrecht-sidenav__link--child" to={child.href}>
                       <div
                         className={clsx(
                           "utrecht-sidenav__marker utrecht-sidenav__marker--child",
@@ -53,7 +55,7 @@ export const SideNav: React.FC<SideNavProps> = ({ items }) => {
                         )}
                       ></div>{" "}
                       {child.title}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
