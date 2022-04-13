@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import Login from "./services/login";
 import APICalls from "./services/apiCalls";
-import { logout, validateSession } from "../services/auth";
+import { handleLogout, validateSession } from "../services/auth";
 
 export default class APIService {
   private _jwtToken: string;
@@ -54,7 +54,7 @@ export const Send = (
   const _payload = JSON.stringify(payload);
 
   if (!validateSession()) {
-    logout();
+    handleLogout();
 
     return Promise.resolve({
       // return fake AxiosInstance for calls to not break
