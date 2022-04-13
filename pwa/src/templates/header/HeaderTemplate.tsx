@@ -8,6 +8,8 @@ import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
 import { GatsbyContext } from "./../../context/gatsby";
+import { useTranslation } from "react-i18next";
+import i18next, { changeLanguage, t } from "i18next";
 
 interface ITopNavItem {
   href: string;
@@ -16,12 +18,17 @@ interface ITopNavItem {
 }
 
 export const HeaderTemplate: React.FC = () => {
+  const { t } = useTranslation();
   const gatsbyContext = React.useContext(GatsbyContext);
   const [navItems, setNavItems] = React.useState<ITopNavItem[]>([]);
 
   const {
     breadcrumb: { crumbs },
   } = gatsbyContext.pageContext;
+
+  React.useEffect(() => {
+    i18next.on("languageChanged", () => setNavItems(getNavigationItems(gatsbyContext.location)));
+  }, []);
 
   React.useEffect(() => {
     setNavItems(getNavigationItems(gatsbyContext.location));
@@ -31,7 +38,15 @@ export const HeaderTemplate: React.FC = () => {
     <PageHeader className="HeaderTemplate">
       <Logo className="HeaderTemplate-logo" />
       <TopNav items={navItems} />
-      <Breadcrumbs {...{ crumbs }} />
+
+      <div className="HeaderTemplate-subNav">
+        <Breadcrumbs {...{ crumbs }} />
+
+        <div className="switcher">
+          <button onClick={() => changeLanguage("en")}>Change to EN</button>
+          <button onClick={() => changeLanguage("nl")}>Change to NL</button>
+        </div>
+      </div>
     </PageHeader>
   );
 };
@@ -45,14 +60,14 @@ const getNavigationItems = (location: any): ITopNavItem[] => {
 
   const loggedOutTitle = (
     <>
-      Login <FontAwesomeIcon icon={faLockOpen} />
+      {t("Login")} <FontAwesomeIcon icon={faLockOpen} />
     </>
   );
 
   const staticNavItems: ITopNavItem[] = [
-    { title: "Home", href: "/", current: location.pathname === "/" },
-    { title: "Producten", href: "/producten", current: location.pathname === "/producten" },
-    { title: "Nieuws", href: "/nieuws", current: location.pathname === "/nieuws" },
+    { title: t("Home"), href: "/", current: location.pathname === "/" },
+    { title: t("Products"), href: "/producten", current: location.pathname === "/producten" },
+    { title: t("News"), href: "/nieuws", current: location.pathname === "/nieuws" },
   ];
 
   const userNavItem: ITopNavItem = isLoggedIn()
