@@ -6,22 +6,21 @@ import { Heading1, Article } from "@nl-design-system-unstable/example-next.js/sr
 const ProductPage = (props: any) => {
   const productId: string = props.params.id === "new" ? null : props.params.id;
   const [product, setProduct] = React.useState(null);
-  const API: APIService | null = React.useContext(APIContext);
+  const API: APIService = React.useContext(APIContext);
 
   React.useEffect(() => {
     !product && getProduct();
   }, [API]);
 
   const getProduct = () => {
-    API &&
-      API.APICalls.getAPI(`products/${productId}`)
-        .then((res) => {
-          setProduct(res.data);
-          console.log(res.data);
-        })
-        .catch((err) => {
-          throw new Error(err);
-        });
+    API.APICalls.getAPI(`products/${productId}`)
+      .then((res) => {
+        setProduct(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        throw new Error(err);
+      });
   };
 
   return (

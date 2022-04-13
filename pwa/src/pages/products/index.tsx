@@ -1,28 +1,29 @@
 import * as React from "react";
+import { useQueryClient } from "react-query";
 import { ProductGrid } from "../../components/products/ProductGrid/ProductGrid";
-import APIService from "../../apiService/apiService";
-import APIContext from "../../apiService/apiContext";
+import { useProducts } from "../../hooks/products";
 
 const ProductsIndex: React.FC = () => {
-  const [products, setProducts] = React.useState(null);
-  const API: APIService | null = React.useContext(APIContext);
+  const queryClient = useQueryClient();
+  const _useProduct = useProducts(queryClient);
+  const getProducts = _useProduct.getAll();
 
-  React.useEffect(() => {
-    !products && getProducts();
-  }, [API]);
+  // React.useEffect(() => {
+  //   !products && getProducts;
+  // }, [API]);
 
-  const getProducts = () => {
-    API &&
-      API.APICalls.getAPI("products")
-        .then((res) => {
-          res.data.total && setProducts(res.data.results);
-        })
-        .catch((err) => {
-          throw new Error(err);
-        });
-  };
+  // const getProducts = () => {
+  //   API &&
+  //     API.APICalls.getAPI("products")
+  //       .then((res) => {
+  //         res.data.total && setProducts(res.data.results);
+  //       })
+  //       .catch((err) => {
+  //         throw new Error(err);
+  //       });
+  // };
 
-  return <ProductGrid products={products}></ProductGrid>;
+  return <ProductGrid products={getProducts}></ProductGrid>;
 };
 
 export default ProductsIndex;

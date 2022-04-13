@@ -3,7 +3,7 @@ import "./ProductGrid.css";
 import { ProductCard } from "../ProductCard/ProductCard";
 
 interface ProductGridProps {
-  products: Array<any> | null;
+  products: any;
 }
 
 export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {

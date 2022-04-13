@@ -14,7 +14,7 @@ export const UnauthenticatedTemplate: React.FC = () => {
 
   const getProducts = () => {
     API &&
-      API.APICalls.getAll("products")
+      API.APICalls.getAPI("products")
         .then((res) => {
           res.data.total && setProducts(res.data.results);
         })

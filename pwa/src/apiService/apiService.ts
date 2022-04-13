@@ -1,12 +1,13 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import Login from "./services/login";
 import APICalls from "./services/apiCalls";
+import Product from "./services/product";
 import { handleLogout, validateSession } from "../services/auth";
 
 export default class APIService {
-  private _jwtToken: string;
+  private _jwtToken?: string;
 
-  constructor(_jwtToken: string) {
+  constructor(_jwtToken?: string) {
     this._jwtToken = _jwtToken;
   }
 
@@ -42,6 +43,10 @@ export default class APIService {
 
   public get UAuthAPICalls(): APICalls {
     return new APICalls(this.UAuthAPIClient);
+  }
+
+  public get Product(): Product {
+    return new Product(this.UAuthAPIClient);
   }
 }
 
