@@ -1,0 +1,11 @@
+:root {
+  --utrecht-typography-scale-2x: 0.5rem;
+  --utrecht-typography-scale-xs: 0.75rem;
+  --utrecht-typography-scale-sm: 0.875rem;
+  --utrecht-typography-scale-md: 1rem;
+  --utrecht-typography-scale-lg: 1.125rem;
+  --utrecht-typography-scale-xl: 1.25rem;
+  --utrecht-typography-scale-2xl: 1.375rem;
+  --utrecht-typography-scale-3xl: 1.5rem;
+  --utrecht-typography-scale-4xl: 2rem;
+}

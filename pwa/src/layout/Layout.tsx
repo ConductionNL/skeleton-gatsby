@@ -1,35 +1,26 @@
 import * as React from "react";
 import { Document, Page, PageContent } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import "../styling/index.css";
 import { isLoggedIn } from "../services/auth";
 import { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
-import "../styling/index.css";
 import Footer from "./../components/footer/Footer";
-import { Table } from "../components/table/Table";
+import { HeaderTemplate } from "../templates/header/HeaderTemplate";
+import { GatsbyProvider, IGatsbyContext } from "../context/gatsby";
 
-const Meldingen = [
-  {
-    id: "2309842093842",
-    title: "lkajdsflasdkjf",
-    date: "203843209842",
-    description: "aslaksdfj askdlfj",
-  },
-  {
-    id: "2309842093842",
-    title: "lkajdsflasdkjf",
-    date: "203843209842",
-    description: "aslaksdfj askdlfj",
-  },
-  {
-    id: "2309842093842",
-    title: "lkajdsflasdkjf",
-    date: "203843209842",
-    description: "aslaksdfj askdlfj",
-  },
-];
+interface LayoutProps {
+  children: React.ReactNode;
+  pageContext: any; // Gatsby pageContext
+  location: any; // Gatsby location
+}
 
-const Layout: React.FC = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
   const [API, setAPI] = React.useState<APIService | null>(null);
+  const [gatsbyContext, setGatsbyContext] = React.useState<IGatsbyContext>({ ...{ pageContext, location } });
+
+  React.useEffect(() => {
+    setGatsbyContext({ ...{ pageContext, location } });
+  }, [pageContext, location]);
 
   React.useEffect(() => {
     if (!isLoggedIn()) {
@@ -42,22 +33,20 @@ const Layout: React.FC = ({ children }) => {
   }, [API, isLoggedIn()]);
 
   return (
-    <Document>
-      <Page className="Page">
-        <PageContent className="PageContent">
-          <APIProvider value={API}>
-            <title>Skeleton Application</title>
-            {children}
-
-            <Table
-              headers={["Title", "Description"]}
-              rows={Meldingen.map((melding) => [melding.title, melding.description, <a href="#">Edit</a>])}
-            />
-          </APIProvider>
-        </PageContent>
-        <Footer />
-      </Page>
-    </Document>
+    <GatsbyProvider value={gatsbyContext}>
+      <Document>
+        <Page className="Page">
+          <HeaderTemplate />
+          <PageContent className="PageContent">
+            <APIProvider value={API}>
+              <title>Skeleton Application</title>
+              {children}
+            </APIProvider>
+          </PageContent>
+          <Footer />
+        </Page>
+      </Document>
+    </GatsbyProvider>
   );
 };
 
