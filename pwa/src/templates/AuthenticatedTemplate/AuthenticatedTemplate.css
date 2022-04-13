@@ -1,0 +1,16 @@
+.AuthenticatedTemplate {
+  display: flex;
+  align-items: flex-start;
+}
+
+.AuthenticatedTemplate > *:not(:last-child) {
+  margin-inline-end: var(--utrecht-space-column-4xl);
+}
+
+.AuthenticatedTemplate > .AuthenticatedTemplate-sideNav {
+  flex: 2;
+}
+
+.AuthenticatedTemplate > .AuthenticatedTemplate-children {
+  flex: 10;
+}

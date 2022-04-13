@@ -10,17 +10,11 @@ import "./LoginTemplate.css";
 
 export const LoginTemplate: React.FC = () => {
   return (
-    <Document>
-      <Page className="Page">
-        <PageContent className="PageContent">
-          <div className="LoginTemplate">
-            <div className="LoginTemplate-inner">
-              <Heading1>Login</Heading1>
-              <LoginForm />
-            </div>
-          </div>
-        </PageContent>
-      </Page>
-    </Document>
+    <div className="LoginTemplate">
+      <div className="LoginTemplate-inner">
+        <Heading1>Login</Heading1>
+        <LoginForm />
+      </div>
+    </div>
   );
 };
