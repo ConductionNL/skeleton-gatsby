@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
+import { GatsbyContext } from "./../../context/gatsby";
 
 interface ITopNavItem {
   href: string;
@@ -14,17 +15,19 @@ interface ITopNavItem {
   current?: boolean;
 }
 
-interface IHeaderTemplateProps {
-  location: any; // Gatsby location
-  crumbs: any; // Gatsby breadcrumbs crumbs
-}
-
-export const HeaderTemplate: React.FC<IHeaderTemplateProps> = ({ location, crumbs }) => {
+export const HeaderTemplate: React.FC = () => {
+  const gatsbyContext = React.useContext(GatsbyContext);
   const [navItems, setNavItems] = React.useState<ITopNavItem[]>([]);
 
+  console.log(gatsbyContext);
+
+  const {
+    breadcrumb: { crumbs },
+  } = gatsbyContext.pageContext;
+
   React.useEffect(() => {
-    setNavItems(getNavigationItems(location));
-  }, [location]);
+    setNavItems(getNavigationItems(gatsbyContext.location));
+  }, [gatsbyContext.location]);
 
   return (
     <PageHeader className="HeaderTemplate">
