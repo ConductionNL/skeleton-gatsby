@@ -19,8 +19,6 @@ export const HeaderTemplate: React.FC = () => {
   const gatsbyContext = React.useContext(GatsbyContext);
   const [navItems, setNavItems] = React.useState<ITopNavItem[]>([]);
 
-  console.log(gatsbyContext);
-
   const {
     breadcrumb: { crumbs },
   } = gatsbyContext.pageContext;
