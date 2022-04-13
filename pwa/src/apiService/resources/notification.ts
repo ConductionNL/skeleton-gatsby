@@ -10,7 +10,7 @@ export default class Notification {
 
   public getAll = async (): Promise<any> => {
     const { data } = await Send(this._instance, "GET", "/notifications");
-    return data;
+    return data.results;
   };
 
   public create = async (variables: { payload: any;}): Promise<any> => {
