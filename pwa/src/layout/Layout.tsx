@@ -22,6 +22,10 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
 
   React.useEffect(() => {
     setGatsbyContext({ ...{ pageContext, location } });
+
+    const JWT = sessionStorage.getItem("JWT");
+
+    !API.authenticated && JWT && API.setAuthentication(JWT);
   }, [pageContext, location]);
 
   return (

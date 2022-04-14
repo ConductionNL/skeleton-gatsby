@@ -1,26 +1,37 @@
 import * as React from "react";
-import { useQueryClient } from "react-query";
-import { useNotification } from "../hooks/notifications";
-import { Table } from "../components/table/Table";
+import {
+  Table,
+  TableBody,
+  TableHeaderCell,
+  TableRow,
+  TableCell,
+  TableHeader,
+} from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 
-export const MeldingenTable: React.FC = () => {
-  const queryClient = useQueryClient();
+interface MeldingenProps {
+  meldingen: any[];
+}
 
-  const _useNotification = useNotification(queryClient);
-  const getNotifications = _useNotification.getAll();
-
+export const MeldingenTable: React.FC<MeldingenProps> = ({ meldingen }) => {
   return (
-    <Table
-      headers={["Title", "Description", "Date created"]}
-      rows={
-        getNotifications.data
-          ? getNotifications.data.map((melding) => [
-              melding.title,
-              melding.description,
-              new Date(melding["@dateCreated"]).toLocaleString("nl-NL"),
-            ])
-          : []
-      }
-    />
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHeaderCell>Title</TableHeaderCell>
+          <TableHeaderCell>Description</TableHeaderCell>
+          <TableHeaderCell>Date created</TableHeaderCell>
+        </TableRow>
+      </TableHeader>
+
+      <TableBody>
+        {meldingen.map((melding: any, idx) => (
+          <TableRow key={idx}>
+            <TableCell>{melding.title}</TableCell>
+            <TableCell>{melding.description}</TableCell>
+            <TableCell>{new Date(melding["@dateCreated"]).toLocaleString("nl-NL")}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   );
 };
