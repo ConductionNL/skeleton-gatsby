@@ -2,7 +2,7 @@ import * as React from "react";
 import { Document, Page, PageContent } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import "../styling/index.css";
 import { isLoggedIn } from "../services/auth";
-import { APIProvider } from "../apiService/apiContext";
+import { PrivateApiProvider } from "../context/privateApi";
 import APIService from "../apiService/apiService";
 import Footer from "./../components/footer/Footer";
 import { HeaderTemplate } from "../templates/header/HeaderTemplate";
@@ -15,7 +15,7 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
-  const [API, setAPI] = React.useState<APIService | null>(null);
+  const [privateApi, setPrivateApi] = React.useState<APIService | null>(null);
   const [gatsbyContext, setGatsbyContext] = React.useState<IGatsbyContext>({ ...{ pageContext, location } });
 
   React.useEffect(() => {
@@ -24,13 +24,13 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
 
   React.useEffect(() => {
     if (!isLoggedIn()) {
-      setAPI(null);
+      setPrivateApi(null);
       return;
     }
 
     const jwt = sessionStorage.getItem("jwt");
-    !API && jwt && setAPI(new APIService(jwt));
-  }, [API, isLoggedIn()]);
+    !privateApi && jwt && setPrivateApi(new APIService(jwt));
+  }, [privateApi, isLoggedIn()]);
 
   return (
     <GatsbyProvider value={gatsbyContext}>
@@ -38,10 +38,10 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
         <Page className="Page">
           <HeaderTemplate />
           <PageContent className="PageContent">
-            <APIProvider value={API}>
+            <PrivateApiProvider value={privateApi}>
               <title>Skeleton Application</title>
               {children}
-            </APIProvider>
+            </PrivateApiProvider>
           </PageContent>
           <Footer />
         </Page>

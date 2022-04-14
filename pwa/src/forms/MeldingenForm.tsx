@@ -3,8 +3,6 @@ import { useForm } from "react-hook-form";
 import { Button } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import { InputText, Textarea } from "../components/formFields";
 import { useQueryClient } from "react-query";
-import APIService from "../apiService/apiService";
-import APIContext from "../apiService/apiContext";
 import { useNotification } from "../hooks/notifications";
 
 interface IMelding {
@@ -17,12 +15,11 @@ interface MeldingenFormProps {
 }
 
 export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
-  const API: APIService | null = React.useContext(APIContext);
   const queryClient = useQueryClient();
 
   const _useNotification = useNotification(queryClient);
   const createNotification = _useNotification.create();
-  
+
   const {
     register,
     formState: { errors },
@@ -40,7 +37,7 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
   };
 
   const onSubmit = (data: any) => {
-   createNotification.mutate({payload: data})
+    createNotification.mutate({ payload: data });
   };
 
   return (
