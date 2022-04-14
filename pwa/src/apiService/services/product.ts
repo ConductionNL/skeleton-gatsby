@@ -7,12 +7,15 @@ export default class Product {
   constructor(_instance: AxiosInstance) {
     this._instance = _instance;
   }
-  public getAll = (): Promise<AxiosResponse> => {
-    return Send(this._instance, "GET", `/products`);
+
+  public getAll = async (): Promise<any> => {
+    const {data} = await Send(this._instance, "GET", `/products`);
+    return data.results;
   };
 
-  public getOne = (productId: string): Promise<AxiosResponse> => {
-    return Send(this._instance, "GET", `/products/${productId}`);
+  public getOne = async (productId: string): Promise<any> => {
+    const {data} = await Send(this._instance, "GET", `/products/${productId}`);
+    return data;
   };
 
 }

@@ -17,12 +17,12 @@ export default class APIService {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Bearer " + this._jwtToken,
+         Authorization: "Bearer " + this._jwtToken,
       },
     });
   }
 
-  public get UAuthAPIClient(): AxiosInstance {
+  public get LoginClient(): AxiosInstance {
     return axios.create({
       baseURL: process.env.GATSBY_API_URL,
       headers: {
@@ -34,19 +34,15 @@ export default class APIService {
 
   // Services
   public get Login(): Login {
-    return new Login(this.UAuthAPIClient);
+    return new Login(this.LoginClient);
   }
 
   public get APICalls(): APICalls {
     return new APICalls(this.APIClient);
   }
 
-  public get UAuthAPICalls(): APICalls {
-    return new APICalls(this.UAuthAPIClient);
-  }
-
   public get Product(): Product {
-    return new Product(this.UAuthAPIClient);
+    return new Product(this.APIClient);
   }
 }
 
