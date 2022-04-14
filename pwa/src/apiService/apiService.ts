@@ -3,10 +3,18 @@ import Login from "./services/login";
 import { handleLogout, validateSession } from "../services/auth";
 
 export default class APIService {
-  private _jwtToken: string;
+  private JWT?: string;
 
-  constructor(_jwtToken: string) {
-    this._jwtToken = _jwtToken;
+  public removeAuthentication(): void {
+    this.JWT = undefined;
+  }
+
+  public setAuthentication(_JWT: string): void {
+    this.JWT = _JWT;
+  }
+
+  public get authenticated(): boolean {
+    return this.JWT ? true : false;
   }
 
   public get loginClient(): AxiosInstance {

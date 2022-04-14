@@ -3,7 +3,7 @@ import "../styling/index.css";
 import "./../translations/i18n";
 import { Document, Page, PageContent } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import { isLoggedIn } from "../services/auth";
-import { APIProvider } from "../apiService/apiContext";
+import APIContext, { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
 import Footer from "./../components/footer/Footer";
 import { HeaderTemplate } from "../templates/header/HeaderTemplate";
@@ -18,7 +18,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
   const { t } = useTranslation();
-  const [API, setAPI] = React.useState<APIService | null>(null);
+  const [API] = React.useState<APIService>(React.useContext(APIContext));
   const [gatsbyContext, setGatsbyContext] = React.useState<IGatsbyContext>({ ...{ pageContext, location } });
 
   React.useEffect(() => {
@@ -27,12 +27,13 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
 
   React.useEffect(() => {
     if (!isLoggedIn()) {
-      setAPI(null);
+      API.removeAuthentication();
       return;
     }
 
-    const jwt = sessionStorage.getItem("jwt");
-    !API && jwt && setAPI(new APIService(jwt));
+    if (API.authenticated) return;
+
+    API.setAuthentication(sessionStorage.getItem("JWT") ?? "");
   }, [API, isLoggedIn()]);
 
   return (
