@@ -3,7 +3,7 @@
  *
  * Do NOT update this file, because all changes WILL BE LOST upon the package integration.
  *
- * Source: https://nl-design-system.github.io/utrecht/storybook/?path=/docs/css-component-breadcrumb-navigation--breadcrumb-navigation
+ * Source: https://nl-design-system.github.io/utrecht/storybook/?path=/docs/css-component-alternate-language-navigation--alternative-languages-navigation
  */
 import * as React from "react";
 import clsx from "clsx";
