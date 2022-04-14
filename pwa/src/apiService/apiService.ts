@@ -1,5 +1,4 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
-import { handleLogout, validateSession } from "../services/auth";
 import Login from "./services/login";
 import Notification from "./resources/notification";
 
@@ -8,7 +7,6 @@ export default class APIService {
 
   public removeAuthentication(): void {
     this.JWT = undefined;
-    sessionStorage.removeItem("JWT");
   }
 
   public setAuthentication(_JWT: string): void {
