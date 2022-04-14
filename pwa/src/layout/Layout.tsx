@@ -2,7 +2,6 @@ import * as React from "react";
 import "../styling/index.css";
 import "./../translations/i18n";
 import { Document, Page, PageContent } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
-import { isLoggedIn } from "../services/auth";
 import APIContext, { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
 import Footer from "./../components/footer/Footer";
@@ -24,17 +23,6 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
   React.useEffect(() => {
     setGatsbyContext({ ...{ pageContext, location } });
   }, [pageContext, location]);
-
-  React.useEffect(() => {
-    if (!isLoggedIn()) {
-      API.removeAuthentication();
-      return;
-    }
-
-    if (API.authenticated) return;
-
-    API.setAuthentication(sessionStorage.getItem("JWT") ?? "");
-  }, [API, isLoggedIn()]);
 
   return (
     <GatsbyProvider value={gatsbyContext}>

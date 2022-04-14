@@ -4,14 +4,16 @@ import Login from "./services/login";
 import Notification from "./resources/notification";
 
 export default class APIService {
-  private JWT?: string;
+  public JWT?: string;
 
   public removeAuthentication(): void {
     this.JWT = undefined;
+    sessionStorage.removeItem("JWT");
   }
 
   public setAuthentication(_JWT: string): void {
     this.JWT = _JWT;
+    sessionStorage.setItem("JWT", _JWT);
   }
 
   public get authenticated(): boolean {
@@ -69,19 +71,6 @@ export const Send = (
   payload?: JSON,
 ): Promise<AxiosResponse> => {
   const _payload = JSON.stringify(payload);
-
-  if (!validateSession()) {
-    handleLogout();
-
-    return Promise.resolve({
-      // return fake AxiosInstance for calls to not break
-      data: [],
-      status: -1,
-      statusText: "Session invalid",
-      config: {},
-      headers: {},
-    });
-  }
 
   switch (method) {
     case "GET":
