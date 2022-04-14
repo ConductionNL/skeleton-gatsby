@@ -8,9 +8,11 @@ import {
 import "./Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faBuilding, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <PageFooter className="Footer">
       <UnorderedList className="UnorderedList">
@@ -37,7 +39,7 @@ const Footer: React.FC = () => {
       </UnorderedList>
 
       <UnorderedList className="UnorderedList">
-        <Heading4>{t("OpeningHours")}</Heading4>
+        <Heading4>{t("Opening hours")}</Heading4>
         <UnorderedListItem>
           {t("Monday")} - {t("Wednesday")}: 9.00 - 17.00
         </UnorderedListItem>

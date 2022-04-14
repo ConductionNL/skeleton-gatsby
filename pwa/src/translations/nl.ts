@@ -9,7 +9,7 @@ export const nl = {
   Marriage: "Huwelijk",
   Abridgment: "Uittreksel",
   Contact: "Contact",
-  OpeningHours: "Openingstijden",
+  "Opening hours": "Openingstijden",
   Monday: "Maandag",
   Thuesday: "Dinsdag",
   Wednesday: "Woensdag",
@@ -21,8 +21,7 @@ export const nl = {
   Password: "Wachtwoord",
   Send: "Verzenden",
   Notifications: "Meldingen",
-  WelcomeMessage: "Welkom op de Skelet Applicatie",
+  "Welcome to the Skeleton Application": "Welkom op de Skelet Applicatie",
   Title: "Titel",
   Description: "Omschrijving",
-  L: "NL",
 };

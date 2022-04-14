@@ -15,6 +15,7 @@ interface MeldingenFormProps {
 
 export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
   const { t } = useTranslation();
+
   const {
     register,
     formState: { errors },

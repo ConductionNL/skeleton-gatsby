@@ -9,7 +9,7 @@ import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
 import { SelectLanguage } from "../../components/utrecht/selectLanguage/SelectLanguage";
 import { GatsbyContext } from "./../../context/gatsby";
-import i18next, { changeLanguage } from "i18next";
+import i18next, { changeLanguage, TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 
 interface ITopNavItem {
@@ -64,7 +64,7 @@ export const HeaderTemplate: React.FC = () => {
   );
 };
 
-const getNavigationItems = (location: any, t: any): ITopNavItem[] => {
+const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
   const loggedInTitle = (
     <>
       {getUsername()} <FontAwesomeIcon icon={faLock} />

@@ -9,7 +9,7 @@ export const en = {
   Marriage: "Marriage",
   Abridgment: "Abridgment",
   Contact: "Contact",
-  OpeningHours: "Opening Hours",
+  "Opening hours": "Opening hours",
   Monday: "Monday",
   Thuesday: "Thuesday",
   Wednesday: "Wednesday",
@@ -21,8 +21,7 @@ export const en = {
   Password: "Password",
   Send: "Send",
   Notifications: "Notifications",
-  WelcomeMessage: "Welcome to the Skeleton Application",
+  "Welcome to the Skeleton Application": "Welcome to the Skeleton Application",
   Title: "Title",
   Description: "Description",
-  L: "EN"
 };

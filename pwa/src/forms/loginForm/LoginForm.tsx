@@ -1,16 +1,16 @@
 import * as React from "react";
+import "./LoginForm.css";
 import { useForm } from "react-hook-form";
 import { Button } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import { handleLogin } from "./../../services/auth";
 import { InputText, InputPassword } from "../../components/formFields";
 import { FormFieldError } from "../../components/formFields/formFieldError/FormFieldError";
-import "./LoginForm.css";
 import { useTranslation } from "react-i18next";
 
 export const LoginForm: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>("");
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
   const {
     register,
