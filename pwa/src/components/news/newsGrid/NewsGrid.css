@@ -1,0 +1,26 @@
+.NewsGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.NewsGrid > .NewsCard {
+    flex: 0 0 21%;
+    padding-inline-start: var(--utrecht-space-row-md);
+    padding-inline-end: var(--utrecht-space-row-md) ;
+    padding-block-start: var(--utrecht-space-column-lg);
+    padding-block-end: var(--utrecht-space-column-lg) ;
+
+}
+
+.NewsCard > .NewsName {
+    text-transform: var(--utrecht-typography-text-transform-uppercase);
+    font-weight: bold;
+}
+.NewsCard > *:not(:last-child) {
+    padding-block-end: var(--utrecht-space-inline-xs) ;
+}
+
+.NewsCard > span {
+    display: block;
+}

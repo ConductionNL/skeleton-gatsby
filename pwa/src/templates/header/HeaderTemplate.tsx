@@ -52,7 +52,7 @@ const getNavigationItems = (location: any): ITopNavItem[] => {
   const staticNavItems: ITopNavItem[] = [
     { title: "Home", href: "/", current: location.pathname === "/" },
     { title: "Producten", href: "/producten", current: location.pathname === "/producten" },
-    { title: "Nieuws", href: "/nieuws", current: location.pathname === "/nieuws" },
+    { title: "News", href: "/News", current: location.pathname === "/News" },
   ];
 
   const userNavItem: ITopNavItem = isLoggedIn()
