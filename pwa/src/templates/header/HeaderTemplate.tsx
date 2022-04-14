@@ -73,7 +73,7 @@ const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
 
   const loggedOutTitle = (
     <>
-      Login <FontAwesomeIcon icon={faLockOpen} />
+      {t("Login")} <FontAwesomeIcon icon={faLockOpen} />
     </>
   );
 

@@ -48,7 +48,7 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
 
       <Textarea name="description" label={t("Description")} {...{ errors, register }} validation={{ required: true }} />
 
-      <Button type="submit">Verzenden</Button>
+      <Button type="submit">{t("Send")}</Button>
     </form>
   );
 };
