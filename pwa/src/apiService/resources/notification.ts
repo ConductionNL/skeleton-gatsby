@@ -1,5 +1,5 @@
 import { Send } from "../apiService";
-import { AxiosInstance, AxiosResponse } from "axios";
+import { AxiosInstance } from "axios";
 
 export default class Notification {
   private _instance: AxiosInstance;
@@ -13,7 +13,7 @@ export default class Notification {
     return data.results;
   };
 
-  public create = async (variables: { payload: any;}): Promise<any> => {
+  public create = async (variables: { payload: any }): Promise<any> => {
     const { payload } = variables;
     const { data } = await Send(this._instance, "POST", "/notifications", payload);
     return data;

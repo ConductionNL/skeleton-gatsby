@@ -8,6 +8,9 @@ import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
 import { GatsbyContext } from "./../../context/gatsby";
+import i18next, { changeLanguage, TFunction } from "i18next";
+import { useTranslation } from "react-i18next";
+import { SelectLanguage } from "../../components/utrecht/selectLanguage/SelectLanguage";
 
 interface ITopNavItem {
   href: string;
@@ -18,25 +21,50 @@ interface ITopNavItem {
 export const HeaderTemplate: React.FC = () => {
   const gatsbyContext = React.useContext(GatsbyContext);
   const [navItems, setNavItems] = React.useState<ITopNavItem[]>([]);
+  const { t } = useTranslation();
 
   const {
     breadcrumb: { crumbs },
   } = gatsbyContext.pageContext;
 
   React.useEffect(() => {
-    setNavItems(getNavigationItems(gatsbyContext.location));
-  }, [gatsbyContext.location]);
+    setNavItems(getNavigationItems(gatsbyContext.location, t));
+  }, [gatsbyContext.location, t]);
 
   return (
     <PageHeader className="HeaderTemplate">
       <Logo className="HeaderTemplate-logo" />
       <TopNav items={navItems} />
-      <Breadcrumbs {...{ crumbs }} />
+
+      <div className="HeaderTemplate-subNav">
+        <Breadcrumbs {...{ crumbs }} />
+
+        <div className="HeaderTemplate-languageSwitcher">
+          <SelectLanguage
+            languages={[
+              {
+                label: "NL",
+                key: "nl",
+                title: "Deze pagina in Nederlands",
+                onClick: () => changeLanguage("nl"),
+                current: i18next.language === "nl",
+              },
+              {
+                label: "EN",
+                key: "en",
+                title: "This page is in English",
+                onClick: () => changeLanguage("en"),
+                current: i18next.language === "en",
+              },
+            ]}
+          />
+        </div>
+      </div>
     </PageHeader>
   );
 };
 
-const getNavigationItems = (location: any): ITopNavItem[] => {
+const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
   const loggedInTitle = (
     <>
       {getUsername()} <FontAwesomeIcon icon={faLock} />
@@ -50,9 +78,9 @@ const getNavigationItems = (location: any): ITopNavItem[] => {
   );
 
   const staticNavItems: ITopNavItem[] = [
-    { title: "Home", href: "/", current: location.pathname === "/" },
-    { title: "Producten", href: "/producten", current: location.pathname === "/producten" },
-    { title: "Nieuws", href: "/nieuws", current: location.pathname === "/nieuws" },
+    { title: t("Home"), href: "/", current: location.pathname === "/" },
+    { title: t("Products"), href: "/producten", current: location.pathname === "/producten" },
+    { title: t("News"), href: "/nieuws", current: location.pathname === "/nieuws" },
   ];
 
   const userNavItem: ITopNavItem = isLoggedIn()

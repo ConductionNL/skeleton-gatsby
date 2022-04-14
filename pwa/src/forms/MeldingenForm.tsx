@@ -4,6 +4,7 @@ import { Button } from "@nl-design-system-unstable/example-next.js/src/component
 import { InputText, Textarea } from "../components/formFields";
 import { useQueryClient } from "react-query";
 import { useNotification } from "../hooks/notifications";
+import { useTranslation } from "react-i18next";
 
 interface IMelding {
   title: string;
@@ -15,6 +16,7 @@ interface MeldingenFormProps {
 }
 
 export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
+  const { t } = useTranslation();
   const queryClient = useQueryClient();
 
   const _useNotification = useNotification(queryClient);
@@ -42,9 +44,9 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <InputText name="title" label="Titel" {...{ errors, register }} validation={{ required: true }} />
+      <InputText name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
 
-      <Textarea name="description" label="Omschrijving" {...{ errors, register }} validation={{ required: true }} />
+      <Textarea name="description" label={t("Description")} {...{ errors, register }} validation={{ required: true }} />
 
       <Button type="submit">Verzenden</Button>
     </form>

@@ -13,3 +13,13 @@
   align-self: center;
   height: var(--conduction-nav-logo-height-lg);
 }
+
+.HeaderTemplate > .HeaderTemplate-subNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.HeaderTemplate > .HeaderTemplate-subNav > :first-child {
+  flex: 1;
+}
