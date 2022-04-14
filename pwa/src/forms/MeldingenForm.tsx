@@ -2,6 +2,7 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import { InputText, Textarea } from "../components/formFields";
+import { useTranslation } from "react-i18next";
 
 interface IMelding {
   title: string;
@@ -13,6 +14,8 @@ interface MeldingenFormProps {
 }
 
 export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
+  const { t } = useTranslation();
+
   const {
     register,
     formState: { errors },
@@ -39,11 +42,11 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <InputText name="title" label="Titel" {...{ errors, register }} validation={{ required: true }} />
+      <InputText name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
 
-      <Textarea name="description" label="Omschrijving" {...{ errors, register }} validation={{ required: true }} />
+      <Textarea name="description" label={t("Description")} {...{ errors, register }} validation={{ required: true }} />
 
-      <Button type="submit">Verzenden</Button>
+      <Button type="submit">{t("Send")}</Button>
     </form>
   );
 };
