@@ -15,6 +15,7 @@ export const handleLogin = async (data: IUnvalidatedUser, API: APIService) => {
   return await API.Login.login(data)
     .then((res) => {
       sessionStorage.setItem("username", res.data.username);
+      sessionStorage.setItem("JWT", res.data.jwtToken);
       API.setAuthentication(res.data.jwtToken);
       navigate("/");
     })
@@ -33,6 +34,7 @@ export const handleLogout = (API: APIService): void => {
   if (!isBrowser()) return;
 
   sessionStorage.removeItem("username");
+  sessionStorage.removeItem("JWT");
   API.removeAuthentication();
   navigate("/");
 };

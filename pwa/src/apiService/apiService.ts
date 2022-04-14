@@ -13,7 +13,6 @@ export default class APIService {
 
   public setAuthentication(_JWT: string): void {
     this.JWT = _JWT;
-    sessionStorage.setItem("JWT", _JWT);
   }
 
   public get authenticated(): boolean {
