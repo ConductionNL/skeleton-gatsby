@@ -12,7 +12,7 @@ import { Link } from "gatsby";
 
 export interface ISideNavItem {
   href: string;
-  title: string;
+  title: string | JSX.Element;
   current?: boolean;
   children?: {
     href: string;

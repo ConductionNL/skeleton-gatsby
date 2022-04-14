@@ -5,10 +5,12 @@ import { handleLogin } from "./../../services/auth";
 import { InputText, InputPassword } from "../../components/formFields";
 import { FormFieldError } from "../../components/formFields/formFieldError/FormFieldError";
 import "./LoginForm.css";
+import { useTranslation } from "react-i18next";
 
 export const LoginForm: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>("");
+  const {t} = useTranslation()
 
   const {
     register,
@@ -32,14 +34,14 @@ export const LoginForm: React.FC = () => {
     <form className="LoginForm" onSubmit={handleSubmit(onSubmit)}>
       <InputText
         name="username"
-        label="Gebruikersnaam"
+        label={t("Username")}
         {...{ errors, register }}
         validation={{ required: true }}
         disabled={loading}
       />
       <InputPassword
         name="password"
-        label="Wachtwoord"
+        label={t("Password")}
         {...{ errors, register }}
         validation={{ required: true }}
         disabled={loading}
@@ -48,7 +50,7 @@ export const LoginForm: React.FC = () => {
       {error && <FormFieldError error={error} />}
 
       <Button type="submit" disabled={loading}>
-        Verzenden
+        {t("Send")}
       </Button>
     </form>
   );

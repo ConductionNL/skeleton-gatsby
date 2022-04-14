@@ -9,7 +9,6 @@ import Footer from "./../components/footer/Footer";
 import { HeaderTemplate } from "../templates/header/HeaderTemplate";
 import { GatsbyProvider, IGatsbyContext } from "../context/gatsby";
 import { useTranslation } from "react-i18next";
-import { changeLanguage } from "i18next";
 
 interface LayoutProps {
   children: React.ReactNode;

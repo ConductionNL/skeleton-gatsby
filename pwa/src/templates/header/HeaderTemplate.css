@@ -23,3 +23,8 @@
 .HeaderTemplate > .HeaderTemplate-subNav > :first-child {
   flex: 1;
 }
+
+.HeaderTemplate > .HeaderTemplate-subNav > .switcher {
+  cursor: pointer;
+  
+}

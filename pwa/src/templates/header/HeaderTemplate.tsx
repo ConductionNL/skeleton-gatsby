@@ -7,9 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
+import { SelectLanguage } from "../../components/utrecht/selectLanguage/SelectLanguage";
 import { GatsbyContext } from "./../../context/gatsby";
+import { changeLanguage } from "i18next";
 import { useTranslation } from "react-i18next";
-import i18next, { changeLanguage, t } from "i18next";
 
 interface ITopNavItem {
   href: string;
@@ -18,21 +19,18 @@ interface ITopNavItem {
 }
 
 export const HeaderTemplate: React.FC = () => {
-  const { t } = useTranslation();
   const gatsbyContext = React.useContext(GatsbyContext);
   const [navItems, setNavItems] = React.useState<ITopNavItem[]>([]);
+  const { t } = useTranslation();
 
   const {
     breadcrumb: { crumbs },
   } = gatsbyContext.pageContext;
 
-  React.useEffect(() => {
-    i18next.on("languageChanged", () => setNavItems(getNavigationItems(gatsbyContext.location)));
-  }, []);
 
   React.useEffect(() => {
-    setNavItems(getNavigationItems(gatsbyContext.location));
-  }, [gatsbyContext.location]);
+    setNavItems(getNavigationItems(gatsbyContext.location, t));
+  }, [gatsbyContext.location, t]);
 
   return (
     <PageHeader className="HeaderTemplate">
@@ -41,17 +39,15 @@ export const HeaderTemplate: React.FC = () => {
 
       <div className="HeaderTemplate-subNav">
         <Breadcrumbs {...{ crumbs }} />
-
         <div className="switcher">
-          <button onClick={() => changeLanguage("en")}>Change to EN</button>
-          <button onClick={() => changeLanguage("nl")}>Change to NL</button>
+          <SelectLanguage />
         </div>
       </div>
     </PageHeader>
   );
 };
 
-const getNavigationItems = (location: any): ITopNavItem[] => {
+const getNavigationItems = (location: any, t: any): ITopNavItem[] => {
   const loggedInTitle = (
     <>
       {getUsername()} <FontAwesomeIcon icon={faLock} />
