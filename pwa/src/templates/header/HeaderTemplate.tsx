@@ -39,7 +39,7 @@ export const HeaderTemplate: React.FC = () => {
       <div className="HeaderTemplate-subNav">
         <Breadcrumbs {...{ crumbs }} />
 
-        <div className="switcher">
+        <div className="HeaderTemplate-languageSwitcher">
           <SelectLanguage
             languages={[
               {
