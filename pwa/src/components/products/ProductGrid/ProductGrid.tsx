@@ -11,9 +11,9 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
     <>
       {products ? (
         <div className="ProductGrid">
-          {/* {products.map((item: any) => (
+          {products.map((item: any) => (
             <ProductCard product={item} />
-          ))} */}
+          ))}
         </div>
       ) : (
         <span>No products found</span>

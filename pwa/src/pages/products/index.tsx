@@ -9,7 +9,7 @@ const ProductsIndex: React.FC = () => {
   if (getProducts.isLoading) return <>Loading products..</>;
   if (getProducts.isFetching) return <>Fetching products..</>;
   if (getProducts.isError) return <>ERROR</>;
-  return <ProductGrid products={getProducts.data} />;
+  return <ProductGrid products={getProducts.data ?? []} />;
 };
 
 export default ProductsIndex;

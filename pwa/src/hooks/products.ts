@@ -13,8 +13,8 @@ export const useProducts = () => {
       },
     });
 
-  const getOne = () =>
-    useQuery<any[], Error>("products", API.Product.getOne, {
+  const getOne = (productId: string) =>
+    useQuery<any[], Error>(`product`, API.Product.getOne(productId), {
       onError: (error) => {
       },
     });

@@ -1,32 +1,23 @@
 import * as React from "react";
 import { Heading1 } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import { ProductGrid } from "../components/products/ProductGrid/ProductGrid";
-import APIService from "../apiService/apiService";
-import APIContext from "../apiService/apiContext";
+import { useProducts } from "../hooks/products";
 
 export const UnauthenticatedTemplate: React.FC = () => {
-  const [products, setProducts] = React.useState(null);
-  const API: APIService | null = React.useContext(APIContext);
+  const _useProduct = useProducts();
+  const getProducts = _useProduct.getAll();
 
-  React.useEffect(() => {
-    !products && getProducts();
-  }, [API]);
-
-  const getProducts = () => {
-    API &&
-      API.APICalls.getAPI("products")
-        .then((res) => {
-          res.data.total && setProducts(res.data.results);
-        })
-        .catch((err) => {
-          throw new Error(err);
-        });
-  };
+  if (getProducts.isLoading) return;
+  if (getProducts.isFetching) return <>Fetching products..</>;
+  if (getProducts.isError) return <>ERROR</>;
 
   return (
     <>
       <Heading1>Welcome to the Skeleton Application</Heading1>
-      <ProductGrid products={products} />
+      {getProducts.isLoading && <>Loading products..</>}
+      {getProducts.isFetching && <>Fetching products..</>}
+      {getProducts.isError && <>ERROR loading products</>}
+      <ProductGrid products={getProducts.data ?? []} />
     </>
   );
 };
