@@ -24,4 +24,5 @@ export const nl = {
   "Welcome to the Skeleton Application": "Welkom op de Skelet Applicatie",
   Title: "Titel",
   Description: "Omschrijving",
+  "Notifications overview": "Meldingen overzicht",
 };

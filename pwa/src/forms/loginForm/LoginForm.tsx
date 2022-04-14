@@ -6,8 +6,10 @@ import { handleLogin } from "./../../services/auth";
 import { InputText, InputPassword } from "../../components/formFields";
 import { FormFieldError } from "../../components/formFields/formFieldError/FormFieldError";
 import { useTranslation } from "react-i18next";
+import APIContext from "../../apiService/apiContext";
 
 export const LoginForm: React.FC = () => {
+  const API = React.useContext(APIContext);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string>("");
   const { t } = useTranslation();
@@ -21,7 +23,7 @@ export const LoginForm: React.FC = () => {
   const onSubmit = async (data: any) => {
     setLoading(true);
     setError("");
-    await handleLogin(data)
+    await handleLogin(data, API)
       .catch((err) => {
         setError(err.message);
       })

@@ -24,4 +24,5 @@ export const en = {
   "Welcome to the Skeleton Application": "Welcome to the Skeleton Application",
   Title: "Title",
   Description: "Description",
+  "Notifications overview": "Notifications overview",
 };
