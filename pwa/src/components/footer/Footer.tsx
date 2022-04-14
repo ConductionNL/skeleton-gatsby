@@ -8,19 +8,22 @@ import {
 import "./Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faBuilding, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <PageFooter className="Footer">
       <UnorderedList className="UnorderedList">
-        <Heading4>Diensten</Heading4>
-        <UnorderedListItem>Verhuizen</UnorderedListItem>
-        <UnorderedListItem>Huwelijk</UnorderedListItem>
-        <UnorderedListItem>Uittreksel</UnorderedListItem>
+        <Heading4>{t("Services")}</Heading4>
+        <UnorderedListItem>{t("Moving")}</UnorderedListItem>
+        <UnorderedListItem>{t("Marriage")}</UnorderedListItem>
+        <UnorderedListItem>{t("Abridgment")}</UnorderedListItem>
       </UnorderedList>
 
       <UnorderedList className="UnorderedList">
-        <Heading4>Contact</Heading4>
+        <Heading4>{t("Contact")}</Heading4>
         <UnorderedListItem>
           <FontAwesomeIcon icon={faBuilding} />
           Stadswinkel, Marienburg 30
@@ -36,10 +39,12 @@ const Footer: React.FC = () => {
       </UnorderedList>
 
       <UnorderedList className="UnorderedList">
-        <Heading4>Openingstijden</Heading4>
-        <UnorderedListItem>Maandag - woensdag: 9.00 - 17.00</UnorderedListItem>
-        <UnorderedListItem>Donderdag: 9.00 - 20.00</UnorderedListItem>
-        <UnorderedListItem>Vrijdag: 9.00 - 17.00</UnorderedListItem>
+        <Heading4>{t("Opening hours")}</Heading4>
+        <UnorderedListItem>
+          {t("Monday")} - {t("Wednesday")}: 9.00 - 17.00
+        </UnorderedListItem>
+        <UnorderedListItem>{t("Thursday")}: 9.00 - 20.00</UnorderedListItem>
+        <UnorderedListItem>{t("Friday")}: 9.00 - 17.00</UnorderedListItem>
       </UnorderedList>
     </PageFooter>
   );
