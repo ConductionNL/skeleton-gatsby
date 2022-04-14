@@ -4,10 +4,18 @@ import Login from "./services/login";
 import Notification from "./resources/notification";
 
 export default class APIService {
-  private _jwtToken?: string;
+  private JWT?: string;
 
-  constructor(_jwtToken?: string) {
-    this._jwtToken = _jwtToken;
+  public removeAuthentication(): void {
+    this.JWT = undefined;
+  }
+
+  public setAuthentication(_JWT: string): void {
+    this.JWT = _JWT;
+  }
+
+  public get authenticated(): boolean {
+    return this.JWT ? true : false;
   }
 
   // Clients
@@ -17,7 +25,7 @@ export default class APIService {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Bearer " + this._jwtToken,
+        Authorization: "Bearer " + this.JWT,
       },
     });
   }
@@ -28,7 +36,7 @@ export default class APIService {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Bearer " + this._jwtToken,
+        Authorization: "Bearer " + this.JWT,
       },
     });
   }
@@ -50,7 +58,7 @@ export default class APIService {
 
   // Resources
   public get Notification(): Notification {
-    return new Notification(this.apiClient)
+    return new Notification(this.apiClient);
   }
 }
 

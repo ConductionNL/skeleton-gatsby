@@ -1,12 +1,14 @@
 import * as React from "react";
-import { Document, Page, PageContent } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import "../styling/index.css";
+import "./../translations/i18n";
+import { Document, Page, PageContent } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import { isLoggedIn } from "../services/auth";
-import { PrivateApiProvider } from "../context/privateApi";
+import APIContext, { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
 import Footer from "./../components/footer/Footer";
 import { HeaderTemplate } from "../templates/header/HeaderTemplate";
 import { GatsbyProvider, IGatsbyContext } from "../context/gatsby";
+import { useTranslation } from "react-i18next";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,7 +17,8 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
-  const [privateApi, setPrivateApi] = React.useState<APIService | null>(null);
+  const { t } = useTranslation();
+  const [API] = React.useState<APIService>(React.useContext(APIContext));
   const [gatsbyContext, setGatsbyContext] = React.useState<IGatsbyContext>({ ...{ pageContext, location } });
 
   React.useEffect(() => {
@@ -24,13 +27,14 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
 
   React.useEffect(() => {
     if (!isLoggedIn()) {
-      setPrivateApi(null);
+      API.removeAuthentication();
       return;
     }
 
-    const jwt = sessionStorage.getItem("jwt");
-    !privateApi && jwt && setPrivateApi(new APIService(jwt));
-  }, [privateApi, isLoggedIn()]);
+    if (API.authenticated) return;
+
+    API.setAuthentication(sessionStorage.getItem("JWT") ?? "");
+  }, [API, isLoggedIn()]);
 
   return (
     <GatsbyProvider value={gatsbyContext}>
@@ -38,10 +42,10 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
         <Page className="Page">
           <HeaderTemplate />
           <PageContent className="PageContent">
-            <PrivateApiProvider value={privateApi}>
-              <title>Skeleton Application</title>
+            <APIProvider value={API}>
+              <title>{t("Skeleton Application")}</title>
               {children}
-            </PrivateApiProvider>
+            </APIProvider>
           </PageContent>
           <Footer />
         </Page>
