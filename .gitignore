@@ -1,0 +1,5 @@
+pwa/public
+pwa/.cache
+pwa/node_modules
+
+certs
