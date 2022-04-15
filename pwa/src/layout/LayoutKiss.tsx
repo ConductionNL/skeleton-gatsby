@@ -15,7 +15,7 @@ interface LayoutProps {
   location: any; // Gatsby location
 }
 
-const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
+const LayoutKiss: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
   const { t } = useTranslation();
   const [API] = React.useState<APIService>(React.useContext(APIContext));
   const [gatsbyContext, setGatsbyContext] = React.useState<IGatsbyContext>({ ...{ pageContext, location } });
@@ -39,11 +39,10 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
               {children}
             </APIProvider>
           </PageContent>
-          <Footer />
         </Page>
       </Document>
     </GatsbyProvider>
   );
 };
 
-export default Layout;
+export default LayoutKiss;

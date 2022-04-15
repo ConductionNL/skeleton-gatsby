@@ -11,6 +11,7 @@ import { GatsbyContext } from "./../../context/gatsby";
 import i18next, { changeLanguage, TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 import { SelectLanguage } from "../../components/utrecht/selectLanguage/SelectLanguage";
+import { SideNav } from "../../components/utrecht/sideNav/SideNav";
 
 interface ITopNavItem {
   href: string;
@@ -34,7 +35,6 @@ export const HeaderTemplate: React.FC = () => {
   return (
     <PageHeader className="HeaderTemplate">
       <Logo className="HeaderTemplate-logo" />
-      <TopNav items={navItems} />
 
       <div className="HeaderTemplate-subNav">
         <Breadcrumbs {...{ crumbs }} />
