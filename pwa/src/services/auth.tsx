@@ -7,17 +7,16 @@ export interface IUnvalidatedUser {
   password: string;
 }
 
-const API: APIService = new APIService("");
-
 export const isBrowser = (): boolean => typeof window !== "undefined";
 
-export const handleDefaultLogin = async (data: IUnvalidatedUser) => {
+export const handleLogin = async (data: IUnvalidatedUser, API: APIService) => {
   if (!isBrowser()) return;
 
   return await API.Login.login(data)
     .then((res) => {
       sessionStorage.setItem("username", res.data.username);
-      sessionStorage.setItem("jwt", res.data.jwtToken);
+      sessionStorage.setItem("JWT", res.data.jwtToken);
+      API.setAuthentication(res.data.jwtToken);
       navigate("/");
     })
     .catch((err) => {
@@ -35,11 +34,12 @@ export const isLoggedIn = (): boolean | void => {
   return !!sessionStorage.getItem("username");
 };
 
-export const logout = (): void => {
+export const handleLogout = (API: APIService): void => {
   if (!isBrowser()) return;
 
   sessionStorage.removeItem("username");
-  sessionStorage.removeItem("jwt");
+  sessionStorage.removeItem("JWT");
+  API.removeAuthentication();
   navigate("/");
 };
 
@@ -54,4 +54,8 @@ export const validateSession = (): boolean | void => {
   const expired = decoded?.exp && Date.now() >= decoded.exp * 1000;
 
   return !expired;
+};
+
+export const getUsername = (): string => {
+  return sessionStorage.getItem("username") ?? "";
 };

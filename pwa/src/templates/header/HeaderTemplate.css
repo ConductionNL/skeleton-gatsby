@@ -1,0 +1,25 @@
+.HeaderTemplate {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.HeaderTemplate > *:not(:last-child) {
+  margin-block-end: var(--utrecht-space-inline-md);
+}
+
+.HeaderTemplate > .HeaderTemplate-logo {
+  display: flex;
+  align-self: center;
+  height: var(--conduction-nav-logo-height-lg);
+}
+
+.HeaderTemplate > .HeaderTemplate-subNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.HeaderTemplate > .HeaderTemplate-subNav > :first-child {
+  flex: 1;
+}

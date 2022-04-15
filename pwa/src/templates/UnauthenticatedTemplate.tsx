@@ -1,15 +1,12 @@
 import * as React from "react";
-import { Button, Heading1 } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
-import { Link } from "gatsby";
+import { Heading1 } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { useTranslation } from "react-i18next";
 
 export const UnauthenticatedTemplate: React.FC = () => {
+  const { t } = useTranslation();
   return (
     <>
-      <Heading1>Welcome to the Skeleton Application</Heading1>
-
-      <Link to="/login">
-        <Button>Login</Button>
-      </Link>
+      <Heading1>{t("Welcome to the Skeleton Application")}</Heading1>
     </>
   );
 };
