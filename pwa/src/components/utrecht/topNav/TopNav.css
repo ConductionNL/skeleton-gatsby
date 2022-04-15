@@ -1,0 +1,18 @@
+.utrecht-navhtml > .topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.utrecht-navhtml > .topnav > .topnav-searchbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.utrecht-navhtml > .topnav > .topnav-searchbar > svg {
+  padding-inline-start: var(--utrecht-space-inline-2xs);
+}
+
+.utrecht-navhtml > .topnav > :not(:first-child) {
+  flex: 0.35;
+}
