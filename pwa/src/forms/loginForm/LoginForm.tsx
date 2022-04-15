@@ -2,7 +2,7 @@ import * as React from "react";
 import "./LoginForm.css";
 import { useForm } from "react-hook-form";
 import { Button, Separator } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
-import { handleDigiDLogin, handleDefaultLogin } from "./../../services/auth";
+import { redirectToDigiD, handleDefaultLogin } from "./../../services/auth";
 import { InputText, InputPassword } from "../../components/formFields";
 import { FormFieldError } from "../../components/formFields/formFieldError/FormFieldError";
 import { useTranslation } from "react-i18next";
@@ -25,7 +25,7 @@ export const LoginForm: React.FC = () => {
   const onSubmit = async (data: any) => {
     setLoading(true);
     setError("");
-    await handleLogin(data, API)
+    await handleDefaultLogin(data, API)
       .catch((err) => {
         setError(err.message);
       })
@@ -37,7 +37,7 @@ export const LoginForm: React.FC = () => {
   const loginDigiD = async () => {
     setLoading(true);
     setError("");
-    handleDigiDLogin();
+    redirectToDigiD();
   };
 
   return (
