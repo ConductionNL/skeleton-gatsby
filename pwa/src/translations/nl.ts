@@ -2,6 +2,9 @@ export const nl = {
   "Skeleton Application": "Skelet Applicatie",
   Home: "Home",
   Products: "Producten",
+  products: "producten",
+  Fetching: "ophalen",
+  Loading: "Laden",
   News: "Nieuws",
   Login: "Inloggen",
   Services: "Diensten",
@@ -24,4 +27,5 @@ export const nl = {
   "Welcome to the Skeleton Application": "Welkom op de Skelet Applicatie",
   Title: "Titel",
   Description: "Omschrijving",
+  "Notifications overview": "Meldingen overzicht",
 };

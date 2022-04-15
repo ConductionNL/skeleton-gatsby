@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
-import { SelectLanguage } from "../../components/utrecht/selectLanguage/SelectLanguage";
 import { GatsbyContext } from "./../../context/gatsby";
 import i18next, { changeLanguage, TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
+import { SelectLanguage } from "../../components/utrecht/selectLanguage/SelectLanguage";
 
 interface ITopNavItem {
   href: string;

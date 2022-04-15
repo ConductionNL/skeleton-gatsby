@@ -2,6 +2,8 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import { InputText, Textarea } from "../components/formFields";
+import { useQueryClient } from "react-query";
+import { useNotification } from "../hooks/notifications";
 import { useTranslation } from "react-i18next";
 
 interface IMelding {
@@ -15,6 +17,10 @@ interface MeldingenFormProps {
 
 export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
   const { t } = useTranslation();
+  const queryClient = useQueryClient();
+
+  const _useNotification = useNotification(queryClient);
+  const createNotification = _useNotification.create();
 
   const {
     register,
@@ -33,11 +39,7 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
   };
 
   const onSubmit = (data: any) => {
-    /**
-     * Proof of Concept and demo completed
-     *
-     * TODO: process data
-     */
+    createNotification.mutate({ payload: data });
   };
 
   return (

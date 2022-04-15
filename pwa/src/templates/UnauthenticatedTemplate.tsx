@@ -8,7 +8,7 @@ export const UnauthenticatedTemplate: React.FC = () => {
   const _useProduct = useProducts();
   const getProducts = _useProduct.getAll();
 
-  if (getProducts.isLoading) return;
+  if (getProducts.isLoading) return <>Loading products..</>;
   if (getProducts.isFetching) return <>Fetching products..</>;
   if (getProducts.isError) return <>ERROR</>;
 

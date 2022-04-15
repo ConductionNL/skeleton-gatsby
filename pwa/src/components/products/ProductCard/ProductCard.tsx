@@ -10,20 +10,16 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <>
-      {product.title && (
-        <div className="ProductCard">
-          <span className="ProductName">{product.title}</span>
-          {/* <span>{`${product.description.substring(0, 57)}...`}</span> */}
-          {/* <span className="ProductPrice">{centsToString(product.price.toString())}</span> */}
+      {/* {product.title && ( */}
+      <div className="ProductCard">
+        <span className="ProductName">{product.title}</span>
 
-          {/* <ULink> */}
-          {/* We want a Utrecht Link with gatsby Link functionality */}
-          <Link to={`/products/${product.id}`} className="utrecht-link">
-            Bekijken
-          </Link>
-          {/* </ULink> */}
-        </div>
-      )}
+        {/* <ULink> */}
+        {/* We want a Utrecht Link with gatsby Link functionality */}
+        <Link to={`/products/${product.id}`}>Bekijken</Link>
+        {/* </ULink> */}
+      </div>
+      {/* )}  */}
     </>
   );
 };

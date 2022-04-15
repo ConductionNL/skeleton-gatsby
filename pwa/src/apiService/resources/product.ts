@@ -1,5 +1,5 @@
 import { Send } from "../apiService";
-import { AxiosInstance, AxiosResponse } from "axios";
+import { AxiosInstance } from "axios";
 
 export default class Product {
   private _instance: AxiosInstance;
@@ -9,12 +9,13 @@ export default class Product {
   }
 
   public getAll = async (): Promise<any> => {
-    const {data} = await Send(this._instance, "GET", `/products`);
+    const { data } = await Send(this._instance, "GET", `/products`);
     return data.results;
   };
 
+  
   public getOne = async (productId: string): Promise<any> => {
-    const {data} = await Send(this._instance, "GET", `/products/${productId}`);
+    const { data } = await Send(this._instance, "GET", `/products/${productId}`);
     return data;
   };
 

@@ -25,12 +25,19 @@ export const AuthenticatedTemplate: React.FC = ({ children }) => {
   );
 };
 
-const getSideNavItems = (location: any): any[] => {
+const getSideNavItems = (location: any): ISideNavItem[] => {
   return [
     {
       href: "/meldingen",
       title: t("Notifications"),
       current: location.pathname === "/meldingen",
+      children: [
+        {
+          href: "/meldingen/overzicht",
+          title: t("Notifications overview"),
+          current: location.pathname === "/meldingen/overzicht",
+        },
+      ],
     },
   ];
 };

@@ -2,6 +2,9 @@ export const en = {
   "Skeleton Application": "Skeleton Application",
   Home: "Home",
   Products: "Products",
+  products: "products",
+  Fetching: "fetching",
+  Loading: "loading",
   News: "News",
   Login: "Login",
   Services: "Services",
@@ -24,4 +27,5 @@ export const en = {
   "Welcome to the Skeleton Application": "Welcome to the Skeleton Application",
   Title: "Title",
   Description: "Description",
+  "Notifications overview": "Notifications overview",
 };
