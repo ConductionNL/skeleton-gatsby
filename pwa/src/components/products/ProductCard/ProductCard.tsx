@@ -1,5 +1,4 @@
 import * as React from "react";
-import { centsToString } from "../../../services/utility";
 import { Link as ULink } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import { Link } from "gatsby";
 
