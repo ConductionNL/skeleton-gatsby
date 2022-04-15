@@ -2,6 +2,7 @@ import axios, { AxiosInstance, AxiosResponse } from "axios";
 import Login from "./services/login";
 import Notification from "./resources/notification";
 import Product from "./resources/product";
+import Notification from "./resources/notification";
 
 export default class APIService {
   public JWT?: string;
@@ -20,6 +21,28 @@ export default class APIService {
 
   // Clients
   public get adminClient(): AxiosInstance {
+    return axios.create({
+      baseURL: process.env.GATSBY_ADMIN_URL,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.JWT,
+      },
+    });
+  }
+
+  public get apiClient(): AxiosInstance {
+    return axios.create({
+      baseURL: process.env.GATSBY_API_URL,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.JWT,
+      },
+    });
+  }
+
+  public get loginClient(): AxiosInstance {
     return axios.create({
       baseURL: process.env.GATSBY_ADMIN_URL,
       headers: {
