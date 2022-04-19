@@ -52,17 +52,17 @@ jobs:
           echo "APP_BUILD=stag">> $GITHUB_ENV
           echo "set APP_ENV to $APP_ENV"
       - name: hackaton/2022-04
-          if: contains( github.ref, 'hackathon' ) || contains( github.base_ref, 'hackathon' )
-          run: |
-            echo "APP_ENV=hackathon">> $GITHUB_ENV
-            echo "APP_BUILD=hackathon">> $GITHUB_ENV
-            echo "set APP_ENV to $APP_ENV"
+        if: contains( github.ref, 'hackathon' ) || contains( github.base_ref, 'hackathon' )
+        run: |
+          echo "APP_ENV=hackathon">> $GITHUB_ENV
+          echo "APP_BUILD=hackathon">> $GITHUB_ENV
+          echo "set APP_ENV to $APP_ENV"
       - name: hackaton-Kiss/2022-04
-          if: contains( github.ref, 'hackathonKiss' ) || contains( github.base_ref, 'hackathonKiss' )
-          run: |
-            echo "APP_ENV=hackathonKiss">> $GITHUB_ENV
-            echo "APP_BUILD=hackathonKiss">> $GITHUB_ENV
-            echo "set APP_ENV to $APP_ENV"
+        if: contains( github.ref, 'hackathonKiss' ) || contains( github.base_ref, 'hackathonKiss' )
+        run: |
+          echo "APP_ENV=hackathonKiss">> $GITHUB_ENV
+          echo "APP_BUILD=hackathonKiss">> $GITHUB_ENV
+          echo "set APP_ENV to $APP_ENV"
       - name: Print definitive APP_ENV
         run: echo "APP_ENV is now $APP_ENV and APP_BUILD is now $APP_BUILD"
       - name: Build the Docker image
