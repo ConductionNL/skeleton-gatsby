@@ -1,4 +1,5 @@
-pwa/node_modules/
-pwa/.cache/
-pwa/public
 .idea/
+
+pwa/.cache
+pwa/node_modules
+pwa/public
