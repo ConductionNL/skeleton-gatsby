@@ -25,4 +25,7 @@ export const en = {
   Title: "Title",
   Description: "Description",
   "Notifications overview": "Notifications overview",
+  Settings: "Settings",
+  Profile: "Profile",
+  Search: "Search",
 };

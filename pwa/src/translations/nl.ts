@@ -25,4 +25,7 @@ export const nl = {
   Title: "Titel",
   Description: "Omschrijving",
   "Notifications overview": "Meldingen overzicht",
+  Settings: "Instellingen",
+  Profile: "Profiel",
+  Search: "Zoeken",
 };
