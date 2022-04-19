@@ -6,6 +6,8 @@ on:
       - master
       - staging
       - development
+      - hackathon-Kiss/2022-04
+      - hackathon/2022-04
   push:
     branches:
       - master
