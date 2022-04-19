@@ -12,16 +12,18 @@ interface IMelding {
 }
 
 interface MeldingenFormProps {
+  notificationId: string;
   melding?: IMelding;
 }
 
-export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
+export const MeldingenForm: React.FC<MeldingenFormProps> = ( { notificationId, melding }) => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
 
   const _useNotification = useNotification(queryClient);
-  const createNotification = _useNotification.create();
-
+  const getNotification = _useNotification.getOne(notificationId);
+  const createOrUpdateNotification = _useNotification.createOrEdit();
+  console.log(notificationId);
   const {
     register,
     formState: { errors },
@@ -39,16 +41,23 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
   };
 
   const onSubmit = (data: any) => {
-    createNotification.mutate({ payload: data });
+    createOrUpdateNotification.mutate({ payload: data, id: notificationId });
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <InputText name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
+    getNotification.isSuccess && (
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <InputText name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
 
-      <Textarea name="description" label={t("Description")} {...{ errors, register }} validation={{ required: true }} />
+        <Textarea
+          name="description"
+          label={t("Description")}
+          {...{ errors, register }}
+          validation={{ required: true }}
+        />
 
-      <Button type="submit">{t("Send")}</Button>
-    </form>
+        <Button type="submit">{t("Send")}</Button>
+      </form>
+    )
   );
 };

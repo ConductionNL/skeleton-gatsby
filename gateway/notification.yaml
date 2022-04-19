@@ -1,19 +1,38 @@
+parameters:
+  notificationItemRegex: "#^(notifications/[^/]*)$#"
+
 App\Entity\Endpoint:
   notificationsGet:
     name: Notifications endpoint get collection
     description: endpoint voor notifications
-    path: ['notifications']
+    path: ["notifications"]
     pathRegex: "#^(notifications)$#"
     method: GET
     operationType: collection
 
   notificationsPost:
-    name: Weer endpoint post
+    name: Notifications endpoint post
     description: endpoint voor notifications
-    path: ['notifications']
+    path: ["notifications"]
     pathRegex: "#^(notifications)$#"
     method: POST
     operationType: collection
+
+  notificationGetItem:
+    name: Notifications Endpoint get item
+    description: endpoint voor notifications
+    path: ["notifications", "{id}"]
+    pathRegex: <{notificationItemRegex}>
+    method: GET
+    operationType: "item"
+
+  notificationEndpointPut:
+    name: Weer Endpoint put
+    description: endpoint voor notifications
+    path: ["notifications", "{id}"]
+    pathRegex: <{notificationItemRegex}>
+    method: PUT
+    operationType: "item"
 
 App\Entity\Entity:
   notifications:
@@ -27,7 +46,13 @@ App\Entity\Handler:
     methods: ["*"]
     sequence: 0
     conditions: "{}"
-    endpoints: ["@notificationsGet", "@notificationsPost"]
+    endpoints:
+      [
+        "@notificationsGet",
+        "@notificationsPost",
+        "@notificationGetItem",
+        "@notificationEndpointPut",
+      ]
     entity: "@notifications"
 
 App\Entity\Attribute:

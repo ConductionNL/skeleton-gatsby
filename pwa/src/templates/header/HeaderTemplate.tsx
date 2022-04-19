@@ -64,10 +64,32 @@ export const HeaderTemplate: React.FC = () => {
 };
 
 const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
+  const loggedInTitle = (
+    <>
+      {getUsername()} <FontAwesomeIcon icon={faLock} />
+    </>
+  );
+
+  const loggedOutTitle = (
+    <>
+      {t("Login")} <FontAwesomeIcon icon={faLockOpen} />
+    </>
+  );
   const staticNavItems: ITopNavItem[] = [
     { title: t("Profile"), href: "/profile", current: location.pathname === "/profile" },
     { title: t("Settings"), href: "/settings", current: location.pathname === "/settings" },
   ];
 
-  return [...staticNavItems];
+  const userNavItem: ITopNavItem = isLoggedIn()
+    ? {
+        title: loggedInTitle,
+        href: "/logout",
+      }
+    : {
+        title: loggedOutTitle,
+        href: "/login",
+        current: location.pathname === "/login",
+      };
+
+  return [...staticNavItems, userNavItem];
 };
