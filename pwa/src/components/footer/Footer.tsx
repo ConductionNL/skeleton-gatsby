@@ -4,7 +4,7 @@ import {
   PageFooter,
   UnorderedList,
   UnorderedListItem,
-} from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+} from "@utrecht/component-library-react/dist";
 import "./Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faBuilding, faEnvelope } from "@fortawesome/free-solid-svg-icons";
