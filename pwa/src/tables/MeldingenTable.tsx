@@ -6,7 +6,7 @@ import {
   TableRow,
   TableCell,
   TableHeader,
-} from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+} from "@utrecht/component-library-react/dist";
 
 interface MeldingenProps {
   meldingen: any[];

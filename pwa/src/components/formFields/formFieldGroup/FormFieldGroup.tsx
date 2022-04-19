@@ -2,7 +2,7 @@ import * as React from "react";
 import "./FormFieldGroup.css";
 import { FieldErrors } from "react-hook-form";
 import { IFormFieldProps } from "../types";
-import { FormLabel } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { FormLabel } from "@utrecht/component-library-react/dist";
 import { FormFieldError } from "../formFieldError/FormFieldError";
 
 interface IFormFieldGroupProps {

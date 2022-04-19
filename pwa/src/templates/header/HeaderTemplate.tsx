@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./HeaderTemplate.css";
-import { PageHeader } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { PageHeader } from "@utrecht/component-library-react/dist";
 import { TopNav } from "./../../components/utrecht/topNav/TopNav";
 import { getUsername, isLoggedIn } from "../../services/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
