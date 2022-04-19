@@ -9,6 +9,11 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import clsx from "clsx";
+import Logo from "./../../../assets/logo.svg";
+import "./TopNav.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { t } from "i18next";
 
 interface ITopNavItem {
   href: string;
@@ -24,6 +29,10 @@ export const TopNav: React.FC<TopNavProps> = ({ items }) => {
   return (
     <div className="utrecht-navhtml">
       <nav className="topnav">
+        <Logo className="topnav-logo" />
+        <a className="topnav-searchbar">
+          {t("Search")} <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </a>
         <ul className="utrecht-topnav__list">
           {items.map((item, idx) => (
             <li key={idx} className="utrecht-topnav__item">
