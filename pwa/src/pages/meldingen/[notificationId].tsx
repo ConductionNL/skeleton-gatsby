@@ -5,9 +5,6 @@ import { AuthenticatedTemplate } from "../../templates/AuthenticatedTemplate/Aut
 
 const MeldingenOverview: React.FC = (props) => {
   const notificationId: string = props.params.notificationId === "new" ? null : props.params.notificationId;
-
-  console.log(props);
-
   return (
     <PrivateRoute>
       <AuthenticatedTemplate>

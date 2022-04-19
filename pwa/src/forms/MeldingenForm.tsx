@@ -16,24 +16,30 @@ interface MeldingenFormProps {
   melding?: IMelding;
 }
 
-export const MeldingenForm: React.FC<MeldingenFormProps> = ( { notificationId, melding }) => {
+export const MeldingenForm: React.FC<MeldingenFormProps> = ( { notificationId }) => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
 
   const _useNotification = useNotification(queryClient);
   const getNotification = _useNotification.getOne(notificationId);
   const createOrUpdateNotification = _useNotification.createOrEdit();
-  console.log(notificationId);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
     setValue,
+    getValues,
+    control,
   } = useForm();
 
   React.useEffect(() => {
-    melding && handleSetFormValues(melding);
-  }, [melding]);
+    if (getNotification.isSuccess) {
+      const notification = getNotification.data;
+
+      handleSetFormValues(notification);
+    }
+  }, [getNotification.isSuccess]);
 
   const handleSetFormValues = (formValues: IMelding): void => {
     setValue("title", formValues.title);
