@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Textbox } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { TextField } from "@gemeente-denhaag/textfield";
 import { FormFieldGroup } from "./formFieldGroup/FormFieldGroup";
 import { IFormFieldProps, IReactHookFormProps } from "./types";
 
@@ -17,7 +17,7 @@ export const Input: React.FC<IInputProps & IFormFieldProps & IReactHookFormProps
   register,
 }) => (
   <FormFieldGroup {...{ name, label, errors }}>
-    <Textbox id={name} {...register(name, { ...validation })} invalid={errors[name]} {...{ disabled, type }} />
+    <TextField id={name} {...register(name, { ...validation })} invalid={errors[name]} {...{ disabled, type }} />
   </FormFieldGroup>
 );
 

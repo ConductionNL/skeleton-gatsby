@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useQueryClient } from "react-query";
 import { useProducts } from "../../hooks/products";
-import { Heading1, Article } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { Heading1, Article } from "@utrecht/component-library-react/dist";
 
 const ProductPage = (props: any) => {
   const productId: string = props.params.id === "new" ? null : props.params.id;

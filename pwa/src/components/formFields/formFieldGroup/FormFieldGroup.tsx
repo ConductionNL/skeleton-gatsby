@@ -2,7 +2,8 @@ import * as React from "react";
 import "./FormFieldGroup.css";
 import { FieldErrors } from "react-hook-form";
 import { IFormFieldProps } from "../types";
-import { FormLabel } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { FormGroup } from "@gemeente-denhaag/formgroup";
+import { FormLabel } from "@utrecht/component-library-react/dist";
 import { FormFieldError } from "../formFieldError/FormFieldError";
 
 interface IFormFieldGroupProps {
@@ -13,13 +14,13 @@ export const FormFieldGroup: React.FC<IFormFieldGroupProps & IFormFieldProps> = 
   const hasError: boolean = props.errors[props.name];
 
   return (
-    <div className={`FormField-group ${hasError && "FormField-group--error"}`}>
+    <FormGroup className={`${hasError && "FormField-group--error"}`}>
       <FormLabel htmlFor={props.name}>{props.label}</FormLabel>
 
       {props.children}
 
       {hasError && <FormFieldError error={getErrorMessage(props.errors[props.name])} />}
-    </div>
+    </FormGroup>
   );
 };
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./LoginForm.css";
 import { useForm } from "react-hook-form";
-import { Button } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { Button } from "@gemeente-denhaag/button";
 import { handleLogin } from "./../../services/auth";
 import { InputText, InputPassword } from "../../components/formFields";
 import { FormFieldError } from "../../components/formFields/formFieldError/FormFieldError";
