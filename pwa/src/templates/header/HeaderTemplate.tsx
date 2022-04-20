@@ -3,14 +3,13 @@ import "./HeaderTemplate.css";
 import { PageHeader } from "@utrecht/component-library-react/dist";
 import { TopNav } from "../../components/utrecht/topNav/TopNav";
 import { getUsername, isLoggedIn } from "../../services/auth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
 import { GatsbyContext } from "./../../context/gatsby";
 import i18next, { changeLanguage, TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 import { SelectLanguage } from "../../components/utrecht/selectLanguage/SelectLanguage";
+import { UserIcon, UserLoggedInIcon } from "@gemeente-denhaag/icons";
 
 interface ITopNavItem {
   href: string;
@@ -67,13 +66,13 @@ export const HeaderTemplate: React.FC = () => {
 const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
   const loggedInTitle = (
     <>
-      {getUsername()} <FontAwesomeIcon icon={faLock} />
+      {getUsername()} <UserLoggedInIcon />
     </>
   );
 
   const loggedOutTitle = (
     <>
-      {t("Login")} <FontAwesomeIcon icon={faLockOpen} />
+      {t("Login")} <UserIcon />
     </>
   );
 

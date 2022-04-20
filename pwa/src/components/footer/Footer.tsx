@@ -1,13 +1,7 @@
 import React from "react";
-import {
-  Heading4,
-  PageFooter,
-  UnorderedList,
-  UnorderedListItem,
-} from "@utrecht/component-library-react/dist";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faBuilding, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { Heading4, PageFooter, UnorderedList, UnorderedListItem } from "@utrecht/component-library-react/dist";
 import { useTranslation } from "react-i18next";
+import {CallIcon, EmailIcon, HouseIcon,} from "@gemeente-denhaag/icons";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -24,15 +18,15 @@ const Footer: React.FC = () => {
       <UnorderedList className="UnorderedList">
         <Heading4>{t("Contact")}</Heading4>
         <UnorderedListItem>
-          <FontAwesomeIcon icon={faBuilding} />
+          <HouseIcon />
           Stadswinkel, Marienburg 30
         </UnorderedListItem>
         <UnorderedListItem>
-          <FontAwesomeIcon icon={faPhone} />
+          <CallIcon />
           0612345678
         </UnorderedListItem>
         <UnorderedListItem>
-          <FontAwesomeIcon icon={faEnvelope} />
+          <EmailIcon />
           gemeente@utrecht.nl
         </UnorderedListItem>
       </UnorderedList>
