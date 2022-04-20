@@ -21,9 +21,10 @@ interface ITopNavItem {
 
 export const HeaderTemplate: React.FC = () => {
   const gatsbyContext = React.useContext(GatsbyContext);
+  const { t } = useTranslation();
   const [staticNavItems, setStaticNavItems] = React.useState<ITopNavItem[]>([]);
   const [userNavItem, setUserNavItem] = React.useState<ITopNavItem[]>([]);
-  const { t } = useTranslation();
+
 
   const {
     breadcrumb: { crumbs },
@@ -35,38 +36,14 @@ export const HeaderTemplate: React.FC = () => {
       { title: "Producten", href: "/producten", current: location.pathname === "/producten" },
       { title: "Nieuws", href: "/nieuws", current: location.pathname === "/nieuws" },
     ]);
-    setUserNavItem(getUserNavItem(gatsbyContext.location));
-  }, [gatsbyContext.location]);
-    setNavItems(getNavigationItems(gatsbyContext.location, t));
+    setUserNavItem(getNavigationItems(gatsbyContext.location, t));
   }, [gatsbyContext.location, t]);
 
   return (
     <PageHeader className="HeaderTemplate">
       <Logo className="HeaderTemplate-logo" />
       <div className="HeaderTemplate-subNav">
-        <Breadcrumbs {...{ crumbs }} />
-        <div className="HeaderTemplate-languageSwitcher">
-          <SelectLanguage
-            languages={[
-              {
-                label: "NL",
-                key: "nl",
-                title: "Deze pagina in Nederlands",
-                onClick: () => changeLanguage("nl"),
-                current: i18next.language === "nl",
-              },
-              {
-                label: "EN",
-                key: "en",
-                title: "This page is in English",
-                onClick: () => changeLanguage("en"),
-                current: i18next.language === "en",
-              },
-            ]}
-          />
-        </div>
-      </div>
-      <div className="HeaderTemplate-topNav">
+
         <TopNav items={staticNavItems} />
         <SearchBar buttonLabel="Zoek" />
         <TopNav items={userNavItem} />
