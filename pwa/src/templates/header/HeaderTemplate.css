@@ -29,3 +29,13 @@
 .HeaderTemplate > .HeaderTemplate-topNav > *:not(:first-child) {
   flex: 1;
 }
+
+.HeaderTemplate > .HeaderTemplate-subNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.HeaderTemplate > .HeaderTemplate-subNav > :first-child {
+  flex: 1;
+}

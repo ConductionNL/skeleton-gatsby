@@ -1,12 +1,13 @@
 import * as React from "react";
-import { Document, Page, PageContent } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
 import "../styling/index.css";
-import { isLoggedIn } from "../services/auth";
-import { APIProvider } from "../apiService/apiContext";
+import "./../translations/i18n";
+import { Document, Page, PageContent } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import APIContext, { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
 import Footer from "./../components/footer/Footer";
 import { HeaderTemplate } from "../templates/header/HeaderTemplate";
 import { GatsbyProvider, IGatsbyContext } from "../context/gatsby";
+import { useTranslation } from "react-i18next";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -15,22 +16,17 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
-  const [API, setAPI] = React.useState<APIService | null>(null);
+  const { t } = useTranslation();
+  const [API] = React.useState<APIService>(React.useContext(APIContext));
   const [gatsbyContext, setGatsbyContext] = React.useState<IGatsbyContext>({ ...{ pageContext, location } });
 
   React.useEffect(() => {
     setGatsbyContext({ ...{ pageContext, location } });
+
+    const JWT = sessionStorage.getItem("JWT");
+
+    !API.authenticated && JWT && API.setAuthentication(JWT);
   }, [pageContext, location]);
-
-  React.useEffect(() => {
-    if (!isLoggedIn()) {
-      setAPI(null);
-      return;
-    }
-
-    const jwt = sessionStorage.getItem("jwt");
-    !API && jwt && setAPI(new APIService(jwt));
-  }, [API, isLoggedIn()]);
 
   return (
     <GatsbyProvider value={gatsbyContext}>
@@ -39,7 +35,7 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
           <HeaderTemplate />
           <PageContent className="PageContent">
             <APIProvider value={API}>
-              <title>Skeleton Application</title>
+              <title>{t("Skeleton Application")}</title>
               {children}
             </APIProvider>
           </PageContent>

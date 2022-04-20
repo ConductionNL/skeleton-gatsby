@@ -9,6 +9,9 @@ import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
 import { GatsbyContext } from "./../../context/gatsby";
 import { SearchBar } from "../../components/utrecht/searchBar/SearchBar";
+import i18next, { changeLanguage, TFunction } from "i18next";
+import { useTranslation } from "react-i18next";
+import { SelectLanguage } from "../../components/utrecht/selectLanguage/SelectLanguage";
 
 interface ITopNavItem {
   href: string;
@@ -20,6 +23,7 @@ export const HeaderTemplate: React.FC = () => {
   const gatsbyContext = React.useContext(GatsbyContext);
   const [staticNavItems, setStaticNavItems] = React.useState<ITopNavItem[]>([]);
   const [userNavItem, setUserNavItem] = React.useState<ITopNavItem[]>([]);
+  const { t } = useTranslation();
 
   const {
     breadcrumb: { crumbs },
@@ -33,10 +37,35 @@ export const HeaderTemplate: React.FC = () => {
     ]);
     setUserNavItem(getUserNavItem(gatsbyContext.location));
   }, [gatsbyContext.location]);
+    setNavItems(getNavigationItems(gatsbyContext.location, t));
+  }, [gatsbyContext.location, t]);
 
   return (
     <PageHeader className="HeaderTemplate">
       <Logo className="HeaderTemplate-logo" />
+      <div className="HeaderTemplate-subNav">
+        <Breadcrumbs {...{ crumbs }} />
+        <div className="HeaderTemplate-languageSwitcher">
+          <SelectLanguage
+            languages={[
+              {
+                label: "NL",
+                key: "nl",
+                title: "Deze pagina in Nederlands",
+                onClick: () => changeLanguage("nl"),
+                current: i18next.language === "nl",
+              },
+              {
+                label: "EN",
+                key: "en",
+                title: "This page is in English",
+                onClick: () => changeLanguage("en"),
+                current: i18next.language === "en",
+              },
+            ]}
+          />
+        </div>
+      </div>
       <div className="HeaderTemplate-topNav">
         <TopNav items={staticNavItems} />
         <SearchBar buttonLabel="Zoek" />
@@ -47,6 +76,7 @@ export const HeaderTemplate: React.FC = () => {
   );
 };
 
+const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
 const getUserNavItem = (location: any): ITopNavItem[] => {
   const loggedInTitle = (
     <>
@@ -56,9 +86,14 @@ const getUserNavItem = (location: any): ITopNavItem[] => {
 
   const loggedOutTitle = (
     <>
-      Login <FontAwesomeIcon icon={faLockOpen} />
+      {t("Login")} <FontAwesomeIcon icon={faLockOpen} />
     </>
   );
+
+  const staticNavItems: ITopNavItem[] = [
+    { title: "Producten", href: "/products", current: location.pathname === "/products" },
+    { title: "Nieuws", href: "/nieuws", current: location.pathname === "/nieuws" },
+  ];
 
   const userNavItem: ITopNavItem = isLoggedIn()
     ? {
