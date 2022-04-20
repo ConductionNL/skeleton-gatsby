@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { Button } from "@utrecht/component-library-react/dist";
 import { InputText, Textarea } from "../components/formFields";
 import { useQueryClient } from "react-query";
 import { useNotification } from "../hooks/notifications";

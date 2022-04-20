@@ -22,12 +22,6 @@ module.exports = {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
         useAutoGen: true,
-        exclude: [
-          `**/dev-404-page/**`,
-          `**/404/**`,
-          `**/404.html`,
-          `**/offline-plugin-app-shell-fallback/**`
-        ],
         excludeOptions: {
           separator: "."
         },

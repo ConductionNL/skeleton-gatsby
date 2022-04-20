@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link as ULink } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { Link as ULink } from "@utrecht/component-library-react/dist";
 import { Link } from "gatsby";
 
 interface ProductCardProps {
