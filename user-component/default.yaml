@@ -1,4 +1,11 @@
 App\Entity\Group:
+    anonymous:
+        name: ANONYMOUS
+        description: Anonymous group
+        organization: http://api/admin/organizations/a1c8e0b6-2f78-480d-a9fb-9792142f4761
+        scopes:
+            - '@nieuws_read'
+
     admin:
         description: the admin group
         id: 2809c0d7-fecf-41da-8dbf-3d09af0d025c
@@ -22,6 +29,9 @@ App\Entity\Scope:
     admin_update:
         code: PUT.admin
         name: Update admin
+    nieuws_read:
+        name: 'Read nieuws'
+        code: 'GET.nieuws'
 App\Entity\User:
     someUser:
         id: 2ac800cc-b844-458d-87e1-b206fa80113a
