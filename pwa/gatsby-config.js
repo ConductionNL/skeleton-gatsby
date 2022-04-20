@@ -22,6 +22,15 @@ module.exports = {
       resolve: `gatsby-plugin-breadcrumb`,
       options: {
         useAutoGen: true,
+        excludeOptions: {
+          separator: ".",
+        },
+        crumbLabelUpdates: [
+          {
+            pathname: "/nieuws/[id]",
+            crumbLabel: "Nieuws",
+          },
+        ],
       },
     },
   ],
