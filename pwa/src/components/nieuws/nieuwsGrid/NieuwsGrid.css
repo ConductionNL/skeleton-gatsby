@@ -1,0 +1,14 @@
+.Nieuws-Grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.Nieuws-Grid > .Nieuws-Card {
+  flex: 0 0 33.33%;
+  padding-inline-start: var(--utrecht-space-row-md);
+  padding-inline-end: var(--utrecht-space-row-md) ;
+  padding-block-start: var(--utrecht-space-column-lg);
+  padding-block-end: var(--utrecht-space-column-lg) ;
+
+}

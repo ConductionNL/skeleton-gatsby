@@ -3,8 +3,9 @@ App\Entity\Group:
         name: ANONYMOUS
         description: Anonymous group
         organization: http://api/admin/organizations/a1c8e0b6-2f78-480d-a9fb-9792142f4761
-        scopes: 
+        scopes:
             - '@products_read'
+            - '@nieuws_read'
 
     admin:
         description: the admin group
@@ -33,6 +34,10 @@ App\Entity\Scope:
     products_read:
         name: 'Read products'
         code: 'GET.product'
+
+    nieuws_read:
+        name: 'Read nieuws'
+        code: 'GET.nieuws'
 
 App\Entity\User:
     someUser:

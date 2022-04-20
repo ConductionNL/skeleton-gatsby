@@ -35,6 +35,10 @@ module.exports = {
           {
             pathname: "/products/[id]",
             crumbLabel: "Product"
+          },
+          {
+            pathname: "/nieuws/[id]",
+            crumbLabel: "Nieuws"
           }
         ]
       }
