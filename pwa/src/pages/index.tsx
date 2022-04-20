@@ -3,9 +3,6 @@ import * as React from "react";
 import { PrivateRoute } from "../components/privateRoute/PrivateRoute";
 import { ISideNavItem, SideNav } from "../components/utrecht/sideNav/SideNav";
 import { GatsbyContext } from "../context/gatsby";
-import { isLoggedIn } from "../services/auth";
-import { AuthenticatedTemplate } from "../templates/AuthenticatedTemplate/AuthenticatedTemplate";
-import { UnauthenticatedTemplate } from "../templates/UnauthenticatedTemplate";
 
 const IndexPage: React.FC = ({children}) => {
   const gatsbyContext = React.useContext(GatsbyContext);

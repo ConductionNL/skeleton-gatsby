@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link as ULink } from "@utrecht/component-library-react/dist";
 import { Link } from "gatsby";
 import "./NieuwsCard.css";
 
