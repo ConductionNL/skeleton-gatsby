@@ -63,7 +63,6 @@ const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
   const staticNavItems: ITopNavItem[] = [
     { title: t("Profile"), href: "/profile", current: location.pathname === "/profile" },
     { title: t("Settings"), href: "/settings", current: location.pathname === "/settings" },
-    { title: t("nieuws"), href: "/nieuws", current: location.pathname === "/nieuws" },
   ];
 
   return [...staticNavItems];

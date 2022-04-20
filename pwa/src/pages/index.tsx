@@ -38,6 +38,11 @@ const getSideNavItems = (location: any): ISideNavItem[] => {
         },
       ],
     },
+    {
+      href: "/nieuws",
+      title: t("News"),
+      current: location.pathname === "/nieuws",
+    },
   ];
 };
 
