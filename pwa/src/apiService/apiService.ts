@@ -24,7 +24,7 @@ export default class APIService {
       headers : this.JWT ? {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: this.JWT
+      Authorization: `Bearer ${this.JWT}`
     } : {
       Accept: "application/json",
       "Content-Type": "application/json"
