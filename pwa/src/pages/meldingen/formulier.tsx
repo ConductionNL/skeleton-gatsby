@@ -6,7 +6,9 @@ import { AuthenticatedTemplate } from "../../templates/AuthenticatedTemplate/Aut
 const MeldingenIndex: React.FC = () => {
   return (
     <PrivateRoute>
-      <AuthenticatedTemplate/>
+      <AuthenticatedTemplate>
+        <MeldingenForm />
+      </AuthenticatedTemplate>
     </PrivateRoute>
   );
 };

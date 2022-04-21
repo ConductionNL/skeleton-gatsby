@@ -33,6 +33,11 @@ const getSideNavItems = (location: any): ISideNavItem[] => {
       current: location.pathname === "/meldingen",
       children: [
         {
+          href: "/meldingen/formulier",
+          title: "Melding doen",
+          current: location.pathname === "/meldingen/formulier",
+        },
+        {
           href: "/meldingen/overzicht",
           title: t("Notifications overview"),
           current: location.pathname === "/meldingen/overzicht",
