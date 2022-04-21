@@ -67,13 +67,13 @@ export const HeaderTemplate: React.FC = () => {
 const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
   const loggedInTitle = (
     <>
-        {getUsername()} <FontAwesomeIcon icon={faLock} />
+        {getUsername()} <FontAwesomeIcon icon={faLockOpen} />
     </>
   );
 
   const loggedOutTitle = (
     <>
-        {t("Login")} <FontAwesomeIcon icon={faLockOpen} />
+        {t("Login")} <FontAwesomeIcon icon={faLock} />
     </>
   );
 
