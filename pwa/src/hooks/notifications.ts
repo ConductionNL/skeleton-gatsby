@@ -19,9 +19,9 @@ export const useNotification = (queryClient: QueryClient) => {
     useQuery<any, Error>(["notifications", notificationId], () => API.Notification.getOne(notificationId), {
       initialData: () =>
         queryClient.getQueryData<any[]>("notifications")?.find((notification) => notification.id === notificationId),
-        onError: (error) => {
-          throw new Error(error.message);
-        },
+      onError: (error) => {
+        throw new Error(error.message);
+      },
       enabled: !!notificationId,
     });
 
@@ -30,12 +30,12 @@ export const useNotification = (queryClient: QueryClient) => {
       onSuccess: async (newNotification) => {
         if (notificationId) {
           addItem(queryClient, "notifications", newNotification);
-          navigate("/meldingen/overzicht");
+          navigate("/meldingen");
         }
 
         if (!notificationId) {
           addItem(queryClient, "notifications", newNotification);
-          navigate(`/meldingen/${newNotification.id}`);
+          navigate(`/meldingen`);
         }
       },
       onError: (error) => {
