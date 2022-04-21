@@ -10,8 +10,8 @@ export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
   return (
     <>
       {products ? (
-        <div className="ProductGrid">
-          {products.map((item: any) => (
+        <div className="Product-Grid">
+          {products.data.map((item: any) => (
             <ProductCard product={item} />
           ))}
         </div>

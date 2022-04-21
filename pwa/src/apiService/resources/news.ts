@@ -8,14 +8,16 @@ export default class News {
     this._instance = _instance;
   }
 
+  //https://openpub.buren.nl/wp-json/owc/openpub/v1/items/
   public getAll = async (): Promise<any> => {
-    const { data } = await Send(this._instance, "GET", `/nieuws`);
-    return data.results;
+    const { data } = await Send(this._instance, "GET", `/wp-json/owc/openpub/v1/items/`);
+    console.log(data)
+    return data;
   };
 
   
   public getOne = async (nieuwsId: string): Promise<any> => {
-    const { data } = await Send(this._instance, "GET", `/nieuws/${nieuwsId}`);
+    const { data } = await Send(this._instance, "GET", `/wp-json/owc/openpub/v1/items/${nieuwsId}`);
     return data;
   };
 

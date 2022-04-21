@@ -1,26 +1,14 @@
-.ProductGrid {
+.Product-Grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.ProductGrid > .ProductCard {
+.Product-Grid > .Product-Card {
   flex: 0 0 21%;
   padding-inline-start: var(--utrecht-space-row-md);
   padding-inline-end: var(--utrecht-space-row-md) ;
   padding-block-start: var(--utrecht-space-column-lg);
   padding-block-end: var(--utrecht-space-column-lg) ;
 
-}
-
-.ProductCard > .ProductName {
-  text-transform: var(--utrecht-typography-text-transform-uppercase);
-  font-weight: bold;
-}
-.ProductCard > *:not(:last-child) {
-  padding-block-end: var(--utrecht-space-inline-xs) ;
-}
-
-.ProductCard > span {
-  display: block;
 }

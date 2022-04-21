@@ -19,6 +19,26 @@ export default class APIService {
     return this.JWT ? true : false;
   }
 
+  public get pdcClient(): AxiosInstance {
+    return axios.create({
+      baseURL: "https://pdc.buren.nl",
+      headers :{
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    });
+  }
+
+  public get pubClient(): AxiosInstance {
+    return axios.create({
+      baseURL: "https://openpub.buren.nl",
+      headers :{
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    });
+  }
+  
   public get apiClient(): AxiosInstance {
     return axios.create({
       baseURL: process.env.GATSBY_API_URL,
@@ -54,11 +74,11 @@ export default class APIService {
 
   // Resources
   public get Product(): Product {
-    return new Product(this.apiClient);
+    return new Product(this.pdcClient);
   }
 
   public get News(): News {
-    return new News(this.apiClient);
+    return new News(this.pubClient);
   }
 }
 

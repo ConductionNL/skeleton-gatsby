@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
+import "./ProductCard.css";
 
 interface ProductCardProps {
   product: any;
@@ -8,16 +9,10 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <>
-      {/* {product.title && ( */}
-      <div className="ProductCard">
-        <span className="ProductName">{product.title}</span>
-
-        {/* <ULink> */}
-        {/* We want a Utrecht Link with gatsby Link functionality */}
+      <div className="Product-Card">
+        <span className="Product-title">{product.title}</span>
         <Link to={`/products/${product.id}`}>Bekijken</Link>
-        {/* </ULink> */}
       </div>
-      {/* )}  */}
     </>
   );
 };

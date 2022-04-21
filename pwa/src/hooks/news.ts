@@ -19,8 +19,6 @@ export const useNews = (queryClient?: QueryClient) => {
       throw new Error('No queryClient passed');
     }
     return useQuery<any, Error>(["nieuws", newsId], () => API.News.getOne(newsId), {
-      initialData: () =>
-        queryClient.getQueryData<any[]>("nieuws")?.find((news: any) => news.id === newsId),
       onError: (error) => {
         throw new Error(error.message)
       },

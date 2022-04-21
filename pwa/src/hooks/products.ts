@@ -19,8 +19,6 @@ export const useProducts = (queryClient?: QueryClient) => {
       throw new Error('No queryClient passed');
     }
     return useQuery<any, Error>(["products", productId], () => API.Product.getOne(productId), {
-      initialData: () =>
-        queryClient.getQueryData<any[]>("products")?.find((product: any) => product.id === productId),
       onError: (error) => {
         throw new Error(error.message)
       },
