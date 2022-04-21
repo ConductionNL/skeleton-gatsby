@@ -2,6 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
 }
 
 .utrecht-navhtml > .topnav > .topnav-searchbar {
