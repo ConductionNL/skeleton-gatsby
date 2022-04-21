@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Heading1 } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { Heading1 } from "@utrecht/component-library-react/dist";
 import { useTranslation } from "react-i18next";
 
 export const UnauthenticatedTemplate: React.FC = () => {

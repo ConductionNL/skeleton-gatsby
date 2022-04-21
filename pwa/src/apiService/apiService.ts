@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import Login from "./services/login";
 import Notification from "./resources/notification";
+import News from "./resources/news";
 
 export default class APIService {
   public JWT?: string;
@@ -58,6 +59,10 @@ export default class APIService {
   // Resources
   public get Notification(): Notification {
     return new Notification(this.apiClient);
+  }
+
+  public get News(): News {
+    return new News(this.apiClient);
   }
 }
 
