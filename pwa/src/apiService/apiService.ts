@@ -3,6 +3,7 @@ import Login from "./services/login";
 import Notification from "./resources/notification";
 import Product from "./resources/product";
 import News from "./resources/news";
+import Forms from './resources/forms';
 
 export default class APIService {
   public JWT?: string;
@@ -62,6 +63,15 @@ export default class APIService {
     });
   }
 
+  public get FormioClient(): AxiosInstance {
+    return axios.create({
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+    });
+  }
+
   // Services
   public get Login(): Login {
     return new Login(this.LoginClient);
@@ -79,6 +89,10 @@ export default class APIService {
 
   public get News(): News {
     return new News(this.pubClient);
+  }
+
+  public get Forms(): Forms {
+    return new Forms(this.FormioClient);
   }
 }
 
