@@ -18,7 +18,7 @@ services:
             - APP_ENV=dev
             - APP_DEBUG=1
             - APP_CACHE=true
-            - GITHUB_KEY=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
+            - GITHUB_KEY=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
         ports:
             - "82:80"
 
