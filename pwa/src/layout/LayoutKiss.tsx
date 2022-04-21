@@ -1,10 +1,9 @@
 import * as React from "react";
 import "../styling/index.css";
 import "./../translations/i18n";
-import { Document, Page, PageContent } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { Document, Page, PageContent } from "@utrecht/component-library-react/dist";
 import APIContext, { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
-import Footer from "./../components/footer/Footer";
 import { HeaderTemplate } from "../templates/header/HeaderTemplate";
 import { GatsbyProvider, IGatsbyContext } from "../context/gatsby";
 import { useTranslation } from "react-i18next";

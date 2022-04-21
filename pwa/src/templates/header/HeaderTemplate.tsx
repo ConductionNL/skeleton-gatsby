@@ -1,11 +1,7 @@
 import * as React from "react";
 import "./HeaderTemplate.css";
-import { PageHeader } from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+import { PageHeader } from "@utrecht/component-library-react/dist";
 import { TopNav } from "./../../components/utrecht/topNav/TopNav";
-import { getUsername, isLoggedIn } from "../../services/auth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
-import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
 import { SelectLanguage } from "../../components/utrecht/selectLanguage/SelectLanguage";
 import { GatsbyContext } from "../../context/gatsby";

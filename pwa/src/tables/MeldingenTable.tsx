@@ -6,11 +6,12 @@ import {
   TableRow,
   TableCell,
   TableHeader,
-} from "@nl-design-system-unstable/example-next.js/src/components/utrecht";
+} from "@utrecht/component-library-react/dist";
 import { useTranslation } from "react-i18next";
 import { Link } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+
 
 interface MeldingenProps {
   meldingen: any[];

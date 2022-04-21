@@ -32,5 +32,10 @@ const getSideNavItems = (location: any): ISideNavItem[] => {
       title: t("Notifications"),
       current: location.pathname === "/meldingen",
     },
+    {
+      href: "/nieuws",
+      title: t("News"),
+      current: location.pathname === "/nieuws",
+    },
   ];
 };
