@@ -18,10 +18,6 @@
   flex: 2;
 }
 
-.Footer .utrecht-heading-4 {
-  color: var(--utrecht-color-white);
-}
-
 .Footer > .UnorderedList > li > svg {
   padding-inline-end: var(--utrecht-space-inline-2xs);
 }

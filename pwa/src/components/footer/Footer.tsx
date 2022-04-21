@@ -3,6 +3,8 @@ import { Heading4, PageFooter, UnorderedList, UnorderedListItem } from "@utrecht
 import { useTranslation } from "react-i18next";
 import {CallIcon, EmailIcon, HouseIcon,} from "@gemeente-denhaag/icons";
 import "../footer/Footer.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faBuilding} from "@fortawesome/free-solid-svg-icons";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -19,7 +21,7 @@ const Footer: React.FC = () => {
       <UnorderedList className="UnorderedList-Contact">
         <Heading4>{t("Contact")}</Heading4>
         <UnorderedListItem>
-          <HouseIcon />
+          <FontAwesomeIcon icon={faBuilding} />
           Stadswinkel, Marienburg 30
         </UnorderedListItem>
         <UnorderedListItem>
