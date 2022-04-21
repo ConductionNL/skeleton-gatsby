@@ -26,5 +26,17 @@ export const useNotification = (queryClient: QueryClient) => {
       },
     });
 
-  return { getAll, create };
+    const getOne = (notificationId: string) => {
+        if (!queryClient) {
+            throw new Error('No queryClient passed');
+        }
+        return useQuery<any, Error>(["notification", notificationId], () => API.Notification.getOne(notificationId), {
+            onError: (error) => {
+                throw new Error(error.message)
+            },
+            enabled: !!notificationId,
+        });
+    }
+
+  return { getAll, create , getOne};
 };
