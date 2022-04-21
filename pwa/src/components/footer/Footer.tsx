@@ -2,20 +2,21 @@ import React from "react";
 import { Heading4, PageFooter, UnorderedList, UnorderedListItem } from "@utrecht/component-library-react/dist";
 import { useTranslation } from "react-i18next";
 import {CallIcon, EmailIcon, HouseIcon,} from "@gemeente-denhaag/icons";
+import "../footer/Footer.css"
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
 
   return (
     <PageFooter className="Footer">
-      <UnorderedList className="UnorderedList">
+      <UnorderedList className="UnorderedList-Diensten">
         <Heading4>{t("Services")}</Heading4>
         <UnorderedListItem>{t("Moving")}</UnorderedListItem>
         <UnorderedListItem>{t("Marriage")}</UnorderedListItem>
         <UnorderedListItem>{t("Abridgment")}</UnorderedListItem>
       </UnorderedList>
 
-      <UnorderedList className="UnorderedList">
+      <UnorderedList className="UnorderedList-Contact">
         <Heading4>{t("Contact")}</Heading4>
         <UnorderedListItem>
           <HouseIcon />
@@ -31,7 +32,7 @@ const Footer: React.FC = () => {
         </UnorderedListItem>
       </UnorderedList>
 
-      <UnorderedList className="UnorderedList">
+      <UnorderedList className="UnorderedList-Openingstijden">
         <Heading4>{t("Opening hours")}</Heading4>
         <UnorderedListItem>
           {t("Monday")} - {t("Wednesday")}: 9.00 - 17.00

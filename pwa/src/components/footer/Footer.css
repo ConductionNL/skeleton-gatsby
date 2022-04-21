@@ -2,18 +2,24 @@
   display: flex;
 }
 
-.Footer > .UnorderedList {
+.Footer > *:not(:last-child) {
+  margin-block-end: var(--utrecht-space-inline-md);
+}
+
+.Footer > .UnorderedList-Diensten {
   flex: 1;
+}
+
+.Footer > .UnorderedList-Contact {
+  flex: 2;
+}
+
+.Footer > .UnorderedList-Openingstijden {
+  flex: 2;
 }
 
 .Footer .utrecht-heading-4 {
   color: var(--utrecht-color-white);
-}
-
-.Footer > .UnorderedList > li {
-  display: flex;
-  align-items: center;
-  padding-inline-start: 0;
 }
 
 .Footer > .UnorderedList > li > svg {
