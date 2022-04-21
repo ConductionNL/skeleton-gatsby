@@ -6,40 +6,41 @@ import { useQueryClient } from "react-query";
 import { useNotification } from "../hooks/notifications";
 import { useTranslation } from "react-i18next";
 
-interface IMelding {
-  title: string;
-  description: string;
-}
-
 interface MeldingenFormProps {
-  melding?: IMelding;
+  notificationId: string;
 }
 
-export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
+export const MeldingenForm: React.FC<MeldingenFormProps> = ({ notificationId }) => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
 
   const _useNotification = useNotification(queryClient);
-  const createNotification = _useNotification.create();
+  const getNotification = _useNotification.getOne(notificationId);
+  const createOrUpdateNotification = _useNotification.createOrEdit();
 
   const {
     register,
     formState: { errors },
     handleSubmit,
     setValue,
+    control,
   } = useForm();
 
   React.useEffect(() => {
-    melding && handleSetFormValues(melding);
-  }, [melding]);
+    if (getNotification.isSuccess) {
+      const notification = getNotification.data;
 
-  const handleSetFormValues = (formValues: IMelding): void => {
-    setValue("title", formValues.title);
-    setValue("description", formValues.description);
+      handleSetFormValues(notification);
+    }
+  }, [getNotification.isSuccess]);
+
+  const handleSetFormValues = (source: any): void => {
+    const basicFields: string[] = ["title", "description"];
+    basicFields.forEach((field) => setValue(field, source[field]));
   };
 
   const onSubmit = (data: any) => {
-    createNotification.mutate({ payload: data });
+    createOrUpdateNotification.mutate({ payload: data, id: notificationId });
   };
 
   return (

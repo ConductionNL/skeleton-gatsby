@@ -28,4 +28,5 @@ export const nl = {
   Settings: "Instellingen",
   Profile: "Profiel",
   Search: "Zoeken",
+  "Date Created": "Datum gecreëerd",
 };

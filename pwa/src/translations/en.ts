@@ -28,4 +28,5 @@ export const en = {
   Settings: "Settings",
   Profile: "Profile",
   Search: "Search",
+  "Date Created": "Date Created",
 };

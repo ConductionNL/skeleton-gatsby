@@ -4,7 +4,7 @@ import { PrivateRoute } from "../components/privateRoute/PrivateRoute";
 import { ISideNavItem, SideNav } from "../components/utrecht/sideNav/SideNav";
 import { GatsbyContext } from "../context/gatsby";
 
-const IndexPage: React.FC = ({children}) => {
+const IndexPage: React.FC = ({ children }) => {
   const gatsbyContext = React.useContext(GatsbyContext);
   const [sideNavItems, setSideNavItems] = React.useState<ISideNavItem[] | null>(null);
 
@@ -30,13 +30,6 @@ const getSideNavItems = (location: any): ISideNavItem[] => {
       href: "/meldingen",
       title: t("Notifications"),
       current: location.pathname === "/meldingen",
-      children: [
-        {
-          href: "/meldingen/overzicht",
-          title: t("Notifications overview"),
-          current: location.pathname === "/meldingen/overzicht",
-        },
-      ],
     },
     {
       href: "/nieuws",
@@ -45,6 +38,5 @@ const getSideNavItems = (location: any): ISideNavItem[] => {
     },
   ];
 };
-
 
 export default IndexPage;

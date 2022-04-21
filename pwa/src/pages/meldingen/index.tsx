@@ -1,13 +1,20 @@
 import * as React from "react";
+import { useQueryClient } from "react-query";
 import { PrivateRoute } from "../../components/privateRoute/PrivateRoute";
-import { MeldingenForm } from "../../forms/MeldingenForm";
+import { useNotification } from "../../hooks/notifications";
+import { MeldingenTable } from "../../tables/MeldingenTable";
 import { AuthenticatedTemplate } from "../../templates/AuthenticatedTemplate/AuthenticatedTemplate";
 
 const MeldingenIndex: React.FC = () => {
+  const queryClient = useQueryClient();
+
+  const _useNotification = useNotification(queryClient);
+  const getNotifications = _useNotification.getAll();
+
   return (
     <PrivateRoute>
       <AuthenticatedTemplate>
-        <MeldingenForm />
+        <MeldingenTable meldingen={getNotifications.data ?? []} />
       </AuthenticatedTemplate>
     </PrivateRoute>
   );

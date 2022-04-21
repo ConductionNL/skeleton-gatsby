@@ -15,16 +15,33 @@ export const useNotification = (queryClient: QueryClient) => {
       },
     });
 
-  const create = () =>
-    useMutation<any, Error, any>(API.Notification.create, {
+  const getOne = (notificationId: string) =>
+    useQuery<any, Error>(["notifications", notificationId], () => API.Notification.getOne(notificationId), {
+      initialData: () =>
+        queryClient.getQueryData<any[]>("notifications")?.find((notification) => notification.id === notificationId),
+      onError: (error) => {
+        throw new Error(error.message);
+      },
+      enabled: !!notificationId,
+    });
+
+  const createOrEdit = (notificationId?: string) =>
+    useMutation<any, Error, any>(API.Notification.createOrUpdate, {
       onSuccess: async (newNotification) => {
-        addItem(queryClient, "notifications", newNotification);
-        navigate("/meldingen/overzicht");
+        if (notificationId) {
+          addItem(queryClient, "notifications", newNotification);
+          navigate("/meldingen");
+        }
+
+        if (!notificationId) {
+          addItem(queryClient, "notifications", newNotification);
+          navigate(`/meldingen`);
+        }
       },
       onError: (error) => {
         throw new Error(error.message);
       },
     });
 
-  return { getAll, create };
+  return { getAll, getOne, createOrEdit };
 };
