@@ -4,13 +4,14 @@ import "./../translations/i18n";
 import { Document, Page, PageContent } from "@utrecht/component-library-react/dist";
 import APIContext, { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";
-import { HeaderTemplate } from "../templates/header/HeaderTemplate";
+import { SideNavTemplate } from "../templates/sideNav/SideNavTemplate";
 import { GatsbyProvider, IGatsbyContext } from "../context/gatsby";
 import { useTranslation } from "react-i18next";
 import { TopNav } from "../components/utrecht/topNav/TopNav";
 import { getUsername, isLoggedIn } from "../services/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
+import { HeaderTemplate } from "../templates/header/HeaderTemplate";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -45,8 +46,9 @@ const LayoutKiss: React.FC<LayoutProps> = ({ children, pageContext, location }) 
   return (
     <GatsbyProvider value={gatsbyContext}>
       <Document>
+        <TopNav items={navItems} />
+        <SideNavTemplate />
         <Page className="Page">
-          <TopNav items={navItems} />
           <HeaderTemplate />
           <PageContent className="PageContent">
             <APIProvider value={API}>

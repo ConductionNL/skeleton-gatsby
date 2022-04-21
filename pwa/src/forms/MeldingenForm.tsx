@@ -43,7 +43,7 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ({ notificationId }) 
     createOrUpdateNotification.mutate({ payload: data, id: notificationId });
   };
 
-  return (
+  return getNotification.isSuccess ? (
     <form onSubmit={handleSubmit(onSubmit)}>
       <InputText name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
 
@@ -51,5 +51,7 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ({ notificationId }) 
 
       <Button type="submit">{t("Send")}</Button>
     </form>
+  ) : (
+    <></>
   );
 };
