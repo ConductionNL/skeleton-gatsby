@@ -1,9 +1,8 @@
 import * as React from "react";
 import { useQueryClient } from "react-query";
-import { Heading1, Article } from "@utrecht/component-library-react/dist";
 import {useNotification} from "../../hooks/notifications";
 import {Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from "@utrecht/component-library-react";
-import {Link} from "gatsby";
+
 
 const NotificationPage = (props: any) => {
     const notificationId: string = props.params.id === "new" ? null : props.params.id;
