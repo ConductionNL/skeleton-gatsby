@@ -2,6 +2,8 @@ import * as React from "react";
 import { useQueryClient } from "react-query";
 import { Heading1, Article } from "@utrecht/component-library-react/dist";
 import {useNotification} from "../../hooks/notifications";
+import {Table, TableBody, TableCell, TableHeader, TableHeaderCell, TableRow} from "@utrecht/component-library-react";
+import {Link} from "gatsby";
 
 const NotificationPage = (props: any) => {
     const notificationId: string = props.params.id === "new" ? null : props.params.id;
@@ -12,15 +14,23 @@ const NotificationPage = (props: any) => {
     return (
         <>
             {getNotification.data && (
-                <>
-                    <Heading1>{getNotification.data && getNotification.data.title} </Heading1>
-                    <br />
-                    <Article
-                        dangerouslySetInnerHTML={{
-                            __html: getNotification.data?.content.replaceAll("<h2>", '<h2 class="utrecht-heading-2">'),
-                        }}
-                    />
-                </>
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHeaderCell>Title</TableHeaderCell>
+                                <TableHeaderCell>Description</TableHeaderCell>
+                                <TableHeaderCell>Date created</TableHeaderCell>
+                            </TableRow>
+                        </TableHeader>
+
+                        <TableBody>
+                                <TableRow>
+                                    <TableCell>{getNotification.data.title}</TableCell>
+                                    <TableCell>{getNotification.data.description}</TableCell>
+                                    <TableCell>{new Date(getNotification.data["@dateCreated"]).toLocaleString("nl-NL")}</TableCell>
+                                </TableRow>
+                        </TableBody>
+                    </Table>
             )}
         </>
     );
