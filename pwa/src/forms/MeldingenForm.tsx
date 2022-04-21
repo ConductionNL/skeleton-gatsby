@@ -6,17 +6,11 @@ import { useQueryClient } from "react-query";
 import { useNotification } from "../hooks/notifications";
 import { useTranslation } from "react-i18next";
 
-interface IMelding {
-  title: string;
-  description: string;
-}
-
 interface MeldingenFormProps {
   notificationId: string;
-  melding?: IMelding;
 }
 
-export const MeldingenForm: React.FC<MeldingenFormProps> = ( { notificationId }) => {
+export const MeldingenForm: React.FC<MeldingenFormProps> = ({ notificationId }) => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
 
@@ -29,7 +23,6 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ( { notificationId })
     formState: { errors },
     handleSubmit,
     setValue,
-    getValues,
     control,
   } = useForm();
 
@@ -41,9 +34,9 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ( { notificationId })
     }
   }, [getNotification.isSuccess]);
 
-  const handleSetFormValues = (formValues: IMelding): void => {
-    setValue("title", formValues.title);
-    setValue("description", formValues.description);
+  const handleSetFormValues = (source: any): void => {
+    const basicFields: string[] = ["title", "description"];
+    basicFields.forEach((field) => setValue(field, source[field]));
   };
 
   const onSubmit = (data: any) => {
@@ -51,19 +44,12 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ( { notificationId })
   };
 
   return (
-    getNotification.isSuccess && (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <InputText name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <InputText name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
 
-        <Textarea
-          name="description"
-          label={t("Description")}
-          {...{ errors, register }}
-          validation={{ required: true }}
-        />
+      <Textarea name="description" label={t("Description")} {...{ errors, register }} validation={{ required: true }} />
 
-        <Button type="submit">{t("Send")}</Button>
-      </form>
-    )
+      <Button type="submit">{t("Send")}</Button>
+    </form>
   );
 };
