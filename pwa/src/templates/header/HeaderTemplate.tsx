@@ -9,7 +9,8 @@ import { GatsbyContext } from "./../../context/gatsby";
 import i18next, { changeLanguage, TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 import { SelectLanguage } from "../../components/utrecht/selectLanguage/SelectLanguage";
-import { UserIcon, UserLoggedInIcon } from "@gemeente-denhaag/icons";
+import {faLock, faLockOpen} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface ITopNavItem {
   href: string;
@@ -66,13 +67,13 @@ export const HeaderTemplate: React.FC = () => {
 const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
   const loggedInTitle = (
     <>
-      {getUsername()} <UserLoggedInIcon />
+        {getUsername()} <FontAwesomeIcon icon={faLock} />
     </>
   );
 
   const loggedOutTitle = (
     <>
-      {t("Login")} <UserIcon />
+        {t("Login")} <FontAwesomeIcon icon={faLockOpen} />
     </>
   );
 
