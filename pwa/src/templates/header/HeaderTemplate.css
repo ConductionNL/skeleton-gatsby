@@ -2,16 +2,16 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
+  padding-block-end: 0 !important;
+  padding-block-start: 0 !important;
+  padding-inline-end: 100% !important;
+  padding-inline-start: 100% !important;
+  background-color: white;
 }
 
 .HeaderTemplate > *:not(:last-child) {
   margin-block-end: var(--utrecht-space-inline-md);
-}
-
-.HeaderTemplate > .HeaderTemplate-logo {
-  display: flex;
-  align-self: center;
-  height: var(--conduction-nav-logo-height-lg);
 }
 
 .HeaderTemplate > .HeaderTemplate-subNav {

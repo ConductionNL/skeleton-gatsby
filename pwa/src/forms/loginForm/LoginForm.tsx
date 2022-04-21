@@ -51,7 +51,7 @@ export const LoginForm: React.FC = () => {
 
       {error && <FormFieldError error={error} />}
 
-      <Button type="submit" disabled={loading}>
+      <Button className="Button" type="submit" disabled={loading}>
         {t("Send")}
       </Button>
     </form>

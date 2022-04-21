@@ -1,0 +1,65 @@
+.TopNav-list {
+    background-color: var(--buren-color-grijs-100) !important;
+}
+
+.TopNav-item {
+    border-inline-end: none;
+}
+
+.TopNav-item:before {
+    transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.TopNav-link {
+    color: var(--buren-color-grijs-20) !important;
+}
+
+.TopNav-link:hover {
+    background-color: var(--buren-color-grijs-100) !important;
+    border-bottom: 3px solid var(--buren-color-rood-50) !important;
+
+    color: var(--buren-color-grijs-20) !important;
+    text-decoration: none;
+}
+
+.TopNav-link:focus {
+    background-color: var(--buren-color-grijs-100) !important;
+    border-bottom: 3px solid var(--buren-color-rood-50) !important;
+    text-decoration: none;
+}
+
+.TopNav-link:visited {
+    background-color: var(--buren-color-grijs-100) !important;
+    border-bottom: 3px solid var(--buren-color-rood-50) !important;
+    text-decoration: none;
+}
+
+
+/*.utrecht-navhtml > .topnav {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*    background-color: white;*/
+/*    padding: 5px;*/
+/*}*/
+
+/*.utrecht-navhtml > .topnav > .topnav-searchbar {*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*}*/
+
+/*.utrecht-navhtml > .topnav > .topnav-logo {*/
+/*    height: 54.4px;*/
+/*}*/
+
+/*.utrecht-navhtml > .topnav > .topnav-searchbar > svg {*/
+/*    padding-inline-start: var(--utrecht-space-inline-2xs);*/
+/*}*/
+
+/*.utrecht-navhtml > .topnav > :not(:first-child) {*/
+/*    flex: 0.35;*/
+/*}*/
+

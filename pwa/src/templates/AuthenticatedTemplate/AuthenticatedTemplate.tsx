@@ -17,9 +17,11 @@ export const AuthenticatedTemplate: React.FC = ({ children }) => {
   return (
     <PrivateRoute>
       <div className="AuthenticatedTemplate">
+        <div className="AuthenticatedTemplate-Card">
         <SideNav className="AuthenticatedTemplate-sideNav" items={sideNavItems ?? []} />
 
         <div className="AuthenticatedTemplate-children">{children}</div>
+        </div>
       </div>
     </PrivateRoute>
   );
@@ -27,6 +29,11 @@ export const AuthenticatedTemplate: React.FC = ({ children }) => {
 
 const getSideNavItems = (location: any): ISideNavItem[] => {
   return [
+    {
+      href: "/",
+      title: "Overzicht",
+      current: location.pathname === "/",
+    },
     {
       href: "/meldingen",
       title: t("Notifications"),
@@ -43,6 +50,6 @@ const getSideNavItems = (location: any): ISideNavItem[] => {
           current: location.pathname === "/meldingen/overzicht",
         },
       ],
-    },
+    }
   ];
 };

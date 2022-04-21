@@ -8,6 +8,7 @@ import Footer from "./../components/footer/Footer";
 import { HeaderTemplate } from "../templates/header/HeaderTemplate";
 import { GatsbyProvider, IGatsbyContext } from "../context/gatsby";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -29,20 +30,27 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
   }, [pageContext, location]);
 
   return (
-    <GatsbyProvider value={gatsbyContext}>
-      <Document>
-        <Page className="Page">
-          <HeaderTemplate />
-          <PageContent className="PageContent">
-            <APIProvider value={API}>
-              <title>{t("Skeleton Application")}</title>
-              {children}
-            </APIProvider>
-          </PageContent>
-          <Footer />
-        </Page>
-      </Document>
-    </GatsbyProvider>
+    <>
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href={`https://unpkg.com/@conductionnl/buren-design-tokens/dist/index.css`}
+        />
+      </Helmet>
+      <GatsbyProvider value={gatsbyContext}>
+        <Document className="Document">
+          <Page className="Page">
+            <HeaderTemplate />
+            <PageContent className="PageContent">
+              <APIProvider value={API}>
+                <title>{t("Skeleton Application")}</title>
+                {children}
+              </APIProvider>
+            </PageContent>
+          </Page>
+        </Document>
+      </GatsbyProvider>
+    </>
   );
 };
 

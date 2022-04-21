@@ -7,16 +7,45 @@
     -webkit-box-shadow: 2px 6px 15px 0 rgb(69 65 78 / 10%);
     -moz-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, 0.1);
     box-shadow: 2px 6px 15px 0 rgb(69 65 78 / 10%);
+    text-decoration: none !important;
 }
 
-.Nieuws-Card > * {
-    padding: 5px;
+.Nieuws-Card:hover {
+    background-color: var(--buren-color-grijs-90) !important;
+    text-decoration: underline var(--buren-color-rood-50) 2px !important;
 }
 
-.Nieuws-Card > .Nieuws-title {
+.Nieuws-Card > .Nieuws-Container {
+    display: flex;
+    flex-direction: row;
+}
+
+.Nieuws-Container > * {
+    padding: 10px;
+}
+
+.Nieuws-Container > .Nieuws-Container-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.Nieuws-Container-content > * {
+    padding: 10px;
+    color: var(--buren-color-grijs-20) !important;
+    border: none;
+}
+
+.Nieuws-Container-content > .Nieuws-title {
     text-transform: var(--utrecht-typography-text-transform-uppercase);
     font-weight: bold;
 }
-.Nieuws-Card > *:not(:last-child) {
+
+.Nieuws-content-item {
+    font-variant: small-caps;
+    color: var(--buren-color-grijs-60) !important;
+}
+
+.Nieuws-Container-content > *:not(:last-child) {
     padding-block-end: var(--utrecht-space-inline-xs) ;
 }
+

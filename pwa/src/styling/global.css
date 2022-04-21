@@ -1,14 +1,27 @@
 html,
 body {
   margin: 0;
+  background-color: var(--buren-color-grijs-90);
+}
+.Document {
+  background-color: var(--buren-color-grijs-90);
 }
 
 .Page {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  align-items: center;
+  padding-block-start: 0 !important;
+  padding-block-end: 0 !important;
+  padding-inline-start: 0 !important;
+  padding-inline-end: 0 !important;
 }
 
 .PageContent {
   flex-grow: 1;
+  padding-block-start: 0 !important;
+  padding-block-end: 0 !important;
+  padding-inline-start: 0 !important;
+  padding-inline-end: 0 !important;
 }
