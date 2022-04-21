@@ -9,7 +9,7 @@ interface ProductGridProps {
 export const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
   return (
     <>
-      {products ? (
+      {products?.data ? (
         <div className="Product-Grid">
           {products.data.map((item: any) => (
             <ProductCard product={item} />

@@ -9,7 +9,7 @@ interface NieuwsGridProps {
 export const NieuwsGrid: React.FC<NieuwsGridProps> = ({ nieuws }) => {
   return (
     <>
-      {nieuws ? (
+      {nieuws?.data ? (
         <div className="Nieuws-Grid">
           {nieuws.data.map((item: any) => (
             <NieuwsCard nieuws={item} />
