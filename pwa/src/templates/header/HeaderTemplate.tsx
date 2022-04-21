@@ -54,7 +54,7 @@ export const HeaderTemplate: React.FC = () => {
 };
 
 const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
-const getUserNavItem = (location: any): ITopNavItem[] => {
+
   const loggedInTitle = (
     <>
       {getUsername()} <FontAwesomeIcon icon={faLock} />
