@@ -5,6 +5,7 @@ import { InputText, Textarea } from "../components/formFields";
 import { useQueryClient } from "react-query";
 import { useNotification } from "../hooks/notifications";
 import { useTranslation } from "react-i18next";
+import { Input } from "../components/formFields/Input";
 
 interface IMelding {
   title: string;
@@ -44,7 +45,7 @@ export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <InputText name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
+      <Input type="text" name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
 
       <Textarea name="description" label={t("Description")} {...{ errors, register }} validation={{ required: true }} />
 

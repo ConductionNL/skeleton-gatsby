@@ -39,7 +39,7 @@ const getSideNavItems = (location: any): ISideNavItem[] => {
         },
         {
           href: "/meldingen/overzicht",
-          title: t("Notifications overview"),
+          title: "Mijn meldingen",
           current: location.pathname === "/meldingen/overzicht",
         },
       ],

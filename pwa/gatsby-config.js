@@ -27,6 +27,14 @@ module.exports = {
         },
         crumbLabelUpdates: [
           {
+            pathname: "/meldingen/formulier",
+            crumbLabel: "Melding doen"
+          },
+          {
+            pathname: "/meldingen/overzicht",
+            crumbLabel: "Mijn meldingen"
+          },
+          {
             pathname: "/products/[id]",
             crumbLabel: "Product"
           },

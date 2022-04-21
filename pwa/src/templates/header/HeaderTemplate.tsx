@@ -3,7 +3,6 @@ import "./HeaderTemplate.css";
 import { PageHeader } from "@utrecht/component-library-react/dist";
 import { TopNav } from "../../components/utrecht/topNav/TopNav";
 import { getUsername, isLoggedIn } from "../../services/auth";
-import Logo from "./../../assets/logo.svg";
 import { Breadcrumbs } from "../../components/utrecht/breadcrumbs/Breadcrumbs";
 import { GatsbyContext } from "./../../context/gatsby";
 import i18next, { changeLanguage, TFunction } from "i18next";
@@ -33,7 +32,6 @@ export const HeaderTemplate: React.FC = () => {
 
   return (
     <PageHeader className="HeaderTemplate">
-      <Logo className="HeaderTemplate-logo" />
       <TopNav items={navItems} />
 
       <div className="HeaderTemplate-subNav">
