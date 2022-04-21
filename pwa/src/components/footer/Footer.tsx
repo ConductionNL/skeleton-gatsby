@@ -5,6 +5,7 @@ import {CallIcon, EmailIcon, HouseIcon,} from "@gemeente-denhaag/icons";
 import "../footer/Footer.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faBuilding} from "@fortawesome/free-solid-svg-icons";
+import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -42,6 +43,8 @@ const Footer: React.FC = () => {
         <UnorderedListItem>{t("Thursday")}: 9.00 - 20.00</UnorderedListItem>
         <UnorderedListItem>{t("Friday")}: 9.00 - 17.00</UnorderedListItem>
       </UnorderedList>
+
+      <ThemeSwitcher />
     </PageFooter>
   );
 };

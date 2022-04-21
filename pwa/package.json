@@ -25,6 +25,7 @@
     "@gemeente-denhaag/components-react": "^0.1.1-alpha.109",
     "@gemeente-denhaag/design-tokens-components": "^0.2.3-alpha.171",
     "@gemeente-denhaag/formgroup": "^0.2.3-alpha.171",
+    "@gemeente-denhaag/menu": "^0.2.3-alpha.172",
     "@gemeente-denhaag/textfield": "^0.2.3-alpha.171",
     "@utrecht/component-library-css": "^1.0.0-alpha.189",
     "@utrecht/component-library-react": "1.0.0-alpha.1",
@@ -40,14 +41,17 @@
     "lodash": "^4.17.21",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "@types/react-helmet": "^6.1.5",
     "react-hook-form": "^7.29.0",
     "react-i18next": "^11.16.6",
-    "react-query": "^3.34.19"
+    "react-query": "^3.34.19",
+    "usehooks-ts": "^2.5.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
+    "@types/react-helmet": "^6.1.5",
     "typescript": "^4.6.3"
   }
 }

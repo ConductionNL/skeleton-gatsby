@@ -11,7 +11,6 @@ export default class Product {
   //https://pdc.buren.nl/wp-json/owc/pdc/v1/items?limit=100
   public getAll = async (): Promise<any> => {
     const { data } = await Send(this._instance, "GET", `/wp-json/owc/pdc/v1/items?limit=100`);
-    console.log(data)
     return data;
   };
 

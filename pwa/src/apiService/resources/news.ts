@@ -11,7 +11,6 @@ export default class News {
   //https://openpub.buren.nl/wp-json/owc/openpub/v1/items/
   public getAll = async (): Promise<any> => {
     const { data } = await Send(this._instance, "GET", `/wp-json/owc/openpub/v1/items/`);
-    console.log(data)
     return data;
   };
 

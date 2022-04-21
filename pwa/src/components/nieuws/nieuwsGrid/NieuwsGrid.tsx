@@ -11,8 +11,8 @@ export const NieuwsGrid: React.FC<NieuwsGridProps> = ({ nieuws }) => {
     <>
       {nieuws?.data ? (
         <div className="Nieuws-Grid">
-          {nieuws.data.map((item: any) => (
-            <NieuwsCard nieuws={item} />
+          {nieuws.data.map((item: any, idx: number) => (
+            <NieuwsCard key={idx} nieuws={item} />
           ))}
         </div>
       ) : (
