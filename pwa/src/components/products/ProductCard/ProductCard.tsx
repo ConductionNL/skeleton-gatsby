@@ -9,10 +9,9 @@ interface ProductCardProps {
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <>
-      <div className="Product-Card">
+      <Link to={`/products/${product.id}`} className="Product-Card" style={{ textDecoration: "none" }}>
         <span className="Product-title">{product.title}</span>
-        <Link to={`/products/${product.id}`}>Bekijken</Link>
-      </div>
+      </Link>
     </>
   );
 };

@@ -8,6 +8,20 @@
     -moz-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, 0.1);
     box-shadow: 2px 6px 15px 0 rgb(69 65 78 / 10%);
 }
+.Product-Card > span {
+  color: black;
+}
+
+.Product-Card:hover {
+  background-color: var(--buren-color-rood-50);
+  color: white !important;
+  transition: 0.4s;
+}
+
+.Product-Card:hover > span {
+  color: white !important;
+  transition: 0.4s;
+}
 
 .Product-Card > * {
     padding: 5px;

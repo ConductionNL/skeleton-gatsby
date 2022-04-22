@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
   
   .Product-Grid > .Product-Card {
-    flex: 0 0 21%;
+    flex: 0 0 25%;
+    margin: 20px;
     padding-inline-start: var(--utrecht-space-row-md);
     padding-inline-end: var(--utrecht-space-row-md) ;
     padding-block-start: var(--utrecht-space-column-lg);
