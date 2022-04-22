@@ -20,16 +20,11 @@ export const AuthenticatedTemplate: React.FC = ({ children }) => {
     <PrivateRoute>
       <div className="AuthenticatedTemplate">
         <div className="AuthenticatedTemplate-Card">
-        <SideNav className="AuthenticatedTemplate-sideNav" items={sideNavItems ?? []} />
+          <SideNav className="AuthenticatedTemplate-sideNav" items={sideNavItems ?? []} />
 
-        <div className="AuthenticatedTemplate-children">{children}</div>
+          <div className="AuthenticatedTemplate-children">{children}</div>
         </div>
       </div>
-      <br />
-      <br />
-      <Link to={`/formio/49`}>
-        <Button>form.io</Button>
-      </Link>
     </PrivateRoute>
   );
 };
@@ -57,6 +52,11 @@ const getSideNavItems = (location: any): ISideNavItem[] => {
           current: location.pathname === "/meldingen/overzicht",
         },
       ],
-    }
+    },
+    {
+      href: "/formio/49",
+      title: t("form.io test formulier"),
+      current: location.pathname === "/formio/49",
+    },
   ];
 };
