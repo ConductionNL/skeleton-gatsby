@@ -4,9 +4,7 @@
 @import "./forms.css";
 
 /* External styling */
-@import "@utrecht/design-tokens/dist/index.css";
-@import "@utrecht/component-library-css/dist/bem.css";
-@import "@gemeente-denhaag/design-tokens-components/dist/index.css";
+@import "@nl-design-system-unstable/buren-design-tokens/dist/index.css";
 
 /* Design Tokens */
 @import "./design-tokens/utrecht-design-tokens.css";
