@@ -54,11 +54,11 @@ const LayoutKiss: React.FC<LayoutProps> = ({ children, pageContext, location }) 
         />
       </Helmet>
       <Document className={`Document buren-theme`}>
-        <TopNav items={navItems} />
-        <SideNavTemplate />
         <Page className="Page">
-          <HeaderTemplate />
           <PageContent className="PageContent">
+            <TopNav items={navItems} />
+            <SideNavTemplate />
+            <HeaderTemplate />
             <APIProvider value={API}>
               <title>{t("Skeleton Application")}</title>
               {children}
