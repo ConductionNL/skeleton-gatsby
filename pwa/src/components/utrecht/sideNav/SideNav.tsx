@@ -35,8 +35,10 @@ export const SideNav: React.FC<SideNavProps> = ({ items, className }) => {
             <Link
               className="utrecht-sidenav__link utrecht-sidenav__link--current utrecht-sidenav__link--parent"
               to={item.href}
+              style={{ color: "white" }}
             >
               <div
+                style={{ background: "white" }}
                 className={clsx("utrecht-sidenav__marker", item.current && "utrecht-sidenav__marker--current")}
               ></div>
               <div className="utrecht-sidenav__connection utrecht-sidenav__connection--parent utrecht-sidenav__connection--last"></div>
@@ -47,8 +49,13 @@ export const SideNav: React.FC<SideNavProps> = ({ items, className }) => {
               <ul className="utrecht-sidenav__list utrecht-sidenav__list--child">
                 {item.children.map((child, idx) => (
                   <li key={idx} className="utrecht-sidenav__item utrecht-sidenav__item--child">
-                    <Link className="utrecht-sidenav__link utrecht-sidenav__link--child" to={child.href}>
+                    <Link
+                      style={{ color: "white" }}
+                      className="utrecht-sidenav__link utrecht-sidenav__link--child"
+                      to={child.href}
+                    >
                       <div
+                        style={{ background: "white" }}
                         className={clsx(
                           "utrecht-sidenav__marker utrecht-sidenav__marker--child",
                           child.current && "utrecht-sidenav__marker--current",
