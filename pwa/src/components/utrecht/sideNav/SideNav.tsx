@@ -9,6 +9,7 @@
 import * as React from "react";
 import clsx from "clsx";
 import { Link } from "gatsby";
+import "./SideNav.css";
 
 export interface ISideNavItem {
   href: string;

@@ -1,0 +1,8 @@
+.sideNav {
+  display: flex;
+  background-color: #d41422;
+  float: left;
+  height: 88vh;
+  width: auto;
+  padding: 10px;
+}

@@ -22,29 +22,3 @@ export const SideNavTemplate: React.FC = () => {
   return <SideNav className="sideNav" items={sideNavItems ?? []} />;
 };
 
-const getSideNavItems = (location: any): ISideNavItem[] => {
-  return [
-    {
-      href: "/",
-      title: "Overzicht",
-      current: location.pathname === "/",
-    },
-    {
-      href: "/meldingen",
-      title: t("Notifications"),
-      current: location.pathname === "/meldingen",
-      children: [
-        {
-          href: "/meldingen/formulier",
-          title: "Melding doen",
-          current: location.pathname === "/meldingen/formulier",
-        },
-        {
-          href: "/meldingen/overzicht",
-          title: "Mijn meldingen",
-          current: location.pathname === "/meldingen/overzicht",
-        },
-      ],
-    }
-  ];
-};

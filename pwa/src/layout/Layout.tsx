@@ -7,10 +7,6 @@ import APIService from "../apiService/apiService";
 import { SideNavTemplate } from "../templates/sideNav/SideNavTemplate";
 import { GatsbyProvider, IGatsbyContext } from "../context/gatsby";
 import { useTranslation } from "react-i18next";
-import { TopNav } from "../components/utrecht/topNav/TopNav";
-import { getUsername, isLoggedIn } from "../services/auth";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import { HeaderTemplate } from "../templates/header/HeaderTemplate";
 import { Helmet } from "react-helmet";
 
@@ -40,10 +36,6 @@ const LayoutKiss: React.FC<LayoutProps> = ({ children, pageContext, location }) 
     !API.authenticated && JWT && API.setAuthentication(JWT);
   }, [pageContext, location]);
 
-  React.useEffect(() => {
-    setNavItems(getNavigationItems(gatsbyContext.location, t));
-  }, [gatsbyContext.location, t]);
-
   return (
     <GatsbyProvider value={gatsbyContext}>
       <Helmet>
@@ -56,8 +48,6 @@ const LayoutKiss: React.FC<LayoutProps> = ({ children, pageContext, location }) 
       <Document className={`Document buren-theme`}>
         <Page className="Page">
           <PageContent className="PageContent">
-            <TopNav items={navItems} />
-            <SideNavTemplate />
             <HeaderTemplate />
             <APIProvider value={API}>
               <title>{t("Skeleton Application")}</title>
@@ -68,37 +58,6 @@ const LayoutKiss: React.FC<LayoutProps> = ({ children, pageContext, location }) 
       </Document>
     </GatsbyProvider>
   );
-};
-
-const getNavigationItems = (location: any, t: Function): ITopNavItem[] => {
-  const loggedInTitle = (
-    <>
-      {getUsername()} <FontAwesomeIcon icon={faLock} />
-    </>
-  );
-
-  const loggedOutTitle = (
-    <>
-      {t("Login")} <FontAwesomeIcon icon={faLockOpen} />
-    </>
-  );
-  const staticNavItems: ITopNavItem[] = [
-    { title: t("Nieuws"), href: "/nieuws", current: location.pathname === "/nieuws" },
-    { title: t("Producten"), href: "/products", current: location.pathname === "/products" },
-  ];
-
-  const userNavItem: ITopNavItem = isLoggedIn()
-    ? {
-        title: loggedInTitle,
-        href: "/logout",
-      }
-    : {
-        title: loggedOutTitle,
-        href: "/login",
-        current: location.pathname === "/login",
-      };
-
-  return [...staticNavItems, userNavItem];
 };
 
 export default LayoutKiss;

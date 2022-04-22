@@ -12,6 +12,8 @@ import clsx from "clsx";
 import Logo from "./../../../assets/burenLogo.svg";
 import "./TopNav.css";
 import { ThemeSwitcher } from "../../theme-switcher/theme-switcher";
+import { SelectLanguage } from "../selectLanguage/SelectLanguage";
+import i18next, { changeLanguage, TFunction } from "i18next";
 
 interface ITopNavItem {
   href: string;
@@ -43,7 +45,25 @@ export const TopNav: React.FC<TopNavProps> = ({ items }) => {
             </li>
           ))}
         </ul>
-        <div style={{ maxWidth: "125px" }}>
+        <div style={{ maxWidth: "250px", display: "flex", flex: "row"  }}>
+          <SelectLanguage
+            languages={[
+              {
+                label: "NL",
+                key: "nl",
+                title: "Deze pagina in Nederlands",
+                onClick: () => changeLanguage("nl"),
+                current: i18next.language === "nl",
+              },
+              {
+                label: "EN",
+                key: "en",
+                title: "This page is in English",
+                onClick: () => changeLanguage("en"),
+                current: i18next.language === "en",
+              },
+            ]}
+          />
           <ThemeSwitcher />
         </div>
       </nav>
