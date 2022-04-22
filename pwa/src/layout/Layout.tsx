@@ -7,8 +7,18 @@ import APIService from "../apiService/apiService";
 import Footer from "./../components/footer/Footer";
 import { HeaderTemplate } from "../templates/header/HeaderTemplate";
 import { GatsbyProvider, IGatsbyContext } from "../context/gatsby";
-import { useTranslation } from "react-i18next";
+import { TFunction, useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet";
+import {faLock, faLockOpen} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TopNav } from "../components/utrecht/topNav/TopNav";
+import { getUsername, isLoggedIn } from "../services/auth";
+
+interface ITopNavItem {
+  href: string;
+  title: string | JSX.Element;
+  current?: boolean;
+}
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -20,6 +30,12 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
   const { t } = useTranslation();
   const [API] = React.useState<APIService>(React.useContext(APIContext));
   const [gatsbyContext, setGatsbyContext] = React.useState<IGatsbyContext>({ ...{ pageContext, location } });
+  const [navItems, setNavItems] = React.useState<ITopNavItem[]>([]);
+
+  React.useEffect(() => {
+    setNavItems(getNavigationItems(gatsbyContext.location, t));
+  }, [gatsbyContext.location, t]);
+
 
   React.useEffect(() => {
     setGatsbyContext({ ...{ pageContext, location } });
@@ -39,8 +55,9 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
       </Helmet>
       <GatsbyProvider value={gatsbyContext}>
         <Document className="Document">
+        <TopNav items={navItems} />
           <Page className="Page">
-            <HeaderTemplate />
+          <HeaderTemplate />
             <PageContent className="PageContent">
               <APIProvider value={API}>
                 <title>{t("Skeleton Application")}</title>
@@ -55,3 +72,37 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
 };
 
 export default Layout;
+
+
+
+const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
+  const loggedInTitle = (
+    <>
+        {getUsername()} <FontAwesomeIcon icon={faLock} />
+    </>
+  );
+
+  const loggedOutTitle = (
+    <>
+        {t("Login")} <FontAwesomeIcon icon={faLockOpen} />
+    </>
+  );
+
+  const staticNavItems: ITopNavItem[] = [
+    { title: "Producten", href: "/products", current: location.pathname === "/products" },
+    { title: "Nieuws", href: "/nieuws", current: location.pathname === "/nieuws" },
+  ];
+
+  const userNavItem: ITopNavItem = isLoggedIn()
+    ? {
+        title: loggedInTitle,
+        href: "/logout",
+      }
+    : {
+        title: loggedOutTitle,
+        href: "/login",
+        current: location.pathname === "/login",
+      };
+
+  return [...staticNavItems, userNavItem];
+};

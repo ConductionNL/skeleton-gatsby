@@ -10,7 +10,8 @@ body {
 .Page {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   align-items: center;
   padding-block-start: 0 !important;
   padding-block-end: 0 !important;
