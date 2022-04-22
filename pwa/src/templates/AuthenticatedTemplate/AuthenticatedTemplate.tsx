@@ -2,7 +2,9 @@ import * as React from "react";
 import "./AuthenticatedTemplate.css";
 import { PrivateRoute } from "../../components/privateRoute/PrivateRoute";
 import { ISideNavItem, SideNav } from "../../components/utrecht/sideNav/SideNav";
+import { Button } from "@utrecht/component-library-react";
 import { GatsbyContext } from "./../../context/gatsby";
+import { Link } from "gatsby";
 import i18next, { t } from "i18next";
 
 export const AuthenticatedTemplate: React.FC = ({ children }) => {
@@ -23,6 +25,11 @@ export const AuthenticatedTemplate: React.FC = ({ children }) => {
         <div className="AuthenticatedTemplate-children">{children}</div>
         </div>
       </div>
+      <br />
+      <br />
+      <Link to={`/formio/49`}>
+        <Button>form.io</Button>
+      </Link>
     </PrivateRoute>
   );
 };
