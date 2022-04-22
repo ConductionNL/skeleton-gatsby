@@ -7,6 +7,7 @@ import {
   TableCell,
   TableHeader,
 } from "@utrecht/component-library-react/dist";
+import {Link} from "gatsby";
 
 interface MeldingenProps {
   meldingen: any[];
@@ -29,6 +30,7 @@ export const MeldingenTable: React.FC<MeldingenProps> = ({ meldingen }) => {
             <TableCell>{melding.title}</TableCell>
             <TableCell>{melding.description}</TableCell>
             <TableCell>{new Date(melding["@dateCreated"]).toLocaleString("nl-NL")}</TableCell>
+            <TableCell> <Link to={`/meldingen/${melding?.id}`}>Details</Link></TableCell>
           </TableRow>
         ))}
       </TableBody>
