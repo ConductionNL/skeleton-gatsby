@@ -5,10 +5,12 @@ import { useTranslation } from "react-i18next";
 import { ISideNavItem, SideNav } from "../../components/utrecht/sideNav/SideNav";
 import "./SideNavTemplate.css";
 
+
+
 export const SideNavTemplate: React.FC = () => {
   const gatsbyContext = React.useContext(GatsbyContext);
   const { t } = useTranslation();
-
+  
   const [sideNavItems, setSideNavItems] = React.useState<ISideNavItem[] | null>(null);
 
   React.useEffect(() => {
@@ -19,7 +21,11 @@ export const SideNavTemplate: React.FC = () => {
     breadcrumb: { crumbs },
   } = gatsbyContext.pageContext;
 
-  return <SideNav className="sideNav" items={sideNavItems ?? []} />;
+  return (
+ 
+    <SideNav className="sideNav" items={sideNavItems ?? []} />
+
+  );
 };
 
 const getSideNavItems = (location: any): ISideNavItem[] => {
@@ -36,3 +42,4 @@ const getSideNavItems = (location: any): ISideNavItem[] => {
     },
   ];
 };
+
