@@ -11,7 +11,7 @@
 }
 
 .Nieuws-Card:hover {
-    background-color: var(--buren-color-grijs-90) !important;
+    background-color: var(--buren-color-grijs-80) !important;
     text-decoration: underline var(--buren-color-rood-50) 2px !important;
 }
 

@@ -10,6 +10,7 @@ import * as React from "react";
 import clsx from "clsx";
 import { Link } from "gatsby";
 import { upperFirst } from "lodash";
+import "./Breadcrumbs.css";
 
 interface Breadcrumb {
   pathname: string;
@@ -21,28 +22,28 @@ interface BreadcrumbsProps {
 }
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ crumbs }) => (
-  <nav className="utrecht-breadcrumb utrecht-breadcrumb--arrows">
-    <ol className="utrecht-breadcrumb__list" itemScope itemType="https://schema.org/BreadcrumbList">
+  <nav className="utrecht-breadcrumb Breadcrumbs">
+    <ol className="utrecht-breadcrumb__list Breadcrumbs-list" itemScope itemType="https://schema.org/BreadcrumbList">
       {crumbs.map((crumb, idx) => {
         const lastCrumb: boolean = crumbs.length - 1 === idx;
 
         return (
           <li
             key={idx}
-            className="utrecht-breadcrumb__item"
+            className="utrecht-breadcrumb__item Breadcrumbs-item"
             itemScope
             itemType="https://schema.org/ListItem"
             itemProp="itemListElement"
           >
             <Link
               className={clsx(
-                "utrecht-breadcrumb__link utrecht-link",
+                "utrecht-breadcrumb__link utrecht-link Breadcrumbs-link",
                 lastCrumb && "utrecht-breadcrumb__link--focus utrecht-link--focus",
               )}
               itemProp="item"
               to={crumb.pathname}
             >
-              <span className="utrecht-breadcrumb__text" itemProp="name">
+              <span className="utrecht-breadcrumb__text Breadcrumbs-text" itemProp="name">
                 {upperFirst(crumb.crumbLabel)}
               </span>
               <meta itemProp="position" content={idx.toString()} />

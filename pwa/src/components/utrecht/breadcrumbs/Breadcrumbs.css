@@ -1,37 +1,40 @@
-.TopNav-list {
-    background-color: var(--buren-color-grijs-100) !important;
-}
-
-.TopNav-item {
+.Breadcrumbs-item {
     border-inline-end: none;
+    text-decoration: none;
 }
 
-.TopNav-item:before {
+.Breadcrumbs-item:before {
     transition: color 0.15s ease-in-out,
     background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out,
     box-shadow 0.15s ease-in-out;
 }
 
-.TopNav-link {
+.Breadcrumbs-link {
     color: var(--buren-color-grijs-20) !important;
+    text-decoration: none;
+    border-right: 1px solid black;
+
+
 }
 
-.TopNav-link:hover {
-    background-color: var(--buren-color-grijs-100) !important;
-    border-bottom: 3px solid var(--buren-color-rood-50) !important;
-
+.Breadcrumbs-link:hover {
     color: var(--buren-color-grijs-20) !important;
+    text-decoration: underline var(--buren-color-grijs-20) !important;;
+}
+
+.Breadcrumbs-text:active {
+    color: var(--buren-color-rood-50) !important;
     text-decoration: none;
 }
 
-.TopNav-link:focus {
+.Breadcrumbs-link:focus {
     background-color: var(--buren-color-grijs-100) !important;
     border-bottom: 3px solid var(--buren-color-rood-50) !important;
     text-decoration: none;
 }
 
-.TopNav-link:visited {
+.Breadcrumbs-link:visited {
     background-color: var(--buren-color-grijs-100) !important;
     border-bottom: 3px solid var(--buren-color-rood-50) !important;
     text-decoration: none;

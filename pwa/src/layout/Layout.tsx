@@ -38,7 +38,7 @@ const Layout: React.FC<LayoutProps> = ({ children, pageContext, location }) => {
         />
       </Helmet>
       <GatsbyProvider value={gatsbyContext}>
-        <Document className="Document">
+        <Document className="Document buren-theme">
           <Page className="Page">
             <HeaderTemplate />
             <PageContent className="PageContent">
