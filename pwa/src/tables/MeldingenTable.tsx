@@ -21,29 +21,31 @@ export const MeldingenTable: React.FC<MeldingenProps> = ({ meldingen }) => {
   const { t } = useTranslation();
 
   return (
-    <Table className="Table">
-      <TableHeader>
-        <TableRow className="Table-Header-Row">
-          <TableHeaderCell>{t("Title")}</TableHeaderCell>
-          <TableHeaderCell>{t("Description")}</TableHeaderCell>
-          <TableHeaderCell>{t("Date Created")}</TableHeaderCell>
-        </TableRow>
-      </TableHeader>
-
-      <TableBody>
-        {meldingen.map((melding: any, idx) => (
-          <TableRow key={idx} className="Table-Body-Row">
-            <TableCell>{melding.title}</TableCell>
-            <TableCell>{melding.description}</TableCell>
-            <TableCell>{new Date(melding["@dateCreated"]).toLocaleString("nl-NL")}</TableCell>
-            <Link className="utrecht-link d-flex justify-content-end" to={`/meldingen/${melding.id}`}>
-              <button className="utrecht-button btn-sm btn-success">
-                <FontAwesomeIcon icon={faEdit} /> Edit
-              </button>
-            </Link>
+    <div className="Card">
+      <Table className="Table">
+        <TableHeader>
+          <TableRow className="Table-Header-Row">
+            <TableHeaderCell>{t("Title")}</TableHeaderCell>
+            <TableHeaderCell>{t("Description")}</TableHeaderCell>
+            <TableHeaderCell>{t("Date Created")}</TableHeaderCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHeader>
+
+        <TableBody>
+          {meldingen.map((melding: any, idx) => (
+            <TableRow key={idx} className="Table-Body-Row">
+              <TableCell>{melding.title}</TableCell>
+              <TableCell>{melding.description}</TableCell>
+              <TableCell>{new Date(melding["@dateCreated"]).toLocaleString("nl-NL")}</TableCell>
+              <Link className="utrecht-link d-flex justify-content-end" to={`/meldingen/${melding.id}`}>
+                <button className="utrecht-button btn-sm btn-success">
+                  <FontAwesomeIcon icon={faEdit} /> Edit
+                </button>
+              </Link>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
