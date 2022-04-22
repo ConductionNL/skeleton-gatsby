@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 import Login from "./services/login";
 import Notification from "./resources/notification";
+import Product from "./resources/product";
 import News from "./resources/news";
 
 export default class APIService {
@@ -18,42 +19,52 @@ export default class APIService {
     return this.JWT ? true : false;
   }
 
-  // Clients
-  public get adminClient(): AxiosInstance {
+  public get pdcClient(): AxiosInstance {
     return axios.create({
-      baseURL: process.env.GATSBY_ADMIN_URL,
-      headers: {
+      baseURL: "https://pdc.buren.nl",
+      headers :{
         Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + this.JWT,
-      },
+        "Content-Type": "application/json"
+      }
     });
   }
 
+  public get pubClient(): AxiosInstance {
+    return axios.create({
+      baseURL: "https://openpub.buren.nl",
+      headers :{
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    });
+  }
+  
   public get apiClient(): AxiosInstance {
     return axios.create({
       baseURL: process.env.GATSBY_API_URL,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + this.JWT,
-      },
-    });
+      headers : this.JWT ? {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${this.JWT}`
+    } : {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }});
   }
 
-  public get loginClient(): AxiosInstance {
+  public get LoginClient(): AxiosInstance {
     return axios.create({
       baseURL: process.env.GATSBY_API_URL,
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
     });
   }
 
   // Services
   public get Login(): Login {
-    return new Login(this.loginClient);
+    return new Login(this.LoginClient);
   }
 
   // Resources
@@ -61,8 +72,13 @@ export default class APIService {
     return new Notification(this.apiClient);
   }
 
+  // Resources
+  public get Product(): Product {
+    return new Product(this.pdcClient);
+  }
+
   public get News(): News {
-    return new News(this.apiClient);
+    return new News(this.pubClient);
   }
 }
 

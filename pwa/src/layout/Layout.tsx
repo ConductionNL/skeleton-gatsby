@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../styling/index.css";
-import "./../translations/i18n";
+import "../translations/i18n";
 import { Document, Page, PageContent } from "@utrecht/component-library-react/dist";
 import APIContext, { APIProvider } from "../apiService/apiContext";
 import APIService from "../apiService/apiService";

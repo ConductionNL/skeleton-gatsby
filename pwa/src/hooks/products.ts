@@ -3,26 +3,26 @@ import { useQuery, QueryClient } from "react-query";
 import APIService from "../apiService/apiService";
 import APIContext from "../apiService/apiContext";
 
-export const useNews = (queryClient?: QueryClient) => {
+export const useProducts = (queryClient?: QueryClient) => {
   const API: APIService = React.useContext(APIContext);
   
   const getAll = () =>
-    useQuery<any[], Error>("nieuws", API.News.getAll, {
+    useQuery<any[], Error>("products", API.Product.getAll, {
       onError: (error) => {
         throw new Error(error.message);
       },
     });
 
     
-  const getOne = (newsId: string) => {
+  const getOne = (productId: string) => {
     if (!queryClient) {
       throw new Error('No queryClient passed');
     }
-    return useQuery<any, Error>(["nieuws", newsId], () => API.News.getOne(newsId), {
+    return useQuery<any, Error>(["products", productId], () => API.Product.getOne(productId), {
       onError: (error) => {
         throw new Error(error.message)
       },
-      enabled: !!newsId,
+      enabled: !!productId,
     });
   }
 

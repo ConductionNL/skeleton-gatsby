@@ -6,7 +6,7 @@ export const UnauthenticatedTemplate: React.FC = () => {
   const { t } = useTranslation();
   return (
     <>
-      <Heading1>{t("Welcome to the Skeleton Application")}</Heading1>
+      <Heading1>{"Welkom op Mijn Diensten van Gemeente Buren"}</Heading1>
     </>
   );
 };

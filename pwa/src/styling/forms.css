@@ -1,3 +1,22 @@
 form > .FormField-group {
   margin-block-end: var(--utrecht-space-inline-md);
 }
+
+form > .Button {
+  background-color: var(--buren-color-rood-50);
+}
+
+form > .Button:hover {
+  background-color: var(--buren-color-grijs-100);
+  color: var(--buren-color-rood-50);
+  border: 2px solid var(--buren-color-rood-50);
+}
+
+form > .Button:active {
+  background-color: var(--buren-color-rood-40);
+}
+
+form > .Button:focus {
+  background-color: var(--buren-color-rood-40);
+  border: 2px solid var(--buren-color-rood-50);
+}

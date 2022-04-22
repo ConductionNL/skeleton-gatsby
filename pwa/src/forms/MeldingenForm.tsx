@@ -1,57 +1,55 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "@utrecht/component-library-react/dist";
+import { Button } from "@gemeente-denhaag/button";
 import { InputText, Textarea } from "../components/formFields";
 import { useQueryClient } from "react-query";
 import { useNotification } from "../hooks/notifications";
 import { useTranslation } from "react-i18next";
+import { Input } from "../components/formFields/Input";
 
-interface MeldingenFormProps {
-  notificationId: string;
+interface IMelding {
+  title: string;
+  description: string;
 }
 
-export const MeldingenForm: React.FC<MeldingenFormProps> = ({ notificationId }) => {
+interface MeldingenFormProps {
+  melding?: IMelding;
+}
+
+export const MeldingenForm: React.FC<MeldingenFormProps> = ({ melding }) => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
 
   const _useNotification = useNotification(queryClient);
-  const getNotification = _useNotification.getOne(notificationId);
-  const createOrUpdateNotification = _useNotification.createOrEdit();
+  const createNotification = _useNotification.create();
 
   const {
     register,
     formState: { errors },
     handleSubmit,
     setValue,
-    control,
   } = useForm();
 
   React.useEffect(() => {
-    if (getNotification.isSuccess) {
-      const notification = getNotification.data;
+    melding && handleSetFormValues(melding);
+  }, [melding]);
 
-      handleSetFormValues(notification);
-    }
-  }, [getNotification.isSuccess]);
-
-  const handleSetFormValues = (source: any): void => {
-    const basicFields: string[] = ["title", "description"];
-    basicFields.forEach((field) => setValue(field, source[field]));
+  const handleSetFormValues = (formValues: IMelding): void => {
+    setValue("title", formValues.title);
+    setValue("description", formValues.description);
   };
 
   const onSubmit = (data: any) => {
-    createOrUpdateNotification.mutate({ payload: data, id: notificationId });
+    createNotification.mutate({ payload: data });
   };
 
-  return getNotification.isSuccess ? (
+  return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <InputText name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
+      <Input type="text" name="title" label={t("Title")} {...{ errors, register }} validation={{ required: true }} />
 
       <Textarea name="description" label={t("Description")} {...{ errors, register }} validation={{ required: true }} />
 
-      <Button type="submit">{t("Send")}</Button>
+      <Button className="Button" type="submit">{t("Send")}</Button>
     </form>
-  ) : (
-    <></>
   );
 };
