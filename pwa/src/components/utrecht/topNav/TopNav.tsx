@@ -14,6 +14,7 @@ import "./TopNav.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { t } from "i18next";
+import { ThemeSwitcher } from "../../theme-switcher/theme-switcher";
 
 interface ITopNavItem {
   href: string;
@@ -48,6 +49,9 @@ export const TopNav: React.FC<TopNavProps> = ({ items }) => {
             </li>
           ))}
         </ul>
+        <div style={{ maxWidth: "125px" }}>
+          <ThemeSwitcher />
+        </div>
       </nav>
     </div>
   );
