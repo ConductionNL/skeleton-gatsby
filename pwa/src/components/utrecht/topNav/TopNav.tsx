@@ -1,5 +1,5 @@
 /**
- * This is a TEMPORARY wrapper over the Utrecht Breadcrumb component.
+ * This is a TEMPORARY wrapper over the Utrecht TopNav component.
  *
  * Do NOT update this file, because all changes WILL BE LOST upon the package integration.
  *
@@ -11,9 +11,6 @@ import { Link } from "gatsby";
 import clsx from "clsx";
 import Logo from "./../../../assets/burenLogo.svg";
 import "./TopNav.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { t } from "i18next";
 import { ThemeSwitcher } from "../../theme-switcher/theme-switcher";
 
 interface ITopNavItem {
@@ -31,9 +28,6 @@ export const TopNav: React.FC<TopNavProps> = ({ items }) => {
     <div className="utrecht-navhtml">
       <nav className="topnav">
         <Logo className="topnav-logo" />
-        <a className="topnav-searchbar">
-          {t("Search")} <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </a>
         <ul className="utrecht-topnav__list">
           {items.map((item, idx) => (
             <li key={idx} className="utrecht-topnav__item">

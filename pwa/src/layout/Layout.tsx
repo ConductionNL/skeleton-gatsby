@@ -54,11 +54,11 @@ const LayoutKiss: React.FC<LayoutProps> = ({ children, pageContext, location }) 
         />
       </Helmet>
       <Document className={`Document buren-theme`}>
-        <TopNav items={navItems} />
-        <SideNavTemplate />
         <Page className="Page">
-          <HeaderTemplate />
           <PageContent className="PageContent">
+            <TopNav items={navItems} />
+            <SideNavTemplate />
+            <HeaderTemplate />
             <APIProvider value={API}>
               <title>{t("Skeleton Application")}</title>
               {children}
@@ -83,8 +83,8 @@ const getNavigationItems = (location: any, t: Function): ITopNavItem[] => {
     </>
   );
   const staticNavItems: ITopNavItem[] = [
-    { title: t("Profile"), href: "/profile", current: location.pathname === "/profile" },
-    { title: t("Settings"), href: "/settings", current: location.pathname === "/settings" },
+    { title: t("Nieuws"), href: "/nieuws", current: location.pathname === "/nieuws" },
+    { title: t("Producten"), href: "/products", current: location.pathname === "/products" },
   ];
 
   const userNavItem: ITopNavItem = isLoggedIn()
