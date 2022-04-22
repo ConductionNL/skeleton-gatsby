@@ -5,9 +5,7 @@ import { useScript } from "usehooks-ts";
 
 const ThemeSwitcher = () => {
   const [scriptLoaded, setScriptLoaded] = useState(false);
-  const themeSwitcherScript = useScript(
-    "https://unpkg.com/@nl-design-system-unstable/theme-switcher"
-  );
+  const themeSwitcherScript = useScript("https://unpkg.com/@nl-design-system-unstable/theme-switcher");
 
   useEffect(() => {
     if (themeSwitcherScript === "ready") {
@@ -19,10 +17,7 @@ const ThemeSwitcher = () => {
   return (
     <Fragment>
       <Helmet>
-        <link
-          href="https://unpkg.com/@utrecht/component-library-css/dist/bem.css"
-          rel="stylesheet"
-        />
+        <link href="https://unpkg.com/@utrecht/component-library-css/dist/bem.css" rel="stylesheet" type="text/css" />
 
         <meta name="theme-color" content="hsl(0 0% 95%)" />
       </Helmet>
