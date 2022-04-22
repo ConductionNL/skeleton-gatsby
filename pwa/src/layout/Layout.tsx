@@ -51,11 +51,11 @@ const LayoutKiss: React.FC<LayoutProps> = ({ children, pageContext, location }) 
       <Helmet>
         <link
           rel="stylesheet"
-          href={`https://unpkg.com/@nl-design-system-unstable/${context.defaultTheme}-design-tokens/dist/index.css`}
+          href={`https://unpkg.com/@nl-design-system-unstable/buren-design-tokens/dist/index.css`}
           type="text/css"
         />
       </Helmet>
-      <Document className={`Document ${context.defaultTheme}-theme`}>
+      <Document className={`Document buren-theme`}>
         <TopNav items={navItems} />
         <SideNavTemplate />
         <Page className="Page">
