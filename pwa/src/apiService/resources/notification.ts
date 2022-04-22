@@ -13,19 +13,8 @@ export default class Notification {
     return data.results;
   };
 
-  public getOne = async (id: string): Promise<any> => {
-    const { data } = await Send(this._instance, "GET", `/notifications/${id}`);
-    return data;
-  };
-
-  public createOrUpdate = async (variables: { payload: any; id: string }): Promise<any> => {
-    const { payload, id } = variables;
-  
-    if (id) {
-      const { data } = await Send(this._instance, "PUT", `/notifications/${id}`, payload);
-      return data;
-    }
-  
+  public create = async (variables: { payload: any }): Promise<any> => {
+    const { payload } = variables;
     const { data } = await Send(this._instance, "POST", "/notifications", payload);
     return data;
   };
