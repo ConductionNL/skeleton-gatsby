@@ -21,9 +21,9 @@ export const MeldingenTable: React.FC<MeldingenProps> = ({ meldingen }) => {
   const { t } = useTranslation();
 
   return (
-    <Table>
+    <Table className="Table">
       <TableHeader>
-        <TableRow className="TableRow">
+        <TableRow className="Table-Header-Row">
           <TableHeaderCell>{t("Title")}</TableHeaderCell>
           <TableHeaderCell>{t("Description")}</TableHeaderCell>
           <TableHeaderCell>{t("Date Created")}</TableHeaderCell>
@@ -32,7 +32,7 @@ export const MeldingenTable: React.FC<MeldingenProps> = ({ meldingen }) => {
 
       <TableBody>
         {meldingen.map((melding: any, idx) => (
-          <TableRow key={idx}>
+          <TableRow key={idx} className="Table-Body-Row">
             <TableCell>{melding.title}</TableCell>
             <TableCell>{melding.description}</TableCell>
             <TableCell>{new Date(melding["@dateCreated"]).toLocaleString("nl-NL")}</TableCell>

@@ -1,3 +1,11 @@
-.TableRow {
+.Table {
+  padding: 5px;
+}
+
+.Table-Header-Row {
   text-align: left;
+}
+
+.Table-Body-Row {
+  border-spacing: 5em;
 }

@@ -9,7 +9,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import clsx from "clsx";
-import Logo from "./../../../assets/logo.svg";
+import Logo from "./../../../assets/burenLogo.svg";
 import "./TopNav.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";

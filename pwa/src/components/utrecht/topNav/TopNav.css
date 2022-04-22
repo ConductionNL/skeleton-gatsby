@@ -12,7 +12,8 @@
 }
 
 .utrecht-navhtml > .topnav > .topnav-logo {
-  height: 54.4px;
+  max-height: 54.4px;
+  max-width: 100px;
 }
 
 .utrecht-navhtml > .topnav > .topnav-searchbar > svg {
