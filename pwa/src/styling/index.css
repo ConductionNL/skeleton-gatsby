@@ -4,7 +4,7 @@
 @import "./forms.css";
 
 /* External styling */
-@import "@utrecht/design-tokens/dist/index.css";
+/* @import "@utrecht/design-tokens/dist/index.css"; */
 @import "@utrecht/component-library-css/dist/bem.css";
 
 /* Design Tokens */

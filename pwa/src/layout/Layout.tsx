@@ -12,7 +12,6 @@ import { getUsername, isLoggedIn } from "../services/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import { HeaderTemplate } from "../templates/header/HeaderTemplate";
-import { useUrlContext } from "../context/urlContext";
 import { Helmet } from "react-helmet";
 
 interface LayoutProps {
@@ -32,7 +31,6 @@ const LayoutKiss: React.FC<LayoutProps> = ({ children, pageContext, location }) 
   const [API] = React.useState<APIService>(React.useContext(APIContext));
   const [gatsbyContext, setGatsbyContext] = React.useState<IGatsbyContext>({ ...{ pageContext, location } });
   const [navItems, setNavItems] = React.useState<ITopNavItem[]>([]);
-  const context = useUrlContext();
 
   React.useEffect(() => {
     setGatsbyContext({ ...{ pageContext, location } });
@@ -51,11 +49,11 @@ const LayoutKiss: React.FC<LayoutProps> = ({ children, pageContext, location }) 
       <Helmet>
         <link
           rel="stylesheet"
-          href={`https://unpkg.com/@nl-design-system-unstable/${context.defaultTheme}-design-tokens/dist/index.css`}
+          href={`https://unpkg.com/@nl-design-system-unstable/buren-design-tokens/dist/index.css`}
           type="text/css"
         />
       </Helmet>
-      <Document className={`Document ${context.defaultTheme}-theme`}>
+      <Document className={`Document buren-theme`}>
         <TopNav items={navItems} />
         <SideNavTemplate />
         <Page className="Page">
