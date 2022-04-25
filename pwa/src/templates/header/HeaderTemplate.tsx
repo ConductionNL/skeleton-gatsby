@@ -41,10 +41,12 @@ export const HeaderTemplate: React.FC = () => {
   return (
     <PageHeader className="HeaderTemplate">
       <Logo className="HeaderTemplate-logo" />
-      <div className="HeaderTemplate-subNav">
+      <div className="HeaderTemplate-topNav">
         <TopNav items={staticNavItems} />
         <SearchBar buttonLabel="Zoek" />
         <TopNav items={userNavItem} />
+      </div>
+      <div className="HeaderTemplate-subNav">
         <Breadcrumbs {...{ crumbs }} />
         <div className="HeaderTemplate-languageSwitcher">
           <SelectLanguage
@@ -83,11 +85,6 @@ const getNavigationItems = (location: any, t: TFunction): ITopNavItem[] => {
       {t("Login")} <FontAwesomeIcon icon={faLockOpen} />
     </>
   );
-
-  const staticNavItems: ITopNavItem[] = [
-    { title: "Producten", href: "/products", current: location.pathname === "/products" },
-    { title: "Nieuws", href: "/nieuws", current: location.pathname === "/nieuws" },
-  ];
 
   const userNavItem: ITopNavItem = isLoggedIn()
     ? {
