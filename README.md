@@ -1,47 +1,42 @@
 # Skeleton Application
 
-This skeleton application is designed for rapid application testing and prototype development on the NL Design System. It provides a basic skeleton application with full NL Design system functionality that any developer can easily extend, view locally and deploy to an online environment for demonstration purposes. The main benefits are:
+This skeleton application is designed for rapid application testing and prototype development on the NL Design System. It provides a basic skeleton application with full NL Design system functionality to expand upon, viewed locally, and deployed to an online environment, viewed locally, and deployed to an online environment for demonstration purposes. The main benefits are:
 
--   Development and (online) demonstration of prototypes without the need of a server.
--   An out-of-the-box basic application that doesn't require configuration or setup and can be extended immediately.
-
+- Development and (online) demonstration of prototypes without maintaining a server.
+- An out-of-the-box basic application that doesn't require configuration or setup and can be extended immediately.
 
 ## Getting started
 
-To set up your own project, you will need a GitHub account and be logged in. Simply click on the "use this template" button. Tell GitHub where you want to spin up your prototype and click "create a repository from template".
-
+Clone the repo to contribute to this project or fork this project. Forking will be needed when deploying your version.
 
 ## Spinning up your local environment
 
-To develop locally, clone your new repository to your local machine. Open the terminal, navigate to the folder containing your repository, and make a choice to run the app in Node.js/npm or docker.
+The Skeleton application is a end-to-end application and consists of a Gatsby-based front-end and the back-end from [Conduction](https://github.com/ConductionNL/commonground-gateway).
 
-### Node.js / NPM
-You will need a Git client(optional), and have Node.js and NPM installed. This will use port :8000 so make sure nothing runs on that.
+Running this repository locally has these prerequisites:
 
-```cli
-$ cd /pwa
-$ npm install
-$ npm run develop
-```
+- [Node.js](https://nodejs.org/en/)
+- [Docker](https://www.docker.com/)
 
+With both installed, first:
 
-### Docker @TODO IN PROGRESS
-You will need to have docker installed. This will also run Conductions gateway on port :80 and the app itself on :8000 so make sure nothing runs on those.
-```cli
-$ docker-compose pull
-$ docker-compose up --build (for first time)
-$ docker-compose up (after first time)
-```
+- spin up the [front-end of the application](./doc/frontend.md).
+- spin up the [backend](./doc/backend.md)
 
-After succesfully setting up your dev environment, navigate to [http://localhost:8000/](http://localhost:8000/) to view the app in your browser.
+Clone your new repository to your local machine to start developing. Open the terminal, and navigate to the folder containing your repository.
 
-## Technical Documentation @TODO IN PROGRESS
+## Developing on the Skeleton Application
 
-Full technical documentation is provided on [read the docs](https://skeleton-app.readthedocs.io/en/latest//) and is based on [MKDocs](https://www.mkdocs.org/). A more product owner focused (and less technical) product page is hosted at [link to be added]().
+This is a in-depth guide [here](./doc/developing_skeleton.md).
 
-If you want to run the technical documentation locally, you can do so by using MKDocs build server and the serve command. Just go to the local repository and execute the following command for the documenation to be available on [port 8000](localhost://8000). Make sure to [install MKDocs](https://www.mkdocs.org/user-guide/installation/) first.
+## API calls (to be added)
 
+In the `/src/apiService` folder.
 
+## Publishing your prototype to the internet (Gatsby only)
 
+The Gatsby version of the skeleton application has built support for GitHub pages. You can turn your application into a static website and publish it as a GitHub page. The skeleton repository comes with a build GitHub action for publishing itself as a GitHub page. You can have your prototype automatically published to the internet on a code push.
 
+For this to work, you will need to do activate GitHub-pages on your repository, go to your repository settings, click on pages, select `gh-pages` as a source, and press on save (if you do not see a `gh-pages` branch yet you can create one by pushing to main).
 
+After clicking on save, you can wait for GitHub to publish your project and provide you with a link you can share for your demo. Keep in mind that all pushes to main and development will result in updates to your online demo environment from this point on.
